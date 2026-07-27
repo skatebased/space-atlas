@@ -123,6 +123,15 @@ function tierColor(tier) {
   return TIER_COLORS[tier] ?? 'var(--tier-1)';
 }
 
+/**
+ * Companies carry no acronym, so their heading is already the full name.
+ * Returns the secondary line only when it would say something new.
+ */
+function secondaryName(agency) {
+  const heading = agency.acronym ?? agency.name;
+  return heading === agency.name ? null : agency.name;
+}
+
 /* ------------------------------------------------------------------ */
 /* Filtering & sorting                                                 */
 /* ------------------------------------------------------------------ */
@@ -238,7 +247,7 @@ function renderLegend() {
       </li>`,
   )
     .concat(
-      `<li><span class="legend__swatch" style="background:var(--map-empty)"></span>No agency</li>`,
+      `<li><span class="legend__swatch" style="background:var(--map-empty)"></span>No organisation</li>`,
     )
     .join('');
 }
@@ -343,7 +352,8 @@ function renderCards(list) {
   $('#card-grid').innerHTML = list
     .map(
       (a) => `
-      <button class="card" data-id="${esc(a.id)}" type="button">
+      <button class="card" data-id="${esc(a.id)}" type="button"
+              style="--tier-color:${tierColor(a.tier)}">
         <div class="card__head">
           <span class="card__flag" aria-hidden="true">${a.flag || '🛰️'}</span>
           <div>
@@ -354,7 +364,7 @@ function renderCards(list) {
             SECTOR_LABELS[a.orgType] ?? '',
           )}</span>
         </div>
-        <p class="card__name">${esc(a.name)}</p>
+        ${secondaryName(a) ? `<p class="card__name">${esc(secondaryName(a))}</p>` : ''}
         <span class="tier-badge" style="--tier-color:${tierColor(a.tier)}">
           ${esc(a.tierLabel)}
         </span>
@@ -381,7 +391,7 @@ function renderTable(list) {
         <td>
           <div class="cell-agency">
             <strong>${esc(a.acronym ?? a.name)}</strong>
-            <span>${esc(a.name)}</span>
+            ${secondaryName(a) ? `<span>${esc(secondaryName(a))}</span>` : ''}
           </div>
         </td>
         <td>${a.flag} ${esc(a.country)}</td>
@@ -604,7 +614,7 @@ function openDetail(id) {
           agency.acronym ?? agency.name,
         )}</h2>
         <p class="detail__subtitle">
-          ${esc(agency.name)} · ${esc(agency.country)}
+          ${secondaryName(agency) ? `${esc(secondaryName(agency))} · ` : ''}${esc(agency.country)}
           <span class="sector-chip sector-chip--${esc(agency.orgType)}">${esc(
             SECTOR_LABELS[agency.orgType] ?? '',
           )}</span>
