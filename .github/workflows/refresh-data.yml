@@ -25,22 +25,28 @@ jobs:
         with:
           node-version: "22"
 
-      - name: Scrape agencies
+      - name: Scrape Wikipedia capability layer
         run: node scripts/scrape.mjs
+
+      - name: Build unified dataset
+        env:
+          # SEC rejects generic user agents; without this EDGAR is skipped.
+          SEC_USER_AGENT: ${{ secrets.SEC_USER_AGENT }}
+        run: node scripts/build-dataset.mjs
 
       - name: Validate output
         run: node scripts/validate.mjs
 
       - name: Commit if changed
         run: |
-          if git diff --quiet -- data/agencies.json; then
+          if git diff --quiet -- data/; then
             echo "No dataset changes."
             exit 0
           fi
 
-          count=$(node -e "process.stdout.write(String(require('./data/agencies.json').agencies.length))")
+          count=$(node -e "process.stdout.write(String(require('./data/organisations.json').organisations.length))")
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/agencies.json
-          git commit -m "data: refresh agency dataset (${count} agencies)"
+          git add data/
+          git commit -m "data: refresh dataset (${count} organisations)"
           git push

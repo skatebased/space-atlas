@@ -4,13 +4,16 @@
   "private": true,
   "description": "An interactive atlas of every government space agency on Earth",
   "type": "module",
-  "engines": { "node": ">=20" },
+  "engines": {
+    "node": ">=20"
+  },
   "scripts": {
     "dev": "python3 -m http.server 8181",
     "scrape": "node scripts/scrape.mjs",
     "build:countries": "node scripts/build-countries.mjs",
     "build:map": "node scripts/build-map.mjs",
-    "build:all": "npm run build:countries && npm run build:map && npm run scrape",
+    "build:data": "node scripts/build-dataset.mjs",
+    "build:all": "npm run build:countries && npm run build:map && npm run scrape && npm run build:data",
     "test": "node scripts/validate.mjs"
   },
   "license": "MIT"

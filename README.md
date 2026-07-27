@@ -27,18 +27,50 @@ Static site, no framework, no build step. Deploys straight to GitHub Pages.
 
 ## Where the data comes from
 
-Nothing is hand-maintained. `scripts/scrape.mjs` builds the dataset from:
+Nothing is hand-maintained. Every field records which source it came from.
 
-| Source | Provides |
-| --- | --- |
-| Wikipedia, [List of government space agencies](https://en.wikipedia.org/wiki/List_of_government_space_agencies) | agency roster, demonstrated capabilities, budgets |
-| Wikipedia, [List of private spaceflight companies](https://en.wikipedia.org/wiki/List_of_private_spaceflight_companies) | company roster, vehicles and their flight status |
-| MediaWiki API | intro extract, thumbnail, canonical article URL |
-| Wikidata | official website, headquarters, staff count, inception date, logo |
-| [Natural Earth](https://www.naturalearthdata.com/) via world-atlas | country boundaries |
+| Source | Provides | Licence | Redistributable |
+| --- | --- | --- | --- |
+| [Wikidata](https://www.wikidata.org) | organisation roster, country, HQ, founding, website, staff, logo | CC0-1.0 | ✅ |
+| [USAspending.gov](https://www.usaspending.gov) | US federal contract awards | US public domain | ✅ |
+| [SEC EDGAR](https://www.sec.gov/edgar) | revenue and headcount for listed companies | US public domain | ✅ |
+| [Natural Earth](https://www.naturalearthdata.com/) | country boundaries | Public domain | ✅ |
+| ISO 3166-1 | country codes and regions | Facts | ✅ |
+| Wikipedia [agencies](https://en.wikipedia.org/wiki/List_of_government_space_agencies) / [companies](https://en.wikipedia.org/wiki/List_of_private_spaceflight_companies) | demonstrated capabilities, budgets, prose, vehicle lists | CC BY-SA 4.0 | ❌ share-alike |
+| [Launch Library 2](https://thespacedevs.com/llapi) | launch and landing record | CC BY 4.0 | ❌ attribution, 15 req/hour |
 
-A GitHub Action re-runs the scrape every Monday and commits the result only if
+A GitHub Action re-runs the build every Monday and commits the result only if
 something changed.
+
+## The two data tiers
+
+The build emits two files from one pipeline:
+
+| File | Contents | Use |
+| --- | --- | --- |
+| `data/organisations.json` | every field | the public site |
+| `data/organisations.open.json` | only CC0 / US-public-domain fields | redistribution |
+
+The split is mechanical, not a judgement call: each record carries a
+`provenance` map of `field → source`, `scripts/lib/licensing.mjs` declares
+whether each source is redistributable, and the open artifact is produced by
+dropping every field whose source is not.
+
+`scripts/validate.mjs` then enforces it — a Wikipedia- or Launch-Library-sourced
+field appearing in the open artifact is a hard build failure, reported as a
+`LICENCE LEAK`. That check exists because the failure mode is silent: nothing
+about a share-alike field looks different from a public-domain one at runtime.
+
+**This is not legal advice.** It encodes each source's published terms so the
+constraint is visible in the data rather than living in someone's memory. Two
+things worth knowing before commercialising anything:
+
+- Wikipedia is CC BY-SA 4.0. You may sell it, but derivatives must carry the
+  same licence, so your customers may redistribute it too. Bare facts are not
+  copyrightable in the US (*Feist*); the **prose** is the protected part, which
+  is why `summary` is excluded from the open tier rather than the whole record.
+- Launch Library 2 is free at 15 requests/hour. Bulk redistribution needs a
+  commercial arrangement with The Space Devs.
 
 ### Why the scrape can't quietly break the site
 
@@ -76,8 +108,18 @@ That runs three steps, which can also be run individually:
 | --- | --- | --- |
 | `npm run build:countries` | `data/countries.json` | ISO 3166-1 reference. Rarely changes. |
 | `npm run build:map` | `data/world-map.json` | Robinson-projected SVG paths per country. Rarely changes. |
-| `npm run scrape` | `data/agencies.json` | Agencies **and** companies. This is the weekly one. |
-| `npm test` | — | Validates all three files. |
+| `npm run scrape` | `data/agencies.json` | Wikipedia capabilities layer. |
+| `npm run build:data` | `data/organisations*.json` | Merges every source. This is the weekly one. |
+| `npm test` | — | Validates schema, provenance and licence tiers. |
+
+`npm run build:data` needs one environment variable for the SEC source, which
+rejects generic user agents under its fair-access policy:
+
+```bash
+export SEC_USER_AGENT="Your Name you@example.com"
+```
+
+Without it EDGAR is skipped and the build continues.
 
 The scrape makes ~40 paced API requests across both pages and takes a couple
 of minutes.

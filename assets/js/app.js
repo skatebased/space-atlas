@@ -104,6 +104,15 @@ function formatBudget(budget) {
   return `$${(m * 1000).toFixed(0)}k`;
 }
 
+/** 3607000000 → "$3.6B". */
+function formatUsd(value) {
+  if (!Number.isFinite(value) || value <= 0) return '—';
+  if (value >= 1e9) return `$${(value / 1e9).toFixed(value >= 1e10 ? 0 : 1)}B`;
+  if (value >= 1e6) return `$${Math.round(value / 1e6)}M`;
+  if (value >= 1e3) return `$${Math.round(value / 1e3)}k`;
+  return `$${Math.round(value)}`;
+}
+
 function formatStaff(count) {
   if (!count) return '—';
   if (count >= 10000) return `${(count / 1000).toFixed(0)}k`;
@@ -149,6 +158,9 @@ function matchesQuery(agency, query) {
     SECTOR_LABELS[agency.orgType],
     agency.orgType === 'private' ? 'company private' : 'agency government',
     ...(agency.products ?? []).map((p) => p.name),
+    agency.financials?.ticker,
+    agency.federalContracts ? 'contractor' : null,
+    agency.launchRecord ? 'launch record' : null,
   ]
     .filter(Boolean)
     .join(' ')
@@ -182,6 +194,14 @@ function visibleAgencies() {
     'founded-desc': (a, b) =>
       (b.foundedYear ?? -Infinity) - (a.foundedYear ?? -Infinity) || byName(a, b),
     country: (a, b) => a.country.localeCompare(b.country) || byName(a, b),
+    contracts: (a, b) =>
+      (b.federalContracts?.usdTotal ?? -1) - (a.federalContracts?.usdTotal ?? -1) ||
+      byName(a, b),
+    launches: (a, b) =>
+      (b.launchRecord?.totalLaunches ?? -1) - (a.launchRecord?.totalLaunches ?? -1) ||
+      byName(a, b),
+    spacecraft: (a, b) =>
+      (b.spacecraftCount ?? -1) - (a.spacecraftCount ?? -1) || byName(a, b),
   };
 
   return list.sort(sorters[state.sort] ?? byName);
@@ -199,7 +219,7 @@ function renderStats(dataset) {
     ['Companies', number.format(c.companies)],
     ['Countries', number.format(c.countries)],
     ['Orbital launch', number.format(c.orbitalLaunch)],
-    ['Human spaceflight', number.format(c.humanSpaceflight)],
+    ['Fed. contracts', formatUsd(c.federalContractUsd)],
   ];
 
   $('#stat-strip').innerHTML = stats
@@ -372,6 +392,13 @@ function renderCards(list) {
           <span>${a.foundedYear ? `Est. ${a.foundedYear}` : 'Est. —'}</span>
           <span>${formatBudget(a.budget)}</span>
           ${a.employees ? `<span>${formatStaff(a.employees)} staff</span>` : ''}
+          ${a.federalContracts ? `<span class="fact-contract">${formatUsd(a.federalContracts.usdTotal)} fed</span>` : ''}
+          ${a.launchRecord ? `<span>${a.launchRecord.totalLaunches} launches</span>` : ''}
+          ${
+            !a.launchRecord && a.spacecraftCount
+              ? `<span>${a.spacecraftCount} craft flown</span>`
+              : ''
+          }
           ${a.historical ? '<span class="is-historical">Defunct</span>' : ''}
         </div>
       </button>`,
@@ -572,6 +599,69 @@ function capabilityGroups(agency) {
     .join('');
 }
 
+/**
+ * Hard numbers from the government and financial sources: federal contract
+ * awards, filed financials, and flight record. These are what separate this
+ * from a directory listing, so they sit above the capability breakdown.
+ */
+function evidenceSections(agency) {
+  const blocks = [];
+
+  if (agency.launchRecord) {
+    const l = agency.launchRecord;
+    blocks.push(`
+      <h3 class="detail__section-title">Flight record</h3>
+      <dl class="facts">
+        <div class="fact"><dt class="fact__label">Launches</dt>
+          <dd class="fact__value" style="margin:0">${l.totalLaunches}</dd></div>
+        <div class="fact"><dt class="fact__label">Success rate</dt>
+          <dd class="fact__value" style="margin:0">${l.successRate}%</dd></div>
+        <div class="fact"><dt class="fact__label">Failures</dt>
+          <dd class="fact__value" style="margin:0">${l.failed}</dd></div>
+        ${
+          l.landings.attempted
+            ? `<div class="fact"><dt class="fact__label">Landings</dt>
+                 <dd class="fact__value" style="margin:0">${l.landings.successful}/${l.landings.attempted}</dd></div>`
+            : ''
+        }
+      </dl>`);
+  }
+
+  if (agency.federalContracts) {
+    const c = agency.federalContracts;
+    blocks.push(`
+      <h3 class="detail__section-title">US federal contracts</h3>
+      <dl class="facts">
+        <div class="fact"><dt class="fact__label">Awarded</dt>
+          <dd class="fact__value" style="margin:0">${formatUsd(c.usdTotal)}</dd></div>
+        <div class="fact"><dt class="fact__label">Since</dt>
+          <dd class="fact__value" style="margin:0">${esc(c.window?.startDate?.slice(0, 4) ?? '—')}</dd></div>
+      </dl>
+      <p class="chart-card__sub">Recipient of record: ${esc(c.recipientName)}</p>`);
+  }
+
+  if (agency.financials) {
+    const f = agency.financials;
+    blocks.push(`
+      <h3 class="detail__section-title">Filed financials</h3>
+      <dl class="facts">
+        <div class="fact"><dt class="fact__label">Ticker</dt>
+          <dd class="fact__value" style="margin:0">${esc(f.ticker)}</dd></div>
+        ${
+          f.revenue
+            ? `<div class="fact"><dt class="fact__label">Revenue</dt>
+                 <dd class="fact__value" style="margin:0">${formatUsd(f.revenue.usd)}</dd></div>
+               <div class="fact"><dt class="fact__label">Fiscal year</dt>
+                 <dd class="fact__value" style="margin:0">${esc(f.revenue.fiscalYear ?? '—')}</dd></div>`
+            : ''
+        }
+      </dl>
+      <p class="chart-card__sub">SEC registrant: ${esc(f.registrant)} · CIK ${esc(f.cik)}</p>`);
+  }
+
+  return blocks.join('');
+}
+
 /** Vehicles and products, for private companies (the agency page has none). */
 function productList(agency) {
   const products = agency.products ?? [];
@@ -599,6 +689,7 @@ function openDetail(id) {
   state.selected = id;
   const facts = [
     ['Founded', agency.foundedYear ?? '—'],
+    ...(agency.spacecraftCount ? [['Craft flown', agency.spacecraftCount]] : []),
     ['Budget', formatBudget(agency.budget)],
     ['Staff', formatStaff(agency.employees)],
     ['Headquarters', agency.headquarters ?? '—'],
@@ -642,6 +733,7 @@ function openDetail(id) {
         .join('')}
     </dl>
 
+    ${evidenceSections(agency)}
     ${capabilityGroups(agency)}
     ${productList(agency)}
 
@@ -840,7 +932,7 @@ async function init() {
 
   try {
     const [dataset, map] = await Promise.all([
-      fetch('data/agencies.json').then((r) => {
+      fetch('data/organisations.json').then((r) => {
         if (!r.ok) throw new Error(`agencies.json — HTTP ${r.status}`);
         return r.json();
       }),

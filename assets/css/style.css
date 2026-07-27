@@ -757,6 +757,12 @@ main {
   margin-left: 0.4rem;
 }
 
+/* Federal contract totals are the headline evidence, so they read hot. */
+.fact-contract {
+  color: var(--tier-3);
+  font-weight: 600;
+}
+
 .is-historical {
   color: var(--tier-4);
   text-transform: uppercase;

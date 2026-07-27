@@ -2,145 +2,191 @@
 /**
  * Checks the generated data files before they are published.
  *
- * Runs in CI on every push and after each scrape, so a malformed dataset
- * fails the build instead of silently breaking the site.
+ * Runs in CI on every push and after each build, so a malformed dataset or a
+ * licence leak fails the build instead of silently shipping.
  */
 import { readFile } from 'node:fs/promises';
 import { fileURLToPath } from 'node:url';
 import { dirname, join } from 'node:path';
 
+import { SOURCES } from './lib/licensing.mjs';
+
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
 
 const errors = [];
 const warnings = [];
-
 const fail = (message) => errors.push(message);
 const warn = (message) => warnings.push(message);
 
 async function readJson(relativePath) {
-  return JSON.parse(await readFile(join(ROOT, relativePath), 'utf8'));
+  try {
+    return JSON.parse(await readFile(join(ROOT, relativePath), 'utf8'));
+  } catch (err) {
+    if (err.code === 'ENOENT') return null;
+    throw err;
+  }
 }
 
-function checkDataset(dataset, map) {
-  if (!Array.isArray(dataset.organisations)) {
-    return fail('agencies.json: `organisations` is not an array');
-  }
+/* ------------------------------------------------------------------ */
+/* Shared record checks                                                */
+/* ------------------------------------------------------------------ */
 
-  const agencies = dataset.organisations;
-  if (agencies.length < 150) {
-    fail(`agencies.json: only ${agencies.length} organisations (expected 150+)`);
-  }
-  const government = agencies.filter((a) => a.orgType === 'government');
-  const private_ = agencies.filter((a) => a.orgType === 'private');
-  if (government.length < 50) fail(`only ${government.length} agencies (expected 50+)`);
-  if (private_.length < 80) fail(`only ${private_.length} companies (expected 80+)`);
-  if (!dataset.generatedAt || Number.isNaN(Date.parse(dataset.generatedAt))) {
-    fail('agencies.json: missing or invalid `generatedAt`');
-  }
-
+function checkRecords(list, { label, map, requireProvenance = true }) {
   const ids = new Set();
-  for (const agency of agencies) {
-    const label = agency.id ?? agency.name ?? '(unnamed)';
 
-    for (const field of ['id', 'name', 'country', 'iso3', 'tier', 'tierLabel', 'orgType']) {
-      if (!agency[field]) fail(`${label}: missing \`${field}\``);
-    }
-    if (ids.has(agency.id)) fail(`${label}: duplicate id`);
-    ids.add(agency.id);
+  for (const org of list) {
+    const name = org.id ?? org.name ?? '(unnamed)';
 
-    if (!/^[A-Z]{3}$/.test(agency.iso3 ?? '')) {
-      fail(`${label}: malformed iso3 "${agency.iso3}"`);
+    for (const field of ['id', 'name', 'country', 'iso3']) {
+      if (!org[field]) fail(`${label}/${name}: missing \`${field}\``);
     }
-    if (agency.foundedYear != null) {
-      const year = agency.foundedYear;
-      if (!Number.isInteger(year) || year < 1900 || year > 2100) {
-        fail(`${label}: implausible foundedYear ${year}`);
+    if (ids.has(org.id)) fail(`${label}/${name}: duplicate id`);
+    ids.add(org.id);
+
+    if (!/^[A-Z]{3}$/.test(org.iso3 ?? '')) {
+      fail(`${label}/${name}: malformed iso3 "${org.iso3}"`);
+    }
+    if (org.foundedYear != null) {
+      if (!Number.isInteger(org.foundedYear) || org.foundedYear < 1800 || org.foundedYear > 2100) {
+        fail(`${label}/${name}: implausible foundedYear ${org.foundedYear}`);
       }
     }
-    if (agency.budget && !(agency.budget.usdMillions > 0)) {
-      fail(`${label}: non-positive budget`);
+    if (org.employees != null && !(org.employees > 0)) {
+      fail(`${label}/${name}: non-positive employees`);
     }
-    if (agency.employees != null && !(agency.employees > 0)) {
-      fail(`${label}: non-positive employees`);
+    if (org.website && !/^https?:\/\//.test(org.website)) {
+      fail(`${label}/${name}: website is not an absolute URL`);
     }
-    if (!agency.capabilities || typeof agency.capabilities !== 'object') {
-      fail(`${label}: missing capabilities`);
+    if (org.federalContracts && !(org.federalContracts.usdTotal > 0)) {
+      fail(`${label}/${name}: non-positive federal contract total`);
     }
-    if (agency.website && !/^https?:\/\//.test(agency.website)) {
-      fail(`${label}: website is not an absolute URL`);
-    }
-    if (!['government', 'private'].includes(agency.orgType)) {
-      fail(`${label}: unexpected orgType "${agency.orgType}"`);
+    if (org.launchRecord) {
+      const { successful, failed, totalLaunches } = org.launchRecord;
+      if (successful + failed !== totalLaunches) {
+        fail(`${label}/${name}: launch record does not add up`);
+      }
     }
 
-    // Every non-supranational agency should land somewhere on the map.
-    if (!agency.supranational && !agency.historical && !map.shapes[agency.iso3]) {
-      warn(`${label}: no map shape for ${agency.iso3}`);
+    if (requireProvenance) {
+      if (!org.provenance || typeof org.provenance !== 'object') {
+        fail(`${label}/${name}: missing provenance map`);
+        continue;
+      }
+      for (const [field, source] of Object.entries(org.provenance)) {
+        if (!SOURCES[source]) {
+          fail(`${label}/${name}: unknown source "${source}" for \`${field}\``);
+        }
+      }
+      // Every substantive value should be able to name where it came from.
+      for (const field of ['name', 'country']) {
+        if (org[field] && !org.provenance[field]) {
+          fail(`${label}/${name}: \`${field}\` has no recorded source`);
+        }
+      }
+    }
+
+    if (map && !org.supranational && !org.historical && !map.shapes[org.iso3]) {
+      warn(`${label}/${name}: no map shape for ${org.iso3}`);
     }
   }
+}
 
-  // Headline numbers must match the rows they summarise.
+/* ------------------------------------------------------------------ */
+/* Dataset-level checks                                                */
+/* ------------------------------------------------------------------ */
+
+function checkFull(dataset, map) {
+  const list = dataset.organisations;
+  if (!Array.isArray(list)) return fail('organisations.json: not an array');
+  if (list.length < 400) {
+    fail(`organisations.json: only ${list.length} organisations (expected 400+)`);
+  }
+  if (!dataset.generatedAt || Number.isNaN(Date.parse(dataset.generatedAt))) {
+    fail('organisations.json: missing or invalid `generatedAt`');
+  }
+  if (!dataset.licenses || !Object.keys(dataset.licenses).length) {
+    fail('organisations.json: missing licence manifest');
+  }
+
+  checkRecords(list, { label: 'full', map });
+
   const counts = dataset.counts ?? {};
-  const actualCountries = new Set(agencies.map((a) => a.iso3)).size;
-  if (counts.organisations !== agencies.length) {
-    fail(`counts.organisations (${counts.organisations}) ≠ ${agencies.length}`);
+  if (counts.organisations !== list.length) {
+    fail(`counts.organisations (${counts.organisations}) ≠ ${list.length}`);
   }
-  if (counts.agencies !== government.length) {
-    fail(`counts.agencies (${counts.agencies}) ≠ ${government.length}`);
-  }
-  if (counts.companies !== private_.length) {
-    fail(`counts.companies (${counts.companies}) ≠ ${private_.length}`);
-  }
-  if (counts.countries !== actualCountries) {
-    fail(`counts.countries (${counts.countries}) ≠ ${actualCountries}`);
+  const countries = new Set(list.map((o) => o.iso3)).size;
+  if (counts.countries !== countries) {
+    fail(`counts.countries (${counts.countries}) ≠ ${countries}`);
   }
 
-  // Sanity anchors: these should be present in any correct scrape.
-  for (const acronym of ['NASA', 'ESA', 'ISRO', 'JAXA', 'Roscosmos', 'CNSA']) {
-    if (!agencies.some((a) => a.acronym === acronym)) {
-      fail(`expected agency "${acronym}" is missing`);
+  // Anchors that should survive any correct build.
+  for (const name of ['SpaceX', 'NASA', 'Arianespace', 'Rocket Lab']) {
+    if (!list.some((o) => o.name === name || o.acronym === name)) {
+      fail(`expected organisation "${name}" is missing`);
     }
-  }
-  for (const name of ['SpaceX', 'Rocket Lab', 'Blue Origin', 'Arianespace']) {
-    if (!agencies.some((a) => a.name === name && a.orgType === 'private')) {
-      fail(`expected company "${name}" is missing`);
-    }
-  }
-  // SpaceX is the anchor for the private-sector capability mapping.
-  const spacex = agencies.find((a) => a.name === 'SpaceX');
-  if (spacex && !spacex.capabilities.orbitalLaunch?.has) {
-    fail('SpaceX is not marked orbital-launch capable — private parsing broke');
-  }
-  if (spacex && !spacex.capabilities.crewedLaunch?.has) {
-    fail('SpaceX is not marked crewed-launch capable — private parsing broke');
   }
 
-  const coverage = (field) =>
-    agencies.filter((a) => a[field]).length / agencies.length;
-  for (const field of ['summary', 'wikipedia']) {
-    if (coverage(field) < 0.7) {
-      warn(`only ${(coverage(field) * 100).toFixed(0)}% of agencies have \`${field}\``);
+  // The enrichment sources should each land on something.
+  if (!counts.withContracts) warn('no organisation carries federal contract data');
+  if (!counts.withFinancials) warn('no organisation carries SEC financials');
+  if (!counts.withLaunchRecord) warn('no organisation carries a launch record');
+}
+
+/**
+ * The redistributable artifact is the sellable one, so the licence rule is
+ * enforced rather than assumed: no field may trace to a share-alike or
+ * attribution-required source.
+ */
+function checkOpen(dataset) {
+  const list = dataset.organisations;
+  if (!Array.isArray(list)) return fail('organisations.open.json: not an array');
+  if (list.length < 300) {
+    fail(`organisations.open.json: only ${list.length} organisations (expected 300+)`);
+  }
+
+  checkRecords(list, { label: 'open' });
+
+  const restricted = Object.entries(SOURCES)
+    .filter(([, meta]) => !meta.redistributable)
+    .map(([key]) => key);
+
+  for (const org of list) {
+    for (const [field, source] of Object.entries(org.provenance ?? {})) {
+      if (restricted.includes(source)) {
+        fail(
+          `LICENCE LEAK — open/${org.id}: \`${field}\` came from ${source} ` +
+            `(${SOURCES[source].license}), which is not redistributable`,
+        );
+      }
+    }
+    // Prose is the copyrightable part of Wikipedia; it must never appear here.
+    for (const field of ['summary', 'thumbnail', 'wikipedia']) {
+      if (org[field] !== undefined) {
+        fail(`LICENCE LEAK — open/${org.id}: \`${field}\` must not be present`);
+      }
+    }
+  }
+
+  for (const meta of Object.values(dataset.licenses ?? {})) {
+    if (!meta.redistributable) {
+      fail(`open manifest advertises a non-redistributable source: ${meta.name}`);
     }
   }
 }
 
 function checkMap(map) {
   if (!map.width || !map.height) fail('world-map.json: missing dimensions');
-
   const shapes = Object.entries(map.shapes ?? {});
   if (shapes.length < 150) {
     fail(`world-map.json: only ${shapes.length} shapes (expected 150+)`);
   }
-
   for (const [iso3, d] of shapes) {
     if (!/^[A-Z]{3}$/.test(iso3)) fail(`world-map.json: bad key "${iso3}"`);
     if (!/^M[-\d.\s]/.test(d)) fail(`world-map.json: ${iso3} path does not start with M`);
-
     // A subpath spanning most of the map means an antimeridian seam leaked through.
     for (const sub of d.split('M').slice(1)) {
       const xs = (sub.match(/-?[\d.]+(?= )/g) ?? []).map(Number);
-      if (!xs.length) continue;
-      if (Math.max(...xs) - Math.min(...xs) > map.width * 0.7) {
+      if (xs.length && Math.max(...xs) - Math.min(...xs) > map.width * 0.7) {
         fail(`world-map.json: ${iso3} has a subpath spanning the whole map`);
       }
     }
@@ -148,18 +194,25 @@ function checkMap(map) {
 }
 
 async function main() {
-  const [dataset, map, countries] = await Promise.all([
-    readJson('data/agencies.json'),
+  const [full, open, map, countries] = await Promise.all([
+    readJson('data/organisations.json'),
+    readJson('data/organisations.open.json'),
     readJson('data/world-map.json'),
     readJson('data/countries.json'),
   ]);
+
+  if (!map) fail('data/world-map.json is missing');
+  else checkMap(map);
 
   if (!Array.isArray(countries) || countries.length < 200) {
     fail(`countries.json: only ${countries?.length} entries (expected 200+)`);
   }
 
-  checkMap(map);
-  checkDataset(dataset, map);
+  if (!full) fail('data/organisations.json is missing — run `npm run build:data`');
+  else checkFull(full, map);
+
+  if (!open) fail('data/organisations.open.json is missing');
+  else checkOpen(open);
 
   for (const message of warnings) console.warn(`warn  ${message}`);
   for (const message of errors) console.error(`error ${message}`);
@@ -169,7 +222,9 @@ async function main() {
     process.exit(1);
   }
   console.log(
-    `ok — ${dataset.organisations.length} organisations, ${Object.keys(map.shapes).length} map shapes, ${warnings.length} warning(s)`,
+    `ok — ${full.organisations.length} organisations, ` +
+      `${open.organisations.length} redistributable, ` +
+      `${Object.keys(map.shapes).length} map shapes, ${warnings.length} warning(s)`,
   );
 }
 
