@@ -1,0 +1,46 @@
+name: Refresh dataset
+
+# Re-scrapes Wikipedia/Wikidata weekly and commits the result if anything
+# changed. The scraper refuses to write a suspiciously small dataset, so a
+# broken upstream edit leaves the committed data untouched.
+on:
+  schedule:
+    - cron: "17 4 * * 1" # Mondays, 04:17 UTC
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: refresh-data
+  cancel-in-progress: false
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - name: Scrape agencies
+        run: node scripts/scrape.mjs
+
+      - name: Validate output
+        run: node scripts/validate.mjs
+
+      - name: Commit if changed
+        run: |
+          if git diff --quiet -- data/agencies.json; then
+            echo "No dataset changes."
+            exit 0
+          fi
+
+          count=$(node -e "process.stdout.write(String(require('./data/agencies.json').agencies.length))")
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/agencies.json
+          git commit -m "data: refresh agency dataset (${count} agencies)"
+          git push

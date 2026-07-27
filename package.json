@@ -1,0 +1,17 @@
+{
+  "name": "space-agency-atlas",
+  "version": "1.0.0",
+  "private": true,
+  "description": "An interactive atlas of every government space agency on Earth",
+  "type": "module",
+  "engines": { "node": ">=20" },
+  "scripts": {
+    "dev": "python3 -m http.server 8181",
+    "scrape": "node scripts/scrape.mjs",
+    "build:countries": "node scripts/build-countries.mjs",
+    "build:map": "node scripts/build-map.mjs",
+    "build:all": "npm run build:countries && npm run build:map && npm run scrape",
+    "test": "node scripts/validate.mjs"
+  },
+  "license": "MIT"
+}

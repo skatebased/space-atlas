@@ -1,0 +1,5041 @@
+{
+ "generatedAt": "2026-07-27T17:32:18.119Z",
+ "source": {
+  "page": "List of government space agencies",
+  "url": "https://en.wikipedia.org/wiki/List_of_government_space_agencies",
+  "license": "CC BY-SA 4.0"
+ },
+ "counts": {
+  "agencies": 88,
+  "countries": 76,
+  "orbitalLaunch": 15,
+  "humanSpaceflight": 4,
+  "deepSpace": 12,
+  "withBudget": 35,
+  "totalBudgetUsdMillions": 70146
+ },
+ "agencies": [
+  {
+   "id": "african-space-agency",
+   "name": "African Space Agency",
+   "acronym": "AfSA",
+   "country": "African Union",
+   "iso2": "AU",
+   "iso3": "AUU",
+   "flag": "🌍",
+   "region": "Africa",
+   "subregion": "Supranational",
+   "supranational": true,
+   "historical": false,
+   "founded": "2023-01-24",
+   "foundedYear": 2023,
+   "headquarters": "New Cairo",
+   "coordinates": null,
+   "website": "https://africanspaceagency.org/",
+   "employees": null,
+   "budget": null,
+   "summary": "The African Space Agency (AfSA) is a continental space organisation established by the African Union (AU) to promote cooperation between the space policies of the AU's member states. The AU adopted the African Space Policy and Strategy in 2016 and agreed upon the statute underlying AfSA in 2018…",
+   "thumbnail": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/Flag_of_the_African_Union.svg/330px-Flag_of_the_African_Union.svg.png",
+   "logo": null,
+   "parent": null,
+   "wikipedia": "https://en.wikipedia.org/wiki/African_Space_Agency",
+   "tier": "emerging",
+   "tierLabel": "Emerging agency",
+   "tierRank": 1,
+   "capabilities": {
+    "firstSpaceTraveler": {
+     "has": false,
+     "detail": null
+    },
+    "operatesSatellites": {
+     "has": false,
+     "detail": null
+    },
+    "buildsSatellites": {
+     "has": false,
+     "detail": null
+    },
+    "recoverablePayloads": {
+     "has": false,
+     "detail": null
+    }
+   }
+  },
+  {
+   "id": "agencia-espacial-espanola",
+   "name": "Agencia Espacial Española",
+   "acronym": "AEE",
+   "country": "Spain",
+   "iso2": "ES",
+   "iso3": "ESP",
+   "flag": "🇪🇸",
+   "region": "Europe",
+   "subregion": "Southern Europe",
+   "supranational": false,
+   "historical": false,
+   "founded": "2023-01-01",
+   "foundedYear": 2023,
+   "headquarters": "Seville",
+   "coordinates": [
+    37.4208,
+    -5.9866
+   ],
+   "website": "https://www.aee.gob.es/",
+   "employees": null,
+   "budget": {
+    "usdMillions": 739,
+    "year": 2023
+   },
+   "summary": "The Agencia Espacial Española (AEE; Spanish Space Agency) is an agency of the Spanish government responsible for the Spanish space program. The agency was officially announced on 27 May 2021 and it became operational on 20 April 2023…",
+   "thumbnail": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b2/Logotipo_Agencia_Espacial_Espa%C3%B1ola.png/330px-Logotipo_Agencia_Espacial_Espa%C3%B1ola.png",
+   "logo": "https://commons.wikimedia.org/wiki/Special:FilePath/GOBWeb_MDEF_MCIN_AEE.png?width=320",
+   "parent": "General Secretariat for Innovation",
+   "wikipedia": "https://en.wikipedia.org/wiki/Agencia_Espacial_Espa%C3%B1ola",
+   "tier": "satellite-operator",
+   "tierLabel": "Satellite operator",
+   "tierRank": 2,
+   "capabilities": {
+    "firstSpaceTraveler": {
+     "has": true,
+     "detail": "Pedro Duque"
+    },
+    "operatesSatellites": {
+     "has": true,
+     "detail": "Hispasat 1A"
+    },
+    "buildsSatellites": {
+     "has": true,
+     "detail": "Intasat"
+    },
+    "recoverablePayloads": {
+     "has": false,
+     "detail": null
+    }
+   }
+  },
+  {
+   "id": "algerian-space-agency",
+   "name": "Algerian Space Agency",
+   "acronym": "ASAL",
+   "country": "Algeria",
+   "iso2": "DZ",
+   "iso3": "DZA",
+   "flag": "🇩🇿",
+   "region": "Africa",
+   "subregion": "Northern Africa",
+   "supranational": false,
+   "historical": false,
+   "founded": "2002-01-16",
+   "foundedYear": 2002,
+   "headquarters": "Bouzareah",
+   "coordinates": null,
+   "website": "http://www.asal.dz",
+   "employees": null,
+   "budget": {
+    "usdMillions": 394,
+    "year": 2020
+   },
+   "summary": "The Algerian Space Agency (ASAL; French: Agence spatiale algérienne, Arabic: الوكالة الفضائية الجزائرية, romanized: Al-Wakāla al-Faḍā’iyya al-Jazā’iriyya), was established on January 16, 2002 in Bouzareah, Algiers. The agency is in charge of the Algerian space program, and has flown five different satellites.",
+   "thumbnail": null,
+   "logo": null,
+   "parent": null,
+   "wikipedia": "https://en.wikipedia.org/wiki/Algerian_Space_Agency",
+   "tier": "satellite-operator",
+   "tierLabel": "Satellite operator",
+   "tierRank": 2,
+   "capabilities": {
+    "firstSpaceTraveler": {
+     "has": false,
+     "detail": null
+    },
+    "operatesSatellites": {
+     "has": true,
+     "detail": "Alcomsat-1"
+    },
+    "buildsSatellites": {
+     "has": true,
+     "detail": "AlSAT-1"
+    },
+    "recoverablePayloads": {
+     "has": false,
+     "detail": null
+    }
+   }
+  },
+  {
+   "id": "australian-space-agency",
+   "name": "Australian Space Agency",
+   "acronym": "ASA",
+   "country": "Australia",
+   "iso2": "AU",
+   "iso3": "AUS",
+   "flag": "🇦🇺",
+   "region": "Oceania",
+   "subregion": "Australia and New Zealand",
+   "supranational": false,
+   "historical": false,
+   "founded": "2018-07-01",
+   "foundedYear": 2018,
+   "headquarters": "Canberra",
+   "coordinates": null,
+   "website": "https://www.industry.gov.au/australian-space-agency",
+   "employees": null,
+   "budget": {
+    "usdMillions": 35,
+    "year": 2020
+   },
+   "summary": "The Australian Space Agency is an agency of the Australian Government responsible for the development of Australia's commercial aerospace industry, coordinating domestic space activities, identifying opportunities and facilitating international engagement that includes Australian stakeholders…",
+   "thumbnail": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7b/McEwin_Building_2022.jpg/330px-McEwin_Building_2022.jpg",
+   "logo": null,
+   "parent": null,
+   "wikipedia": "https://en.wikipedia.org/wiki/Australian_Space_Agency",
+   "tier": "satellite-operator",
+   "tierLabel": "Satellite operator",
+   "tierRank": 2,
+   "capabilities": {
+    "firstSpaceTraveler": {
+     "has": true,
+     "detail": "Paul Scully-Power"
+    },
+    "operatesSatellites": {
+     "has": true,
+     "detail": "Aussat A1"
+    },
+    "buildsSatellites": {
+     "has": true,
+     "detail": "WRESAT"
+    },
+    "recoverablePayloads": {
+     "has": false,
+     "detail": null
+    },
+    "launchSite": {
+     "has": true,
+     "detail": "Woomera"
+    },
+    "suborbitalLaunch": {
+     "has": true,
+     "detail": "Long Tom"
+    },
+    "orbitalLaunch": {
+     "has": false,
+     "detail": null
+    },
+    "cryogenicEngine": {
+     "has": false,
+     "detail": null
+    },
+    "reusableSystems": {
+     "has": false,
+     "detail": null
+    }
+   }
+  },
+  {
+   "id": "austrian-space-agency",
+   "name": "Austrian Space Agency",
+   "acronym": "ALR",
+   "country": "Austria",
+   "iso2": "AT",
+   "iso3": "AUT",
+   "flag": "🇦🇹",
+   "region": "Europe",
+   "subregion": "Western Europe",
+   "supranational": false,
+   "historical": false,
+   "founded": "1972-07-12",
+   "foundedYear": 1972,
+   "headquarters": "Vienna",
+   "coordinates": null,
+   "website": "https://www.ffg.at/ffg/alr",
+   "employees": null,
+   "budget": {
+    "usdMillions": 75,
+    "year": 2020
+   },
+   "summary": "The Austrian Space Agency, officially known since 2005 as the Aeronautics and Space Agency (German: Agentur für Luft- und Raumfahrt), is an organization whose purpose is to coordinate Austrian space exploration-related activities…",
+   "thumbnail": null,
+   "logo": null,
+   "parent": null,
+   "wikipedia": "https://en.wikipedia.org/wiki/Austrian_Space_Agency",
+   "tier": "satellite-operator",
+   "tierLabel": "Satellite operator",
+   "tierRank": 2,
+   "capabilities": {
+    "firstSpaceTraveler": {
+     "has": true,
+     "detail": "Franz Viehböck"
+    },
+    "operatesSatellites": {
+     "has": true,
+     "detail": "TUGSAT-1/UniBRITE-1"
+    },
+    "buildsSatellites": {
+     "has": true,
+     "detail": "TUGSAT-1/UniBRITE-1"
+    },
+    "recoverablePayloads": {
+     "has": false,
+     "detail": null
+    }
+   }
+  },
+  {
+   "id": "bahrain-space-agency",
+   "name": "Bahrain Space Agency",
+   "acronym": "BSA",
+   "country": "Bahrain",
+   "iso2": "BH",
+   "iso3": "BHR",
+   "flag": "🇧🇭",
+   "region": "Asia",
+   "subregion": "Western Asia",
+   "supranational": false,
+   "historical": false,
+   "founded": "2014-01-01",
+   "foundedYear": 2014,
+   "headquarters": null,
+   "coordinates": null,
+   "website": null,
+   "employees": null,
+   "budget": null,
+   "summary": "The Bahrain Space Agency (BSA; Arabic: وكالة البحرين للفضاء, romanized: Wikalat AlBahrain Lil-Faḍāʼ), previously known as the National Space Science Agency until 2025 when Royal Decree No 14 renamed it to the Bahrain Space Agency, is the Bahraini government entity responsible for space science program…",
+   "thumbnail": null,
+   "logo": null,
+   "parent": null,
+   "wikipedia": "https://en.wikipedia.org/wiki/Bahrain_Space_Agency",
+   "tier": "satellite-operator",
+   "tierLabel": "Satellite operator",
+   "tierRank": 2,
+   "capabilities": {
+    "firstSpaceTraveler": {
+     "has": false,
+     "detail": null
+    },
+    "operatesSatellites": {
+     "has": true,
+     "detail": "AlMunther"
+    },
+    "buildsSatellites": {
+     "has": true,
+     "detail": "AlMunther"
+    },
+    "recoverablePayloads": {
+     "has": false,
+     "detail": null
+    }
+   }
+  },
+  {
+   "id": "bangladesh-space-research-and-remote-sensing-organization",
+   "name": "Bangladesh Space Research and Remote Sensing Organization",
+   "acronym": "SPARRSO",
+   "country": "Bangladesh",
+   "iso2": "BD",
+   "iso3": "BGD",
+   "flag": "🇧🇩",
+   "region": "Asia",
+   "subregion": "Southern Asia",
+   "supranational": false,
+   "historical": false,
+   "founded": "1980-01-01",
+   "foundedYear": 1980,
+   "headquarters": "Agargaon",
+   "coordinates": null,
+   "website": null,
+   "employees": null,
+   "budget": null,
+   "summary": "Bangladesh Space Research and Remote Sensing Organization (SPARRSO; Bengali: বাংলাদেশ মহাকাশ গবেষণা ও দূর অনুধাবন প্রতিষ্ঠান, romanized: Bāṅlādēś môhākāś gôbēṣôṇā ō dūr ōnudhābôn prôtiṣṭhān) is the government space agency of Bangladesh, concerned with astronomical and atmospheric research and the application of space t…",
+   "thumbnail": null,
+   "logo": "https://commons.wikimedia.org/wiki/Special:FilePath/Titan_3E_with_Voyager_1.jpg?width=320",
+   "parent": null,
+   "wikipedia": "https://en.wikipedia.org/wiki/Bangladesh_Space_Research_and_Remote_Sensing_Organization",
+   "tier": "satellite-operator",
+   "tierLabel": "Satellite operator",
+   "tierRank": 2,
+   "capabilities": {
+    "firstSpaceTraveler": {
+     "has": false,
+     "detail": null
+    },
+    "operatesSatellites": {
+     "has": true,
+     "detail": "Bangladesh Satellite-1"
+    },
+    "buildsSatellites": {
+     "has": true,
+     "detail": "BRAC Onnesha"
+    },
+    "recoverablePayloads": {
+     "has": false,
+     "detail": null
+    }
+   }
+  },
+  {
+   "id": "bolivarian-agency-for-space-activities",
+   "name": "Bolivarian Agency for Space Activities",
+   "acronym": "ABAE",
+   "country": "Venezuela",
+   "iso2": "VE",
+   "iso3": "VEN",
+   "flag": "🇻🇪",
+   "region": "Americas",
+   "subregion": "Latin America and the Caribbean",
+   "supranational": false,
+   "historical": false,
+   "founded": "2008-01-01",
+   "foundedYear": 2008,
+   "headquarters": "Caracas",
+   "coordinates": null,
+   "website": "http://www.abae.gob.ve",
+   "employees": 270,
+   "budget": null,
+   "summary": "The Bolivarian Agency for Space Activities (ABAE; Spanish: Agencia Boliviariana para Actividades Espaciales) is an agency of the Ministry of Science of Venezuela, responsible for developing and carrying out policies of the National Executive Venezuela regarding the use of the outer space.",
+   "thumbnail": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/ABAE_logo.png/330px-ABAE_logo.png",
+   "logo": "https://commons.wikimedia.org/wiki/Special:FilePath/ABAE_logo.png?width=320",
+   "parent": null,
+   "wikipedia": "https://en.wikipedia.org/wiki/Bolivarian_Agency_for_Space_Activities",
+   "tier": "satellite-operator",
+   "tierLabel": "Satellite operator",
+   "tierRank": 2,
+   "capabilities": {
+    "firstSpaceTraveler": {
+     "has": false,
+     "detail": null
+    },
+    "operatesSatellites": {
+     "has": true,
+     "detail": "Venesat-1"
+    },
+    "buildsSatellites": {
+     "has": false,
+     "detail": null
+    },
+    "recoverablePayloads": {
+     "has": false,
+     "detail": null
+    }
+   }
+  },
+  {
+   "id": "brazilian-space-agency",
+   "name": "Brazilian Space Agency",
+   "acronym": "AEB",
+   "country": "Brazil",
+   "iso2": "BR",
+   "iso3": "BRA",
+   "flag": "🇧🇷",
+   "region": "Americas",
+   "subregion": "Latin America and the Caribbean",
+   "supranational": false,
+   "historical": false,
+   "founded": "1994-02-10",
+   "foundedYear": 1994,
+   "headquarters": "Brasília",
+   "coordinates": null,
+   "website": "https://www.gov.br/aeb/pt-br",
+   "employees": null,
+   "budget": {
+    "usdMillions": 68,
+    "year": 2022
+   },
+   "summary": "The Brazilian Space Agency (Portuguese: Agência Espacial Brasileira; AEB) is the civilian authority in Brazil responsible for the country's space program. It operates a spaceport at Alcântara, and a rocket launch site at Barreira do Inferno. It is the largest and most prominent space agency in Latin America…",
+   "thumbnail": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/AEB-Brazil.svg/330px-AEB-Brazil.svg.png",
+   "logo": "https://commons.wikimedia.org/wiki/Special:FilePath/AEB-Brazil.svg?width=320",
+   "parent": "Ministry of Science, Technology and Innovation",
+   "wikipedia": "https://en.wikipedia.org/wiki/Brazilian_Space_Agency",
+   "tier": "orbital-launch",
+   "tierLabel": "Orbital launch",
+   "tierRank": 3,
+   "capabilities": {
+    "firstSpaceTraveler": {
+     "has": true,
+     "detail": "Marcos Pontes"
+    },
+    "operatesSatellites": {
+     "has": true,
+     "detail": "Brasilsat A1"
+    },
+    "buildsSatellites": {
+     "has": true,
+     "detail": "Amazônia-1"
+    },
+    "recoverablePayloads": {
+     "has": false,
+     "detail": null
+    },
+    "launchSite": {
+     "has": true,
+     "detail": "Alcântara"
+    },
+    "suborbitalLaunch": {
+     "has": true,
+     "detail": "VSB-30"
+    },
+    "orbitalLaunch": {
+     "has": true,
+     "detail": "VLS-1"
+    },
+    "cryogenicEngine": {
+     "has": true,
+     "detail": "L-75"
+    },
+    "reusableSystems": {
+     "has": false,
+     "detail": null
+    }
+   }
+  },
+  {
+   "id": "canadian-space-agency",
+   "name": "Canadian Space Agency",
+   "acronym": "CSA",
+   "country": "Canada",
+   "iso2": "CA",
+   "iso3": "CAN",
+   "flag": "🇨🇦",
+   "region": "Americas",
+   "subregion": "Northern America",
+   "supranational": false,
+   "historical": false,
+   "founded": "1989-03-01",
+   "foundedYear": 1989,
+   "headquarters": "Longueuil",
+   "coordinates": null,
+   "website": "https://asc-csa.gc.ca",
+   "employees": 670,
+   "budget": {
+    "usdMillions": 460,
+    "year": 2019
+   },
+   "summary": "The Canadian Space Agency (CSA; French: Agence spatiale canadienne, ASC) is the national space agency of Canada, established in 1990 by the Canadian Space Agency Act. As of 2026, the president of the CSA is Lisa Campbell, who took the position on September 3, 2020…",
+   "thumbnail": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/Canadian_Space_Agency_Arms.svg/330px-Canadian_Space_Agency_Arms.svg.png",
+   "logo": "https://commons.wikimedia.org/wiki/Special:FilePath/Canadian_Space_Agency_Logo.svg?width=320",
+   "parent": null,
+   "wikipedia": "https://en.wikipedia.org/wiki/Canadian_Space_Agency",
+   "tier": "satellite-operator",
+   "tierLabel": "Satellite operator",
+   "tierRank": 2,
+   "capabilities": {
+    "firstSpaceTraveler": {
+     "has": true,
+     "detail": "Marc Garneau"
+    },
+    "operatesSatellites": {
+     "has": true,
+     "detail": "Alouette 1"
+    },
+    "buildsSatellites": {
+     "has": true,
+     "detail": "Alouette 1"
+    },
+    "recoverablePayloads": {
+     "has": false,
+     "detail": null
+    },
+    "launchSite": {
+     "has": true,
+     "detail": null
+    },
+    "suborbitalLaunch": {
+     "has": true,
+     "detail": null
+    },
+    "orbitalLaunch": {
+     "has": false,
+     "detail": null
+    },
+    "cryogenicEngine": {
+     "has": false,
+     "detail": null
+    },
+    "reusableSystems": {
+     "has": false,
+     "detail": null
+    }
+   }
+  },
+  {
+   "id": "centre-national-de-la-cartographie-et-de-la-teledetection",
+   "name": "Centre national de la cartographie et de la télédétection",
+   "acronym": "CNCT",
+   "country": "Tunisia",
+   "iso2": "TN",
+   "iso3": "TUN",
+   "flag": "🇹🇳",
+   "region": "Africa",
+   "subregion": "Northern Africa",
+   "supranational": false,
+   "historical": false,
+   "founded": "1988-01-01",
+   "foundedYear": 1988,
+   "headquarters": null,
+   "coordinates": null,
+   "website": null,
+   "employees": null,
+   "budget": null,
+   "summary": null,
+   "thumbnail": null,
+   "logo": null,
+   "parent": null,
+   "wikipedia": null,
+   "tier": "satellite-operator",
+   "tierLabel": "Satellite operator",
+   "tierRank": 2,
+   "capabilities": {
+    "firstSpaceTraveler": {
+     "has": false,
+     "detail": null
+    },
+    "operatesSatellites": {
+     "has": true,
+     "detail": "Challenge-1"
+    },
+    "buildsSatellites": {
+     "has": true,
+     "detail": "Challenge-1"
+    },
+    "recoverablePayloads": {
+     "has": false,
+     "detail": null
+    }
+   }
+  },
+  {
+   "id": "es-agencia-chilena-del-espacio",
+   "name": "Chilean Space Agency",
+   "acronym": "CSA",
+   "country": "Chile",
+   "iso2": "CL",
+   "iso3": "CHL",
+   "flag": "🇨🇱",
+   "region": "Americas",
+   "subregion": "Latin America and the Caribbean",
+   "supranational": false,
+   "historical": false,
+   "founded": "2001-01-01",
+   "foundedYear": 2001,
+   "headquarters": null,
+   "coordinates": null,
+   "website": null,
+   "employees": null,
+   "budget": null,
+   "summary": null,
+   "thumbnail": null,
+   "logo": null,
+   "parent": null,
+   "wikipedia": null,
+   "tier": "satellite-operator",
+   "tierLabel": "Satellite operator",
+   "tierRank": 2,
+   "capabilities": {
+    "firstSpaceTraveler": {
+     "has": false,
+     "detail": null
+    },
+    "operatesSatellites": {
+     "has": true,
+     "detail": null
+    },
+    "buildsSatellites": {
+     "has": true,
+     "detail": null
+    },
+    "recoverablePayloads": {
+     "has": false,
+     "detail": null
+    }
+   }
+  },
+  {
+   "id": "china-national-space-administration",
+   "name": "China National Space Administration",
+   "acronym": "CNSA",
+   "country": "China",
+   "iso2": "CN",
+   "iso3": "CHN",
+   "flag": "🇨🇳",
+   "region": "Asia",
+   "subregion": "Eastern Asia",
+   "supranational": false,
+   "historical": false,
+   "founded": "1993-04-22",
+   "foundedYear": 1993,
+   "headquarters": "Beijing",
+   "coordinates": null,
+   "website": "https://www.cnsa.gov.cn",
+   "employees": null,
+   "budget": {
+    "usdMillions": 18150,
+    "year": 2023
+   },
+   "summary": "The China National Space Administration (CNSA) is the national space agency of China. Headquartered in Haidian, Beijing, it is responsible for China's civil space programs and international space cooperation. The CNSA is a national bureau under the Ministry of Industry and Information Technology…",
+   "thumbnail": null,
+   "logo": "https://commons.wikimedia.org/wiki/Special:FilePath/Insignia_of_CNSA.svg?width=320",
+   "parent": "Ministry of Industry and Information Technology of the People's Republic of China",
+   "wikipedia": "https://en.wikipedia.org/wiki/China_National_Space_Administration",
+   "tier": "human-spaceflight",
+   "tierLabel": "Human spaceflight",
+   "tierRank": 5,
+   "capabilities": {
+    "firstSpaceTraveler": {
+     "has": true,
+     "detail": "Yang Liwei"
+    },
+    "operatesSatellites": {
+     "has": true,
+     "detail": null
+    },
+    "buildsSatellites": {
+     "has": true,
+     "detail": "Dong Fang Hong 1"
+    },
+    "recoverablePayloads": {
+     "has": true,
+     "detail": null
+    },
+    "launchSite": {
+     "has": true,
+     "detail": "Jiuquan"
+    },
+    "suborbitalLaunch": {
+     "has": true,
+     "detail": null
+    },
+    "orbitalLaunch": {
+     "has": true,
+     "detail": "Long March 1"
+    },
+    "cryogenicEngine": {
+     "has": true,
+     "detail": "YF-73"
+    },
+    "reusableSystems": {
+     "has": true,
+     "detail": null
+    },
+    "flyby": {
+     "has": true,
+     "detail": "Chang'e 5-T1"
+    },
+    "extraterrestrialOrbiter": {
+     "has": true,
+     "detail": "Chang'e 1"
+    },
+    "surfaceImpact": {
+     "has": true,
+     "detail": "Chang'e 1"
+    },
+    "softLanding": {
+     "has": true,
+     "detail": "Chang'e 3"
+    },
+    "rover": {
+     "has": true,
+     "detail": "Yutu-1"
+    },
+    "sampleReturn": {
+     "has": true,
+     "detail": "Chang'e 5"
+    },
+    "crewedLaunch": {
+     "has": true,
+     "detail": "Shenzhou 5"
+    },
+    "eva": {
+     "has": true,
+     "detail": "Shenzhou 7"
+    },
+    "rendezvousDocking": {
+     "has": true,
+     "detail": "Shenzhou 8 to Tiangong-1"
+    },
+    "spaceStation": {
+     "has": true,
+     "detail": "Tiangong-1"
+    },
+    "circumlunarFlight": {
+     "has": false,
+     "detail": null
+    },
+    "moonLanding": {
+     "has": false,
+     "detail": null
+    }
+   }
+  },
+  {
+   "id": "committee-on-space-research",
+   "name": "Committee on Space Research",
+   "acronym": "COSPAR",
+   "country": "France",
+   "iso2": "FR",
+   "iso3": "FRA",
+   "flag": "🇫🇷",
+   "region": "Europe",
+   "subregion": "Western Europe",
+   "supranational": false,
+   "historical": false,
+   "founded": "1958-01-01",
+   "foundedYear": 1958,
+   "headquarters": "Paris",
+   "coordinates": null,
+   "website": "http://cosparhq.cnes.fr/",
+   "employees": null,
+   "budget": null,
+   "summary": "The Committee on Space Research (COSPAR) was established on October 3, 1958 by the International Council for Scientific Unions (ICSU) and its first chair was Hildegard Korf Kallmann-Bijl…",
+   "thumbnail": null,
+   "logo": null,
+   "parent": "International Council for Science",
+   "wikipedia": "https://en.wikipedia.org/wiki/Committee_on_Space_Research",
+   "tier": "emerging",
+   "tierLabel": "Emerging agency",
+   "tierRank": 1,
+   "capabilities": {
+    "firstSpaceTraveler": {
+     "has": false,
+     "detail": null
+    },
+    "operatesSatellites": {
+     "has": false,
+     "detail": null
+    },
+    "buildsSatellites": {
+     "has": false,
+     "detail": null
+    },
+    "recoverablePayloads": {
+     "has": false,
+     "detail": null
+    }
+   }
+  },
+  {
+   "id": "consultative-committee-for-space-data-systems",
+   "name": "Consultative Committee for Space Data Systems",
+   "acronym": "CCSDS",
+   "country": "International",
+   "iso2": "XX",
+   "iso3": "INT",
+   "flag": "🌐",
+   "region": "International",
+   "subregion": "Supranational",
+   "supranational": true,
+   "historical": false,
+   "founded": "1982-01-01",
+   "foundedYear": 1982,
+   "headquarters": null,
+   "coordinates": null,
+   "website": "https://www.ccsds.org",
+   "employees": null,
+   "budget": null,
+   "summary": "The Consultative Committee for Space Data Systems (CCSDS) was founded in 1982 for governmental and quasi-governmental space agencies to discuss and develop standards for space data and information systems…",
+   "thumbnail": null,
+   "logo": null,
+   "parent": null,
+   "wikipedia": "https://en.wikipedia.org/wiki/Consultative_Committee_for_Space_Data_Systems",
+   "tier": "emerging",
+   "tierLabel": "Emerging agency",
+   "tierRank": 1,
+   "capabilities": {
+    "firstSpaceTraveler": {
+     "has": false,
+     "detail": null
+    },
+    "operatesSatellites": {
+     "has": false,
+     "detail": null
+    },
+    "buildsSatellites": {
+     "has": false,
+     "detail": null
+    },
+    "recoverablePayloads": {
+     "has": false,
+     "detail": null
+    }
+   }
+  },
+  {
+   "id": "costa-rican-space-agency",
+   "name": "Costa Rican Space Agency",
+   "acronym": "AEC",
+   "country": "Costa Rica",
+   "iso2": "CR",
+   "iso3": "CRI",
+   "flag": "🇨🇷",
+   "region": "Americas",
+   "subregion": "Latin America and the Caribbean",
+   "supranational": false,
+   "historical": false,
+   "founded": "2021-01-01",
+   "foundedYear": 2021,
+   "headquarters": null,
+   "coordinates": null,
+   "website": null,
+   "employees": null,
+   "budget": null,
+   "summary": "Costa Rican Space Agency (Agencia Espacial Costarricense [AEC]) is a national space research and development bureau based in San Jose, Costa Rica. It is the first space agency to be created and operated by a Central American nation…",
+   "thumbnail": null,
+   "logo": null,
+   "parent": null,
+   "wikipedia": "https://en.wikipedia.org/wiki/Costa_Rican_Space_Agency",
+   "tier": "satellite-operator",
+   "tierLabel": "Satellite operator",
+   "tierRank": 2,
+   "capabilities": {
+    "firstSpaceTraveler": {
+     "has": false,
+     "detail": null
+    },
+    "operatesSatellites": {
+     "has": true,
+     "detail": "Irazú"
+    },
+    "buildsSatellites": {
+     "has": true,
+     "detail": "Irazú"
+    },
+    "recoverablePayloads": {
+     "has": false,
+     "detail": null
+    }
+   }
+  },
+  {
+   "id": "technical-university-of-denmark",
+   "name": "Danish National Space Center",
+   "acronym": "DNSC",
+   "country": "Denmark",
+   "iso2": "DK",
+   "iso3": "DNK",
+   "flag": "🇩🇰",
+   "region": "Europe",
+   "subregion": "Northern Europe",
+   "supranational": false,
+   "historical": false,
+   "founded": "1968-01-01",
+   "foundedYear": 1968,
+   "headquarters": "Kongens Lyngby",
+   "coordinates": [
+    55.7862,
+    12.5234
+   ],
+   "website": "https://www.dtu.dk/",
+   "employees": 5800,
+   "budget": null,
+   "summary": "The Technical University of Denmark (Danish: Danmarks Tekniske Universitet), often simply referred to as DTU, is a polytechnic university and school of engineering…",
+   "thumbnail": null,
+   "logo": "https://commons.wikimedia.org/wiki/Special:FilePath/Danmarks_Tekniske_Universitet_(logo).svg?width=320",
+   "parent": null,
+   "wikipedia": "https://en.wikipedia.org/wiki/Technical_University_of_Denmark",
+   "tier": "satellite-operator",
+   "tierLabel": "Satellite operator",
+   "tierRank": 2,
+   "capabilities": {
+    "firstSpaceTraveler": {
+     "has": true,
+     "detail": "Andreas Mogensen"
+    },
+    "operatesSatellites": {
+     "has": true,
+     "detail": "Ørsted"
+    },
+    "buildsSatellites": {
+     "has": true,
+     "detail": "Ørsted"
+    },
+    "recoverablePayloads": {
+     "has": false,
+     "detail": null
+    }
+   }
+  },
+  {
+   "id": "ministry-of-transport-czech-republic",
+   "name": "Department of Space Activities at the",
+   "acronym": "MoT",
+   "country": "Czechia",
+   "iso2": "CZ",
+   "iso3": "CZE",
+   "flag": "🇨🇿",
+   "region": "Europe",
+   "subregion": "Eastern Europe",
+   "supranational": false,
+   "historical": false,
+   "founded": "2008-01-01",
+   "foundedYear": 2008,
+   "headquarters": "Prague",
+   "coordinates": null,
+   "website": "https://md.gov.cz",
+   "employees": null,
+   "budget": null,
+   "summary": "The Ministry of Transport of the Czech Republic (Czech: Ministerstvo dopravy České republiky) is a government ministry, which was established in 1969. Its head office is in Prague 1, in New Town.",
+   "thumbnail": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/19/Vodn%C3%AD_elektr%C3%A1rna_%28Hole%C5%A1ovice%29%2C_Praha_7%2C_ostrov_%C5%A0tvanice_1340%2C_Hole%C5%A1ovice.JPG/330px-Vodn%C3%AD_elektr%C3%A1rna_%28Hole%C5%A1ovice%29%2C_Praha_7%2C_ostrov_%C5%A0tvanice_1340%2C_Hole%C5%A1ovice.JPG",
+   "logo": "https://commons.wikimedia.org/wiki/Special:FilePath/Ministerstvo_dopravy_CZ_logo.svg?width=320",
+   "parent": null,
+   "wikipedia": "https://en.wikipedia.org/wiki/Ministry_of_Transport_(Czech_Republic)",
+   "tier": "satellite-operator",
+   "tierLabel": "Satellite operator",
+   "tierRank": 2,
+   "capabilities": {
+    "firstSpaceTraveler": {
+     "has": true,
+     "detail": "Vladimír Remek"
+    },
+    "operatesSatellites": {
+     "has": true,
+     "detail": "Magion 4"
+    },
+    "buildsSatellites": {
+     "has": true,
+     "detail": "VZLUSAT-2"
+    },
+    "recoverablePayloads": {
+     "has": false,
+     "detail": null
+    }
+   }
+  },
+  {
+   "id": "egyptian-space-agency",
+   "name": "Egyptian Space Agency",
+   "acronym": "EGSA",
+   "country": "Egypt",
+   "iso2": "EG",
+   "iso3": "EGY",
+   "flag": "🇪🇬",
+   "region": "Africa",
+   "subregion": "Northern Africa",
+   "supranational": false,
+   "historical": false,
+   "founded": "2018-01-01",
+   "foundedYear": 2018,
+   "headquarters": "New Cairo",
+   "coordinates": null,
+   "website": "https://egsa.gov.eg/",
+   "employees": null,
+   "budget": null,
+   "summary": "The Egyptian Space Agency (EgSA; Egyptian Arabic: وكالة الفضاء المصرية, romanized: Wakālat al-Faḍāʼ al-Miṣrīyah) is an Egyptian space program founded on 17 January 2018, succeeding the National Authority for Remote Sensing & Space Sciences (NARSS) as the premier space authority in Egypt…",
+   "thumbnail": "https://upload.wikimedia.org/wikipedia/commons/a/aa/Egyptian_Space_Agency_Official_Logo.png",
+   "logo": "https://commons.wikimedia.org/wiki/Special:FilePath/Egyptian_Space_Agency_Official_Logo.png?width=320",
+   "parent": null,
+   "wikipedia": "https://en.wikipedia.org/wiki/Egyptian_Space_Agency",
+   "tier": "satellite-operator",
+   "tierLabel": "Satellite operator",
+   "tierRank": 2,
+   "capabilities": {
+    "firstSpaceTraveler": {
+     "has": true,
+     "detail": "Sara Sabry"
+    },
+    "operatesSatellites": {
+     "has": true,
+     "detail": "EgyptSat 1"
+    },
+    "buildsSatellites": {
+     "has": true,
+     "detail": "NARSSCube-1"
+    },
+    "recoverablePayloads": {
+     "has": false,
+     "detail": null
+    }
+   }
+  },
+  {
+   "id": "ethiopian-space-science-and-technology-institute",
+   "name": "Ethiopian Space Science and Technology Institute",
+   "acronym": "ESSTI",
+   "country": "Ethiopia",
+   "iso2": "ET",
+   "iso3": "ETH",
+   "flag": "🇪🇹",
+   "region": "Africa",
+   "subregion": "Sub-Saharan Africa",
+   "supranational": false,
+   "historical": false,
+   "founded": "2016-10-14",
+   "foundedYear": 2016,
+   "headquarters": "Addis Ababa",
+   "coordinates": null,
+   "website": "http://etssti.org",
+   "employees": null,
+   "budget": null,
+   "summary": "The Ethiopian Space Science and Technology Institute (ESSTI; Amharic: የኢትዮጵያ ስፔስ ሳይንስና ቴክኖሎጂ ኢ ንስቲትዩት, romanized: ye’ītiyop’iya sipēsi sayinisina tēkinolojī ī nisitītiyuti) is an Ethiopian institute for research, training and infrastructure development in space science, created in 2016.",
+   "thumbnail": null,
+   "logo": null,
+   "parent": null,
+   "wikipedia": "https://en.wikipedia.org/wiki/Ethiopian_Space_Science_and_Technology_Institute",
+   "tier": "satellite-operator",
+   "tierLabel": "Satellite operator",
+   "tierRank": 2,
+   "capabilities": {
+    "firstSpaceTraveler": {
+     "has": false,
+     "detail": null
+    },
+    "operatesSatellites": {
+     "has": true,
+     "detail": null
+    },
+    "buildsSatellites": {
+     "has": true,
+     "detail": null
+    },
+    "recoverablePayloads": {
+     "has": false,
+     "detail": null
+    }
+   }
+  },
+  {
+   "id": "european-space-agency",
+   "name": "European Space Agency",
+   "acronym": "ESA",
+   "country": "European Union",
+   "iso2": "EU",
+   "iso3": "EUE",
+   "flag": "🇪🇺",
+   "region": "Europe",
+   "subregion": "Supranational",
+   "supranational": true,
+   "historical": false,
+   "founded": "1975-05-30",
+   "foundedYear": 1975,
+   "headquarters": "Paris",
+   "coordinates": null,
+   "website": "https://esa.int",
+   "employees": null,
+   "budget": {
+    "usdMillions": 9080,
+    "year": 2025
+   },
+   "summary": "The European Space Agency (ESA; pronounced /ˈiːsə/ EE-sə) is a 23-member international organisation devoted to space exploration. It has its headquarters in Paris and a staff of around 3,000 people globally as of 2025. ESA was founded in 1975 in the context of European integration…",
+   "thumbnail": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/96/ESA_Headquarters_in_Paris.jpg/330px-ESA_Headquarters_in_Paris.jpg",
+   "logo": "https://commons.wikimedia.org/wiki/Special:FilePath/European_Space_Agency_logo.svg?width=320",
+   "parent": null,
+   "wikipedia": "https://en.wikipedia.org/wiki/European_Space_Agency",
+   "tier": "deep-space",
+   "tierLabel": "Deep space exploration",
+   "tierRank": 4,
+   "capabilities": {
+    "firstSpaceTraveler": {
+     "has": true,
+     "detail": "Ulf Merbold"
+    },
+    "operatesSatellites": {
+     "has": true,
+     "detail": "Cos-B"
+    },
+    "buildsSatellites": {
+     "has": true,
+     "detail": "Cos-B"
+    },
+    "recoverablePayloads": {
+     "has": true,
+     "detail": null
+    },
+    "launchSite": {
+     "has": true,
+     "detail": "Kourou"
+    },
+    "suborbitalLaunch": {
+     "has": true,
+     "detail": null
+    },
+    "orbitalLaunch": {
+     "has": true,
+     "detail": "Ariane 1"
+    },
+    "cryogenicEngine": {
+     "has": true,
+     "detail": null
+    },
+    "reusableSystems": {
+     "has": false,
+     "detail": null
+    },
+    "flyby": {
+     "has": true,
+     "detail": "Ulysses"
+    },
+    "extraterrestrialOrbiter": {
+     "has": true,
+     "detail": "Mars Express"
+    },
+    "surfaceImpact": {
+     "has": true,
+     "detail": "Rosetta"
+    },
+    "softLanding": {
+     "has": true,
+     "detail": "Huygens"
+    },
+    "rover": {
+     "has": false,
+     "detail": null
+    },
+    "sampleReturn": {
+     "has": false,
+     "detail": null
+    }
+   }
+  },
+  {
+   "id": "european-union-agency-for-the-space-programme",
+   "name": "European Union Agency for the Space Programme",
+   "acronym": "EUSPA",
+   "country": "European Union",
+   "iso2": "EU",
+   "iso3": "EUE",
+   "flag": "🇪🇺",
+   "region": "Europe",
+   "subregion": "Supranational",
+   "supranational": true,
+   "historical": false,
+   "founded": "2004-07-12",
+   "foundedYear": 2004,
+   "headquarters": "Prague",
+   "coordinates": null,
+   "website": "https://www.euspa.europa.eu",
+   "employees": 211,
+   "budget": null,
+   "summary": "The European Union Agency for the Space Programme (EUSPA) is a space agency, managing the European Union Space Programme as one of the agencies of the European Union (EU)…",
+   "thumbnail": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ef/Praha_Hole%C5%A1ovice_EUSPA_2.jpg/330px-Praha_Hole%C5%A1ovice_EUSPA_2.jpg",
+   "logo": "https://commons.wikimedia.org/wiki/Special:FilePath/EUSPA_Logo.svg?width=320",
+   "parent": null,
+   "wikipedia": "https://en.wikipedia.org/wiki/European_Union_Agency_for_the_Space_Programme",
+   "tier": "satellite-operator",
+   "tierLabel": "Satellite operator",
+   "tierRank": 2,
+   "capabilities": {
+    "firstSpaceTraveler": {
+     "has": false,
+     "detail": null
+    },
+    "operatesSatellites": {
+     "has": true,
+     "detail": null
+    },
+    "buildsSatellites": {
+     "has": false,
+     "detail": null
+    },
+    "recoverablePayloads": {
+     "has": false,
+     "detail": null
+    }
+   }
+  },
+  {
+   "id": "geo-informatics-and-space-technology-development-agency",
+   "name": "Geo-Informatics and Space Technology Development Agency",
+   "acronym": "GISTDA",
+   "country": "Thailand",
+   "iso2": "TH",
+   "iso3": "THA",
+   "flag": "🇹🇭",
+   "region": "Asia",
+   "subregion": "South-eastern Asia",
+   "supranational": false,
+   "historical": false,
+   "founded": "2000-11-03",
+   "foundedYear": 2000,
+   "headquarters": "Chaeng Watthana Government Complex",
+   "coordinates": null,
+   "website": "https://www.gistda.or.th",
+   "employees": null,
+   "budget": null,
+   "summary": "The Geo-Informatics and Space Technology Development Agency (Public Organization) (Thai: สำนักงานพัฒนาเทคโนโลยีอวกาศและภูมิสารสนเทศ, romanized: Samnakngan Phatna Theknoloyi Awakat Lae Phumi Sansonthet) or, in brief, GISTDA (Thai: สทอภ), is a Thai space agency and space research organisation…",
+   "thumbnail": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/bb/GISTDA_LOGO.png/330px-GISTDA_LOGO.png",
+   "logo": "https://commons.wikimedia.org/wiki/Special:FilePath/GISTDA_Logo.svg?width=320",
+   "parent": "Ministry of Higher Education, Science, Research and Innovation",
+   "wikipedia": "https://en.wikipedia.org/wiki/Geo-Informatics_and_Space_Technology_Development_Agency",
+   "tier": "satellite-operator",
+   "tierLabel": "Satellite operator",
+   "tierRank": 2,
+   "capabilities": {
+    "firstSpaceTraveler": {
+     "has": false,
+     "detail": null
+    },
+    "operatesSatellites": {
+     "has": true,
+     "detail": "Thaicom 1"
+    },
+    "buildsSatellites": {
+     "has": true,
+     "detail": "KNACKSAT"
+    },
+    "recoverablePayloads": {
+     "has": false,
+     "detail": null
+    }
+   }
+  },
+  {
+   "id": "german-aerospace-center",
+   "name": "German Aerospace Center",
+   "acronym": "DLR",
+   "country": "Germany",
+   "iso2": "DE",
+   "iso3": "DEU",
+   "flag": "🇩🇪",
+   "region": "Europe",
+   "subregion": "Western Europe",
+   "supranational": false,
+   "historical": false,
+   "founded": "1969-01-01",
+   "foundedYear": 1969,
+   "headquarters": "Cologne",
+   "coordinates": [
+    50.8525,
+    7.1225
+   ],
+   "website": "https://www.dlr.de/EN/Home/home_node.html",
+   "employees": 8000,
+   "budget": {
+    "usdMillions": 1424,
+    "year": 2021
+   },
+   "summary": "The German Aerospace Center (German: Deutsches Zentrum für Luft- und Raumfahrt e.V.; DLR) is Germany's research and technology organisation for aeronautics and space. It conducts research for these fields, as well as in energy, transport, security and defence…",
+   "thumbnail": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f5/DLR_01_Vorstandsgeb%C3%A4ude_CCBY4.0.jpg/330px-DLR_01_Vorstandsgeb%C3%A4ude_CCBY4.0.jpg",
+   "logo": "https://commons.wikimedia.org/wiki/Special:FilePath/German_Aerospace_Center_(DLR)_logo.svg?width=320",
+   "parent": "Helmholtz Association of German Research Centres",
+   "wikipedia": "https://en.wikipedia.org/wiki/German_Aerospace_Center",
+   "tier": "satellite-operator",
+   "tierLabel": "Satellite operator",
+   "tierRank": 2,
+   "capabilities": {
+    "firstSpaceTraveler": {
+     "has": true,
+     "detail": "Sigmund Jähn"
+    },
+    "operatesSatellites": {
+     "has": true,
+     "detail": null
+    },
+    "buildsSatellites": {
+     "has": true,
+     "detail": "Azur"
+    },
+    "recoverablePayloads": {
+     "has": false,
+     "detail": null
+    }
+   }
+  },
+  {
+   "id": "ghana-space-science-and-technology-centre",
+   "name": "Ghana Space Science and Technology Centre",
+   "acronym": "GSSTI",
+   "country": "Ghana",
+   "iso2": "GH",
+   "iso3": "GHA",
+   "flag": "🇬🇭",
+   "region": "Africa",
+   "subregion": "Sub-Saharan Africa",
+   "supranational": false,
+   "historical": false,
+   "founded": "2012-04-02",
+   "foundedYear": 2012,
+   "headquarters": "Ga East Municipal District",
+   "coordinates": [
+    5.6631,
+    -0.23
+   ],
+   "website": "https://gssti.org/",
+   "employees": 20,
+   "budget": null,
+   "summary": "The Ghana Space Science and Technology Institute (GSSTI) was opened officially on 2 May 2012 as Ghana’s first space science, space exploration, astronomy and technology space agency. It is an Institution under the Ghana Atomic Energy Commission…",
+   "thumbnail": null,
+   "logo": "https://commons.wikimedia.org/wiki/Special:FilePath/Ghana_Space_Science_and_Technology_Centre_(GSSTC).jpg?width=320",
+   "parent": null,
+   "wikipedia": "https://en.wikipedia.org/wiki/Ghana_Space_Science_and_Technology_Centre",
+   "tier": "satellite-operator",
+   "tierLabel": "Satellite operator",
+   "tierRank": 2,
+   "capabilities": {
+    "firstSpaceTraveler": {
+     "has": false,
+     "detail": null
+    },
+    "operatesSatellites": {
+     "has": true,
+     "detail": "GhanaSat-1"
+    },
+    "buildsSatellites": {
+     "has": true,
+     "detail": "GhanaSat-1"
+    },
+    "recoverablePayloads": {
+     "has": false,
+     "detail": null
+    }
+   }
+  },
+  {
+   "id": "hellenic-space-center",
+   "name": "Hellenic Space Center",
+   "acronym": "HSC",
+   "country": "Greece",
+   "iso2": "GR",
+   "iso3": "GRC",
+   "flag": "🇬🇷",
+   "region": "Europe",
+   "subregion": "Southern Europe",
+   "supranational": false,
+   "historical": false,
+   "founded": "2019-08-09",
+   "foundedYear": 2019,
+   "headquarters": "Athens",
+   "coordinates": null,
+   "website": "https://hsc.gov.gr/en/",
+   "employees": null,
+   "budget": {
+    "usdMillions": 1,
+    "year": 2023
+   },
+   "summary": "The Hellenic Space Center (HSC) is a public benefit organization operating as a Legal Entity under Private Law of a non-profit nature. It belongs to the General Government Sector and the broader Public Sector…",
+   "thumbnail": null,
+   "logo": "https://commons.wikimedia.org/wiki/Special:FilePath/Hellenic_National_Space_Committee's_logo.png?width=320",
+   "parent": null,
+   "wikipedia": "https://en.wikipedia.org/wiki/Hellenic_Space_Center",
+   "tier": "satellite-operator",
+   "tierLabel": "Satellite operator",
+   "tierRank": 2,
+   "capabilities": {
+    "firstSpaceTraveler": {
+     "has": false,
+     "detail": null
+    },
+    "operatesSatellites": {
+     "has": true,
+     "detail": "Hellas Sat 2"
+    },
+    "buildsSatellites": {
+     "has": true,
+     "detail": "UPSat"
+    },
+    "recoverablePayloads": {
+     "has": false,
+     "detail": null
+    }
+   }
+  },
+  {
+   "id": "hungarian-space-office",
+   "name": "Hungarian Space Office",
+   "acronym": "MŰI",
+   "country": "Hungary",
+   "iso2": "HU",
+   "iso3": "HUN",
+   "flag": "🇭🇺",
+   "region": "Europe",
+   "subregion": "Eastern Europe",
+   "supranational": false,
+   "historical": false,
+   "founded": "1992-01-01",
+   "foundedYear": 1992,
+   "headquarters": "Budapest",
+   "coordinates": null,
+   "website": null,
+   "employees": null,
+   "budget": null,
+   "summary": "The Hungarian Space Research Office (HSO; Hungarian: Magyar Űrkutatási Iroda) is the official Government of Hungary agency responsible for the civilian space program as well as aeronautics and aerospace research, which was integrated in the Ministry of National Development in 2018…",
+   "thumbnail": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f5/European_Space_Expo_-_Budapest%2C_2013_%288%29.JPG/330px-European_Space_Expo_-_Budapest%2C_2013_%288%29.JPG",
+   "logo": null,
+   "parent": null,
+   "wikipedia": "https://en.wikipedia.org/wiki/Hungarian_Space_Office",
+   "tier": "satellite-operator",
+   "tierLabel": "Satellite operator",
+   "tierRank": 2,
+   "capabilities": {
+    "firstSpaceTraveler": {
+     "has": true,
+     "detail": "Bertalan Farkas"
+    },
+    "operatesSatellites": {
+     "has": true,
+     "detail": "MaSat-1"
+    },
+    "buildsSatellites": {
+     "has": true,
+     "detail": "MaSat-1"
+    },
+    "recoverablePayloads": {
+     "has": false,
+     "detail": null
+    }
+   }
+  },
+  {
+   "id": "isro",
+   "name": "Indian Space Research Organisation",
+   "acronym": "ISRO",
+   "country": "India",
+   "iso2": "IN",
+   "iso3": "IND",
+   "flag": "🇮🇳",
+   "region": "Asia",
+   "subregion": "Southern Asia",
+   "supranational": false,
+   "historical": false,
+   "founded": "1962-01-01",
+   "foundedYear": 1962,
+   "headquarters": "Bengaluru",
+   "coordinates": [
+    13.0353,
+    77.5711
+   ],
+   "website": "https://www.isro.gov.in/",
+   "employees": 16072,
+   "budget": {
+    "usdMillions": 1831,
+    "year": 2022
+   },
+   "summary": "The Indian Space Research Organisation (ISRO) is the national space agency of India, headquartered in Bengaluru, Karnataka…",
+   "thumbnail": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/bd/Indian_Space_Research_Organisation_Logo.svg/330px-Indian_Space_Research_Organisation_Logo.svg.png",
+   "logo": "https://commons.wikimedia.org/wiki/Special:FilePath/Indian_Space_Research_Organisation_Logo.svg?width=320",
+   "parent": "Department of Space",
+   "wikipedia": "https://en.wikipedia.org/wiki/ISRO",
+   "tier": "deep-space",
+   "tierLabel": "Deep space exploration",
+   "tierRank": 4,
+   "capabilities": {
+    "firstSpaceTraveler": {
+     "has": true,
+     "detail": "Rakesh Sharma"
+    },
+    "operatesSatellites": {
+     "has": true,
+     "detail": "Aryabhata"
+    },
+    "buildsSatellites": {
+     "has": true,
+     "detail": "Aryabhata"
+    },
+    "recoverablePayloads": {
+     "has": true,
+     "detail": null
+    },
+    "launchSite": {
+     "has": true,
+     "detail": "Sriharikota"
+    },
+    "suborbitalLaunch": {
+     "has": true,
+     "detail": "RH-75"
+    },
+    "orbitalLaunch": {
+     "has": true,
+     "detail": "SLV"
+    },
+    "cryogenicEngine": {
+     "has": true,
+     "detail": "CE-20) (CE-7.5"
+    },
+    "reusableSystems": {
+     "has": true,
+     "detail": "NGLV"
+    },
+    "flyby": {
+     "has": true,
+     "detail": "Chandrayaan-3"
+    },
+    "extraterrestrialOrbiter": {
+     "has": true,
+     "detail": "Chandrayaan-1"
+    },
+    "surfaceImpact": {
+     "has": true,
+     "detail": "Moon Impact Probe"
+    },
+    "softLanding": {
+     "has": true,
+     "detail": "Chandrayaan-3"
+    },
+    "rover": {
+     "has": true,
+     "detail": "Pragyan"
+    },
+    "sampleReturn": {
+     "has": false,
+     "detail": null
+    },
+    "crewedLaunch": {
+     "has": false,
+     "detail": null
+    },
+    "eva": {
+     "has": false,
+     "detail": null
+    },
+    "rendezvousDocking": {
+     "has": true,
+     "detail": "SDX01 to SDX02 — as part of SpaDeX"
+    },
+    "spaceStation": {
+     "has": false,
+     "detail": null
+    },
+    "circumlunarFlight": {
+     "has": false,
+     "detail": null
+    },
+    "moonLanding": {
+     "has": false,
+     "detail": null
+    }
+   }
+  },
+  {
+   "id": "indonesian-space-agency",
+   "name": "Indonesian Space Agency",
+   "acronym": "INASA",
+   "country": "Indonesia",
+   "iso2": "ID",
+   "iso3": "IDN",
+   "flag": "🇮🇩",
+   "region": "Asia",
+   "subregion": "South-eastern Asia",
+   "supranational": false,
+   "historical": false,
+   "founded": null,
+   "foundedYear": null,
+   "headquarters": null,
+   "coordinates": null,
+   "website": null,
+   "employees": null,
+   "budget": null,
+   "summary": "Indonesian Space Agency or INASA is the Indonesian space agency engaged in activities related to outer space and space exploration policy…",
+   "thumbnail": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c2/INASA_logo.jpg/330px-INASA_logo.jpg",
+   "logo": null,
+   "parent": null,
+   "wikipedia": "https://en.wikipedia.org/wiki/Indonesian_Space_Agency",
+   "tier": "satellite-operator",
+   "tierLabel": "Satellite operator",
+   "tierRank": 2,
+   "capabilities": {
+    "firstSpaceTraveler": {
+     "has": false,
+     "detail": null
+    },
+    "operatesSatellites": {
+     "has": true,
+     "detail": "Palapa-A1"
+    },
+    "buildsSatellites": {
+     "has": true,
+     "detail": "Lapan-TUBsat"
+    },
+    "recoverablePayloads": {
+     "has": false,
+     "detail": null
+    }
+   }
+  },
+  {
+   "id": "el-salvador-aerospace-institute",
+   "name": "Instituto Aeroespacial de El Salvador",
+   "acronym": "ESAI",
+   "country": "El Salvador",
+   "iso2": "SV",
+   "iso3": "SLV",
+   "flag": "🇸🇻",
+   "region": "Americas",
+   "subregion": "Latin America and the Caribbean",
+   "supranational": false,
+   "historical": false,
+   "founded": "2021-00-00",
+   "foundedYear": 2021,
+   "headquarters": "San Salvador",
+   "coordinates": null,
+   "website": "https://www.esai.sv/",
+   "employees": null,
+   "budget": null,
+   "summary": "The El Salvador Aerospace institute (ESAI Spanish: Instituto Aerospacial de El Salvador is the national space agency of El Salvador, began in 2012 and became a national agency on september 7, 2021.",
+   "thumbnail": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e1/LOGO_ESAI_2023.png/330px-LOGO_ESAI_2023.png",
+   "logo": "https://commons.wikimedia.org/wiki/Special:FilePath/LOGO_ESAI_2023.png?width=320",
+   "parent": null,
+   "wikipedia": "https://en.wikipedia.org/wiki/El_Salvador_Aerospace_Institute",
+   "tier": "emerging",
+   "tierLabel": "Emerging agency",
+   "tierRank": 1,
+   "capabilities": {
+    "firstSpaceTraveler": {
+     "has": false,
+     "detail": null
+    },
+    "operatesSatellites": {
+     "has": false,
+     "detail": null
+    },
+    "buildsSatellites": {
+     "has": false,
+     "detail": null
+    },
+    "recoverablePayloads": {
+     "has": false,
+     "detail": null
+    }
+   }
+  },
+  {
+   "id": "iranian-space-agency",
+   "name": "Iranian Space Agency",
+   "acronym": "ISA",
+   "country": "Iran",
+   "iso2": "IR",
+   "iso3": "IRN",
+   "flag": "🇮🇷",
+   "region": "Asia",
+   "subregion": "Southern Asia",
+   "supranational": false,
+   "historical": false,
+   "founded": "2004-01-01",
+   "foundedYear": 2004,
+   "headquarters": "Tehran",
+   "coordinates": null,
+   "website": "http://www.isa.ir",
+   "employees": null,
+   "budget": {
+    "usdMillions": 222,
+    "year": 2024
+   },
+   "summary": "The Iranian Space Agency (ISA, Persian: (سافا) سازمان فضایی ایران Sāzmān-e Fazāi-ye Irān) is Iran's governmental space agency. The Iranian Space Research Center and Iranian Space Agency are the main organizations carrying space research and operations in Iran. Iran became an orbital-launch-capable nation in 2009…",
+   "thumbnail": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5d/STS115_Atlantis_undock_ISS_edit2.jpg/330px-STS115_Atlantis_undock_ISS_edit2.jpg",
+   "logo": null,
+   "parent": null,
+   "wikipedia": "https://en.wikipedia.org/wiki/Iranian_Space_Agency",
+   "tier": "orbital-launch",
+   "tierLabel": "Orbital launch",
+   "tierRank": 3,
+   "capabilities": {
+    "firstSpaceTraveler": {
+     "has": false,
+     "detail": null
+    },
+    "operatesSatellites": {
+     "has": true,
+     "detail": "Sina-1"
+    },
+    "buildsSatellites": {
+     "has": true,
+     "detail": "Omid"
+    },
+    "recoverablePayloads": {
+     "has": true,
+     "detail": "Pishgam"
+    },
+    "launchSite": {
+     "has": true,
+     "detail": "Semnan"
+    },
+    "suborbitalLaunch": {
+     "has": true,
+     "detail": "Safir"
+    },
+    "orbitalLaunch": {
+     "has": true,
+     "detail": "Safir"
+    },
+    "cryogenicEngine": {
+     "has": true,
+     "detail": "Bahman engine"
+    },
+    "reusableSystems": {
+     "has": true,
+     "detail": "Reusable OLV project"
+    }
+   }
+  },
+  {
+   "id": "israel-space-agency",
+   "name": "Israel Space Agency",
+   "acronym": "ISA",
+   "country": "Israel",
+   "iso2": "IL",
+   "iso3": "ISR",
+   "flag": "🇮🇱",
+   "region": "Asia",
+   "subregion": "Western Asia",
+   "supranational": false,
+   "historical": false,
+   "founded": "1983-04-01",
+   "foundedYear": 1983,
+   "headquarters": "Tel Aviv",
+   "coordinates": null,
+   "website": "http://space.gov.il",
+   "employees": null,
+   "budget": {
+    "usdMillions": 17,
+    "year": 2020
+   },
+   "summary": "The Israel Space Agency (ISA; Hebrew: סוכנות החלל הישראלית, Sokhnut heKhalal haYisraelit) is a governmental body, a part of Israel's Ministry of Science and Technology, that coordinates all Israeli space research programs with scientific and commercial goals…",
+   "thumbnail": null,
+   "logo": null,
+   "parent": null,
+   "wikipedia": "https://en.wikipedia.org/wiki/Israel_Space_Agency",
+   "tier": "orbital-launch",
+   "tierLabel": "Orbital launch",
+   "tierRank": 3,
+   "capabilities": {
+    "firstSpaceTraveler": {
+     "has": true,
+     "detail": "Ilan Ramon"
+    },
+    "operatesSatellites": {
+     "has": true,
+     "detail": "Ofeq-1"
+    },
+    "buildsSatellites": {
+     "has": true,
+     "detail": "Shavit 2"
+    },
+    "recoverablePayloads": {
+     "has": false,
+     "detail": null
+    },
+    "launchSite": {
+     "has": true,
+     "detail": "Palmachim Airbase"
+    },
+    "suborbitalLaunch": {
+     "has": true,
+     "detail": "Shavit 2"
+    },
+    "orbitalLaunch": {
+     "has": true,
+     "detail": "Shavit 2"
+    },
+    "cryogenicEngine": {
+     "has": false,
+     "detail": null
+    },
+    "reusableSystems": {
+     "has": false,
+     "detail": null
+    }
+   }
+  },
+  {
+   "id": "italian-space-agency",
+   "name": "Italian Space Agency",
+   "acronym": "ASI",
+   "country": "Italy",
+   "iso2": "IT",
+   "iso3": "ITA",
+   "flag": "🇮🇹",
+   "region": "Europe",
+   "subregion": "Southern Europe",
+   "supranational": false,
+   "historical": false,
+   "founded": "1988-01-01",
+   "foundedYear": 1988,
+   "headquarters": "Rome",
+   "coordinates": null,
+   "website": "https://www.asi.it",
+   "employees": 200,
+   "budget": {
+    "usdMillions": 1685,
+    "year": 2024
+   },
+   "summary": "The Italian Space Agency (Italian: Agenzia Spaziale Italiana; ASI) is a government agency established in 1988 to fund, regulate and coordinate space exploration activities in Italy. The agency cooperates with numerous national and international entities who are active in aerospace research and technology…",
+   "thumbnail": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ee/Sede_ASI.jpg/330px-Sede_ASI.jpg",
+   "logo": "https://commons.wikimedia.org/wiki/Special:FilePath/Agenzia_Spaziale_Italiana.svg?width=320",
+   "parent": null,
+   "wikipedia": "https://en.wikipedia.org/wiki/Italian_Space_Agency",
+   "tier": "deep-space",
+   "tierLabel": "Deep space exploration",
+   "tierRank": 4,
+   "capabilities": {
+    "firstSpaceTraveler": {
+     "has": true,
+     "detail": "Franco Malerba"
+    },
+    "operatesSatellites": {
+     "has": true,
+     "detail": "San Marco 1"
+    },
+    "buildsSatellites": {
+     "has": true,
+     "detail": "San Marco 1"
+    },
+    "recoverablePayloads": {
+     "has": false,
+     "detail": null
+    },
+    "launchSite": {
+     "has": true,
+     "detail": "Salto di Quirra"
+    },
+    "suborbitalLaunch": {
+     "has": true,
+     "detail": null
+    },
+    "orbitalLaunch": {
+     "has": false,
+     "detail": null
+    },
+    "cryogenicEngine": {
+     "has": true,
+     "detail": null
+    },
+    "reusableSystems": {
+     "has": false,
+     "detail": null
+    },
+    "extraterrestrialOrbiter": {
+     "has": true,
+     "detail": "ArgoMoon"
+    },
+    "surfaceImpact": {
+     "has": false,
+     "detail": null
+    },
+    "softLanding": {
+     "has": false,
+     "detail": null
+    },
+    "rover": {
+     "has": false,
+     "detail": null
+    },
+    "sampleReturn": {
+     "has": false,
+     "detail": null
+    }
+   }
+  },
+  {
+   "id": "jaxa",
+   "name": "Japan Aerospace Exploration Agency",
+   "acronym": "JAXA",
+   "country": "Japan",
+   "iso2": "JP",
+   "iso3": "JPN",
+   "flag": "🇯🇵",
+   "region": "Asia",
+   "subregion": "Eastern Asia",
+   "supranational": false,
+   "historical": false,
+   "founded": "2003-10-01",
+   "foundedYear": 2003,
+   "headquarters": "Chōfu",
+   "coordinates": null,
+   "website": "https://global.jaxa.jp/",
+   "employees": null,
+   "budget": {
+    "usdMillions": 2388,
+    "year": 2022
+   },
+   "summary": "The Japan Aerospace Exploration Agency (JAXA) is the operator of the Japanese space program and Japan's national aeronautics research agency…",
+   "thumbnail": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/85/Jaxa_logo.svg/330px-Jaxa_logo.svg.png",
+   "logo": "https://commons.wikimedia.org/wiki/Special:FilePath/Jaxa_logo.svg?width=320",
+   "parent": "Ministry of Education, Culture, Sports, Science and Technology",
+   "wikipedia": "https://en.wikipedia.org/wiki/JAXA",
+   "tier": "deep-space",
+   "tierLabel": "Deep space exploration",
+   "tierRank": 4,
+   "capabilities": {
+    "firstSpaceTraveler": {
+     "has": true,
+     "detail": "Toyohiro Akiyama"
+    },
+    "operatesSatellites": {
+     "has": true,
+     "detail": "Ohsumi"
+    },
+    "buildsSatellites": {
+     "has": true,
+     "detail": "Ohsumi"
+    },
+    "recoverablePayloads": {
+     "has": true,
+     "detail": null
+    },
+    "launchSite": {
+     "has": true,
+     "detail": "Uchinoura"
+    },
+    "suborbitalLaunch": {
+     "has": true,
+     "detail": null
+    },
+    "orbitalLaunch": {
+     "has": true,
+     "detail": "Lambda-4S"
+    },
+    "cryogenicEngine": {
+     "has": true,
+     "detail": "LE-7"
+    },
+    "reusableSystems": {
+     "has": false,
+     "detail": null
+    },
+    "flyby": {
+     "has": true,
+     "detail": "Hiten"
+    },
+    "extraterrestrialOrbiter": {
+     "has": true,
+     "detail": "Hiten"
+    },
+    "surfaceImpact": {
+     "has": true,
+     "detail": "Hiten"
+    },
+    "softLanding": {
+     "has": true,
+     "detail": "Hayabusa"
+    },
+    "rover": {
+     "has": true,
+     "detail": "MINERVA-II"
+    },
+    "sampleReturn": {
+     "has": true,
+     "detail": "Hayabusa"
+    }
+   }
+  },
+  {
+   "id": "kenya-space-agency",
+   "name": "Kenya Space Agency",
+   "acronym": "KSA",
+   "country": "Kenya",
+   "iso2": "KE",
+   "iso3": "KEN",
+   "flag": "🇰🇪",
+   "region": "Africa",
+   "subregion": "Sub-Saharan Africa",
+   "supranational": false,
+   "historical": false,
+   "founded": "2017-03-07",
+   "foundedYear": 2017,
+   "headquarters": "Nairobi",
+   "coordinates": null,
+   "website": "https://ksa.go.ke/",
+   "employees": null,
+   "budget": null,
+   "summary": "The Kenya Space Agency (KSA) is a state corporation mandated to promote, coordinate and regulate space-related activities in the country. It was established in 2017 as the successor to the National Space Secretariat (NSS).",
+   "thumbnail": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4a/KSAimage.png/330px-KSAimage.png",
+   "logo": "https://commons.wikimedia.org/wiki/Special:FilePath/KSAimage.png?width=320",
+   "parent": null,
+   "wikipedia": "https://en.wikipedia.org/wiki/Kenya_Space_Agency",
+   "tier": "satellite-operator",
+   "tierLabel": "Satellite operator",
+   "tierRank": 2,
+   "capabilities": {
+    "firstSpaceTraveler": {
+     "has": false,
+     "detail": null
+    },
+    "operatesSatellites": {
+     "has": true,
+     "detail": "1KUNS-PF"
+    },
+    "buildsSatellites": {
+     "has": true,
+     "detail": "1KUNS-PF"
+    },
+    "recoverablePayloads": {
+     "has": false,
+     "detail": null
+    }
+   }
+  },
+  {
+   "id": "kerala",
+   "name": "Kerala",
+   "acronym": "K-Space Trivandrum",
+   "country": "India",
+   "iso2": "IN",
+   "iso3": "IND",
+   "flag": "🇮🇳",
+   "region": "Asia",
+   "subregion": "Southern Asia",
+   "supranational": false,
+   "historical": false,
+   "founded": "2019-07-01",
+   "foundedYear": 2019,
+   "headquarters": null,
+   "coordinates": [
+    10,
+    76.3
+   ],
+   "website": "https://kerala.gov.in",
+   "employees": null,
+   "budget": null,
+   "summary": "Kerala is a state on the Malabar Coast of southern India. It was formed on 1 November 1956 under the States Reorganisation Act, which unified the country's Malayalam-speaking regions into a single state…",
+   "thumbnail": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Boathouse_%287063399547%29.jpg/330px-Boathouse_%287063399547%29.jpg",
+   "logo": "https://commons.wikimedia.org/wiki/Special:FilePath/Kerala_oli_201837_lrg_February_6_2018.jpg?width=320",
+   "parent": null,
+   "wikipedia": "https://en.wikipedia.org/wiki/Kerala",
+   "tier": "emerging",
+   "tierLabel": "Emerging agency",
+   "tierRank": 1,
+   "capabilities": {
+    "firstSpaceTraveler": {
+     "has": false,
+     "detail": null
+    },
+    "operatesSatellites": {
+     "has": false,
+     "detail": null
+    },
+    "buildsSatellites": {
+     "has": false,
+     "detail": null
+    },
+    "recoverablePayloads": {
+     "has": false,
+     "detail": null
+    }
+   }
+  },
+  {
+   "id": "korea-aerospace-administration",
+   "name": "Korea AeroSpace Administration",
+   "acronym": "KASA",
+   "country": "South Korea",
+   "iso2": "KR",
+   "iso3": "KOR",
+   "flag": "🇰🇷",
+   "region": "Asia",
+   "subregion": "Eastern Asia",
+   "supranational": false,
+   "historical": false,
+   "founded": "2024-05-27",
+   "foundedYear": 2024,
+   "headquarters": "Sanam-myeon",
+   "coordinates": [
+    35.052,
+    128.0414
+   ],
+   "website": "https://kasa.go.kr/",
+   "employees": null,
+   "budget": {
+    "usdMillions": 726,
+    "year": 2025
+   },
+   "summary": "The Korea AeroSpace Administration (KASA; Korean: 우주항공청) is a Korean government-funded space and aeronautics agency. Established under the Ministry of Science and ICT, KASA oversees the Korea Aerospace Research Institute and Korea Astronomy and Space Science Institute…",
+   "thumbnail": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b5/Korea_AeroSpace_Admin_logo.svg/330px-Korea_AeroSpace_Admin_logo.svg.png",
+   "logo": "https://commons.wikimedia.org/wiki/Special:FilePath/Korea_AeroSpace_Admin_logo.svg?width=320",
+   "parent": "Ministry of Science and ICT",
+   "wikipedia": "https://en.wikipedia.org/wiki/Korea_AeroSpace_Administration",
+   "tier": "emerging",
+   "tierLabel": "Emerging agency",
+   "tierRank": 1,
+   "capabilities": {
+    "firstSpaceTraveler": {
+     "has": false,
+     "detail": null
+    },
+    "operatesSatellites": {
+     "has": false,
+     "detail": null
+    },
+    "buildsSatellites": {
+     "has": false,
+     "detail": null
+    },
+    "recoverablePayloads": {
+     "has": false,
+     "detail": null
+    }
+   }
+  },
+  {
+   "id": "korea-aerospace-research-institute",
+   "name": "Korea Aerospace Research Institute",
+   "acronym": "KARI",
+   "country": "South Korea",
+   "iso2": "KR",
+   "iso3": "KOR",
+   "flag": "🇰🇷",
+   "region": "Asia",
+   "subregion": "Eastern Asia",
+   "supranational": false,
+   "historical": false,
+   "founded": "1989-10-10",
+   "foundedYear": 1989,
+   "headquarters": "Daejeon",
+   "coordinates": null,
+   "website": "https://www.kari.re.kr/kor.do",
+   "employees": null,
+   "budget": null,
+   "summary": "The Korea Aerospace Research Institute (KARI; Korean: 한국항공우주연구원), established in 1989, is the aeronautics and space agency of South Korea. Its main laboratories are located in Daejeon, in the Daedeok Science Town…",
+   "thumbnail": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/ff/Korea_Aerospace_Research_Institute_-_%ED%95%9C%EA%B5%AD%ED%95%AD%EA%B3%B5%EC%9A%B0%EC%A3%BC%EC%97%B0%EA%B5%AC%EC%9B%90.jpg/330px-Korea_Aerospace_Research_Institute_-_%ED%95%9C%EA%B5%AD%ED%95%AD%EA%B3%B5%EC%9A%B0%EC%A3%BC%EC%97%B0%EA%B5%AC%EC%9B%90.jpg",
+   "logo": "https://commons.wikimedia.org/wiki/Special:FilePath/Korea_Aerospace_Research_Institute_-_%ED%95%9C%EA%B5%AD%ED%95%AD%EA%B3%B5%EC%9A%B0%EC%A3%BC%EC%97%B0%EA%B5%AC%EC%9B%90.jpg?width=320",
+   "parent": null,
+   "wikipedia": "https://en.wikipedia.org/wiki/Korea_Aerospace_Research_Institute",
+   "tier": "deep-space",
+   "tierLabel": "Deep space exploration",
+   "tierRank": 4,
+   "capabilities": {
+    "firstSpaceTraveler": {
+     "has": true,
+     "detail": "Yi So-yeon"
+    },
+    "operatesSatellites": {
+     "has": true,
+     "detail": "Koreasat 1"
+    },
+    "buildsSatellites": {
+     "has": true,
+     "detail": "KITSAT-1"
+    },
+    "recoverablePayloads": {
+     "has": false,
+     "detail": null
+    },
+    "launchSite": {
+     "has": true,
+     "detail": "Naro"
+    },
+    "suborbitalLaunch": {
+     "has": true,
+     "detail": null
+    },
+    "orbitalLaunch": {
+     "has": true,
+     "detail": "Nuri"
+    },
+    "cryogenicEngine": {
+     "has": false,
+     "detail": null
+    },
+    "reusableSystems": {
+     "has": false,
+     "detail": null
+    },
+    "extraterrestrialOrbiter": {
+     "has": true,
+     "detail": "Danuri"
+    },
+    "surfaceImpact": {
+     "has": false,
+     "detail": null
+    },
+    "softLanding": {
+     "has": false,
+     "detail": null
+    },
+    "rover": {
+     "has": false,
+     "detail": null
+    },
+    "sampleReturn": {
+     "has": false,
+     "detail": null
+    }
+   }
+  },
+  {
+   "id": "latin-american-and-caribbean-space-agency",
+   "name": "Latin American and Caribbean Space Agency",
+   "acronym": "ALCE",
+   "country": "Latin America and the Caribbean",
+   "iso2": "LA",
+   "iso3": "LAC",
+   "flag": "🌎",
+   "region": "Americas",
+   "subregion": "Supranational",
+   "supranational": true,
+   "historical": false,
+   "founded": "2022-01-01",
+   "foundedYear": 2022,
+   "headquarters": null,
+   "coordinates": null,
+   "website": null,
+   "employees": null,
+   "budget": null,
+   "summary": "Latin American and Caribbean Space Agency (ALCE; Spanish: Agencia Latinoamericana y Caribeña del Espacio) is an international space exploration organization based in Mexico, comprising several countries in Latin America and the Caribbean region. It was established in 2021 as part of the space race…",
+   "thumbnail": null,
+   "logo": null,
+   "parent": null,
+   "wikipedia": "https://en.wikipedia.org/wiki/Latin_American_and_Caribbean_Space_Agency",
+   "tier": "emerging",
+   "tierLabel": "Emerging agency",
+   "tierRank": 1,
+   "capabilities": {
+    "firstSpaceTraveler": {
+     "has": false,
+     "detail": null
+    },
+    "operatesSatellites": {
+     "has": false,
+     "detail": null
+    },
+    "buildsSatellites": {
+     "has": false,
+     "detail": null
+    },
+    "recoverablePayloads": {
+     "has": false,
+     "detail": null
+    }
+   }
+  },
+  {
+   "id": "lithuanian-space-association",
+   "name": "Lithuanian Space Association",
+   "acronym": "LSA",
+   "country": "Lithuania",
+   "iso2": "LT",
+   "iso3": "LTU",
+   "flag": "🇱🇹",
+   "region": "Europe",
+   "subregion": "Northern Europe",
+   "supranational": false,
+   "historical": false,
+   "founded": "2007-01-01",
+   "foundedYear": 2007,
+   "headquarters": null,
+   "coordinates": [
+    54.6864,
+    25.2847
+   ],
+   "website": "http://www.space-lt.eu",
+   "employees": null,
+   "budget": null,
+   "summary": "The Lithuanian Space Association (LSA; Lithuanian: Lietuvos kosmoso asociacija, LKA) is a space organisation based in Vilnius, Lithuania. It is one of the partners that created the first two Lithuanian satellites.",
+   "thumbnail": "https://upload.wikimedia.org/wikipedia/en/thumb/7/7b/Lithuanian_aerospace_association_logo.png/330px-Lithuanian_aerospace_association_logo.png",
+   "logo": null,
+   "parent": null,
+   "wikipedia": "https://en.wikipedia.org/wiki/Lithuanian_Space_Association",
+   "tier": "satellite-operator",
+   "tierLabel": "Satellite operator",
+   "tierRank": 2,
+   "capabilities": {
+    "firstSpaceTraveler": {
+     "has": false,
+     "detail": null
+    },
+    "operatesSatellites": {
+     "has": true,
+     "detail": "LituanicaSAT-1"
+    },
+    "buildsSatellites": {
+     "has": true,
+     "detail": "LituanicaSAT-1"
+    },
+    "recoverablePayloads": {
+     "has": false,
+     "detail": null
+    }
+   }
+  },
+  {
+   "id": "luxembourg-space-agency",
+   "name": "Luxembourg Space Agency",
+   "acronym": "LSA",
+   "country": "Luxembourg",
+   "iso2": "LU",
+   "iso3": "LUX",
+   "flag": "🇱🇺",
+   "region": "Europe",
+   "subregion": "Western Europe",
+   "supranational": false,
+   "historical": false,
+   "founded": "2018-09-01",
+   "foundedYear": 2018,
+   "headquarters": "Luxembourg",
+   "coordinates": null,
+   "website": "https://space-agency.public.lu",
+   "employees": null,
+   "budget": null,
+   "summary": "The Luxembourg Space Agency (LSA) is the national space agency of the Grand Duchy of Luxembourg. It was founded on September 12, 2018, by Luxembourg's Economy Minister Étienne Schneider.",
+   "thumbnail": null,
+   "logo": null,
+   "parent": null,
+   "wikipedia": "https://en.wikipedia.org/wiki/Luxembourg_Space_Agency",
+   "tier": "satellite-operator",
+   "tierLabel": "Satellite operator",
+   "tierRank": 2,
+   "capabilities": {
+    "firstSpaceTraveler": {
+     "has": false,
+     "detail": null
+    },
+    "operatesSatellites": {
+     "has": true,
+     "detail": "Astra 1A"
+    },
+    "buildsSatellites": {
+     "has": true,
+     "detail": "KSM (Kleos Scouting Mission"
+    },
+    "recoverablePayloads": {
+     "has": false,
+     "detail": null
+    }
+   }
+  },
+  {
+   "id": "luxspace",
+   "name": "Luxspace",
+   "country": "Luxembourg",
+   "iso2": "LU",
+   "iso3": "LUX",
+   "flag": "🇱🇺",
+   "region": "Europe",
+   "subregion": "Western Europe",
+   "supranational": false,
+   "historical": false,
+   "founded": null,
+   "foundedYear": null,
+   "headquarters": null,
+   "coordinates": null,
+   "website": null,
+   "employees": null,
+   "budget": null,
+   "summary": "LuxSpace is a European space systems contractor based in Betzdorf in Luxembourg. It was founded in November 2004 as a daughter company of OHB AG, and began operations in January 2005.",
+   "thumbnail": null,
+   "logo": null,
+   "parent": null,
+   "wikipedia": "https://en.wikipedia.org/wiki/Luxspace",
+   "tier": "deep-space",
+   "tierLabel": "Deep space exploration",
+   "tierRank": 4,
+   "capabilities": {
+    "extraterrestrialOrbiter": {
+     "has": true,
+     "detail": "Manfred Memorial Moon Mission, flyby only"
+    },
+    "surfaceImpact": {
+     "has": false,
+     "detail": null
+    },
+    "softLanding": {
+     "has": false,
+     "detail": null
+    },
+    "rover": {
+     "has": false,
+     "detail": null
+    },
+    "sampleReturn": {
+     "has": false,
+     "detail": null
+    }
+   }
+  },
+  {
+   "id": "malaysian-space-agency",
+   "name": "Malaysian Space Agency",
+   "acronym": "MYSA",
+   "country": "Malaysia",
+   "iso2": "MY",
+   "iso3": "MYS",
+   "flag": "🇲🇾",
+   "region": "Asia",
+   "subregion": "South-eastern Asia",
+   "supranational": false,
+   "historical": false,
+   "founded": "2002-01-01",
+   "foundedYear": 2002,
+   "headquarters": null,
+   "coordinates": [
+    3.1667,
+    101.7
+   ],
+   "website": null,
+   "employees": null,
+   "budget": null,
+   "summary": "The Malaysian Space Agency (Malay: Agensi Angkasa Malaysia), abbreviated MYSA, is the national space agency of Malaysia. On 20 February 2019, the Malaysian Cabinet had approved the establishment of MYSA through the merging of Malaysian Remote Sensing Agency (MRSA) and National Space Agency (ANGKASA)…",
+   "thumbnail": null,
+   "logo": null,
+   "parent": null,
+   "wikipedia": "https://en.wikipedia.org/wiki/Malaysian_Space_Agency",
+   "tier": "satellite-operator",
+   "tierLabel": "Satellite operator",
+   "tierRank": 2,
+   "capabilities": {
+    "firstSpaceTraveler": {
+     "has": true,
+     "detail": "Sheikh Muszaphar Shukor"
+    },
+    "operatesSatellites": {
+     "has": true,
+     "detail": "MEASAT-1"
+    },
+    "buildsSatellites": {
+     "has": true,
+     "detail": "TiungSAT-1"
+    },
+    "recoverablePayloads": {
+     "has": false,
+     "detail": null
+    }
+   }
+  },
+  {
+   "id": "agencia-espacial-mexicana",
+   "name": "Mexican Space Agency",
+   "acronym": "AEM",
+   "country": "Mexico",
+   "iso2": "MX",
+   "iso3": "MEX",
+   "flag": "🇲🇽",
+   "region": "Americas",
+   "subregion": "Latin America and the Caribbean",
+   "supranational": false,
+   "historical": false,
+   "founded": "2010-07-30",
+   "foundedYear": 2010,
+   "headquarters": "Mexico City",
+   "coordinates": null,
+   "website": "https://www.gob.mx/aem",
+   "employees": null,
+   "budget": {
+    "usdMillions": 4,
+    "year": 2022
+   },
+   "summary": "The Mexican Space Agency (AEM; Spanish: Agencia Espacial Mexicana) is the national space agency of Mexico, established in July 2010. The agency does not have infrastructure, and aims to promote and coordinate education, research and development of the space-related activities that are performed in the country.",
+   "thumbnail": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d1/Logo_centrado_de_la_Agencia_Espacial_Mexicana.svg/330px-Logo_centrado_de_la_Agencia_Espacial_Mexicana.svg.png",
+   "logo": "https://commons.wikimedia.org/wiki/Special:FilePath/Logo_centrado_de_la_Agencia_Espacial_Mexicana.svg?width=320",
+   "parent": "Agencia de Transformación Digital y Telecomunicaciones",
+   "wikipedia": "https://en.wikipedia.org/wiki/Agencia_Espacial_Mexicana",
+   "tier": "satellite-operator",
+   "tierLabel": "Satellite operator",
+   "tierRank": 2,
+   "capabilities": {
+    "firstSpaceTraveler": {
+     "has": true,
+     "detail": "Rodolfo Vela"
+    },
+    "operatesSatellites": {
+     "has": true,
+     "detail": "Morelos I"
+    },
+    "buildsSatellites": {
+     "has": true,
+     "detail": "UNAMSAT B"
+    },
+    "recoverablePayloads": {
+     "has": false,
+     "detail": null
+    },
+    "launchSite": {
+     "has": false,
+     "detail": null
+    },
+    "suborbitalLaunch": {
+     "has": true,
+     "detail": null
+    },
+    "orbitalLaunch": {
+     "has": false,
+     "detail": null
+    },
+    "cryogenicEngine": {
+     "has": false,
+     "detail": null
+    },
+    "reusableSystems": {
+     "has": false,
+     "detail": null
+    }
+   }
+  },
+  {
+   "id": "nasa",
+   "name": "National Aeronautics and Space Administration",
+   "acronym": "NASA",
+   "country": "United States",
+   "iso2": "US",
+   "iso3": "USA",
+   "flag": "🇺🇸",
+   "region": "Americas",
+   "subregion": "Northern America",
+   "supranational": false,
+   "historical": false,
+   "founded": "1958-07-29",
+   "foundedYear": 1958,
+   "headquarters": "Washington, D.C.",
+   "coordinates": [
+    38.8831,
+    -77.0164
+   ],
+   "website": "https://www.nasa.gov/",
+   "employees": 18000,
+   "budget": {
+    "usdMillions": 25400,
+    "year": 2025
+   },
+   "summary": "The National Aeronautics and Space Administration (NASA) is an independent agency of the U.S. federal government responsible for the United States' civil space program, as well as research in aeronautics and space…",
+   "thumbnail": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ae/NASA_seal.svg/330px-NASA_seal.svg.png",
+   "logo": "https://commons.wikimedia.org/wiki/Special:FilePath/NASA_logo.svg?width=320",
+   "parent": "Federal Government of the United States",
+   "wikipedia": "https://en.wikipedia.org/wiki/NASA",
+   "tier": "human-spaceflight",
+   "tierLabel": "Human spaceflight",
+   "tierRank": 5,
+   "capabilities": {
+    "firstSpaceTraveler": {
+     "has": true,
+     "detail": "Alan Shepard"
+    },
+    "operatesSatellites": {
+     "has": true,
+     "detail": "Explorer 1"
+    },
+    "buildsSatellites": {
+     "has": true,
+     "detail": "Explorer 1"
+    },
+    "recoverablePayloads": {
+     "has": true,
+     "detail": "Discoverer 13"
+    },
+    "launchSite": {
+     "has": true,
+     "detail": "Cape Canaveral"
+    },
+    "suborbitalLaunch": {
+     "has": true,
+     "detail": "WAC Corporal"
+    },
+    "orbitalLaunch": {
+     "has": true,
+     "detail": "Juno I"
+    },
+    "cryogenicEngine": {
+     "has": true,
+     "detail": "RL10"
+    },
+    "reusableSystems": {
+     "has": true,
+     "detail": "Space Shuttle"
+    },
+    "flyby": {
+     "has": true,
+     "detail": "Pioneer 4"
+    },
+    "extraterrestrialOrbiter": {
+     "has": true,
+     "detail": "Lunar Orbiter 1"
+    },
+    "surfaceImpact": {
+     "has": true,
+     "detail": "Ranger 7"
+    },
+    "softLanding": {
+     "has": true,
+     "detail": "Surveyor 1"
+    },
+    "rover": {
+     "has": true,
+     "detail": "Sojourner"
+    },
+    "sampleReturn": {
+     "has": true,
+     "detail": "Apollo 11"
+    },
+    "crewedLaunch": {
+     "has": true,
+     "detail": "Mercury-Redstone 3"
+    },
+    "eva": {
+     "has": true,
+     "detail": "Gemini 4, · Ed White"
+    },
+    "rendezvousDocking": {
+     "has": true,
+     "detail": "Gemini 8 to GATV"
+    },
+    "spaceStation": {
+     "has": true,
+     "detail": "Skylab"
+    },
+    "circumlunarFlight": {
+     "has": true,
+     "detail": "Apollo 8"
+    },
+    "moonLanding": {
+     "has": true,
+     "detail": "Apollo 11"
+    }
+   }
+  },
+  {
+   "id": "national-aerospace-technology-administration",
+   "name": "National Aerospace Technology Administration",
+   "acronym": "NATA",
+   "country": "North Korea",
+   "iso2": "KP",
+   "iso3": "PRK",
+   "flag": "🇰🇵",
+   "region": "Asia",
+   "subregion": "Eastern Asia",
+   "supranational": false,
+   "historical": false,
+   "founded": "2013-01-01",
+   "foundedYear": 2013,
+   "headquarters": "Pyongyang",
+   "coordinates": null,
+   "website": null,
+   "employees": null,
+   "budget": null,
+   "summary": "National Aerospace Technology Administration (NATA; Korean: 국가항공우주기술총국) is the official space agency of North Korea, succeeding the Korean Committee of Space Technology (KCST). It was founded on 1 April 2013…",
+   "thumbnail": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c7/Logo_of_NATA_in_DPRK.png/330px-Logo_of_NATA_in_DPRK.png",
+   "logo": "https://commons.wikimedia.org/wiki/Special:FilePath/Logo_of_the_National_Aerospace_Technology_Administration.svg?width=320",
+   "parent": null,
+   "wikipedia": "https://en.wikipedia.org/wiki/National_Aerospace_Technology_Administration",
+   "tier": "orbital-launch",
+   "tierLabel": "Orbital launch",
+   "tierRank": 3,
+   "capabilities": {
+    "firstSpaceTraveler": {
+     "has": false,
+     "detail": null
+    },
+    "operatesSatellites": {
+     "has": true,
+     "detail": "Kwangmyŏngsŏng-3 Unit 2"
+    },
+    "buildsSatellites": {
+     "has": true,
+     "detail": "Kwangmyŏngsŏng-3 Unit 2"
+    },
+    "recoverablePayloads": {
+     "has": false,
+     "detail": null
+    },
+    "launchSite": {
+     "has": true,
+     "detail": "Sohae"
+    },
+    "suborbitalLaunch": {
+     "has": true,
+     "detail": null
+    },
+    "orbitalLaunch": {
+     "has": true,
+     "detail": "Unha-3"
+    },
+    "cryogenicEngine": {
+     "has": true,
+     "detail": "27 May 2024"
+    },
+    "reusableSystems": {
+     "has": false,
+     "detail": null
+    }
+   }
+  },
+  {
+   "id": "cnes",
+   "name": "National Centre for Space Studies",
+   "acronym": "CNES",
+   "country": "France",
+   "iso2": "FR",
+   "iso3": "FRA",
+   "flag": "🇫🇷",
+   "region": "Europe",
+   "subregion": "Western Europe",
+   "supranational": false,
+   "historical": false,
+   "founded": "1961-12-19",
+   "foundedYear": 1961,
+   "headquarters": "Paris",
+   "coordinates": [
+    48.8615,
+    2.3452
+   ],
+   "website": "https://cnes.fr/",
+   "employees": null,
+   "budget": {
+    "usdMillions": 3521,
+    "year": 2022
+   },
+   "summary": "CNES (French: Centre national d'études spatiales, lit. 'National Centre for Space Studies') is the French national space agency. Headquartered in central Paris, the agency is overseen by the ministries of the Armed Forces, Economy and Finance and Higher Education, Research and Innovation…",
+   "thumbnail": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/Cnes-paris.jpg/330px-Cnes-paris.jpg",
+   "logo": "https://commons.wikimedia.org/wiki/Special:FilePath/Logo_CNES_2017_triangulaire_bleu.png?width=320",
+   "parent": null,
+   "wikipedia": "https://en.wikipedia.org/wiki/CNES",
+   "tier": "orbital-launch",
+   "tierLabel": "Orbital launch",
+   "tierRank": 3,
+   "capabilities": {
+    "firstSpaceTraveler": {
+     "has": true,
+     "detail": "Jean-Loup Chrétien"
+    },
+    "operatesSatellites": {
+     "has": true,
+     "detail": "Astérix"
+    },
+    "buildsSatellites": {
+     "has": true,
+     "detail": "Astérix"
+    },
+    "recoverablePayloads": {
+     "has": false,
+     "detail": null
+    },
+    "launchSite": {
+     "has": true,
+     "detail": "Kourou"
+    },
+    "suborbitalLaunch": {
+     "has": true,
+     "detail": "Véronique"
+    },
+    "orbitalLaunch": {
+     "has": true,
+     "detail": "Diamant A"
+    },
+    "cryogenicEngine": {
+     "has": true,
+     "detail": null
+    },
+    "reusableSystems": {
+     "has": false,
+     "detail": null
+    }
+   }
+  },
+  {
+   "id": "national-commission-for-aerospace-research-and-development",
+   "name": "National Commission for Aerospace Research and Development",
+   "acronym": "CONIDA",
+   "country": "Peru",
+   "iso2": "PE",
+   "iso3": "PER",
+   "flag": "🇵🇪",
+   "region": "Americas",
+   "subregion": "Latin America and the Caribbean",
+   "supranational": false,
+   "historical": false,
+   "founded": "1974-06-11",
+   "foundedYear": 1974,
+   "headquarters": "San Isidro",
+   "coordinates": null,
+   "website": "https://www.gob.pe/conida",
+   "employees": null,
+   "budget": null,
+   "summary": "The National Commission for Aerospace Research and Development (CONIDA) (Spanish: Comisión Nacional de Investigación y Desarrollo Aeroespacial) is a national space agency tasked with government space activities in Peru.",
+   "thumbnail": null,
+   "logo": null,
+   "parent": "Ministry of Defense of Peru",
+   "wikipedia": "https://en.wikipedia.org/wiki/National_Commission_for_Aerospace_Research_and_Development",
+   "tier": "satellite-operator",
+   "tierLabel": "Satellite operator",
+   "tierRank": 2,
+   "capabilities": {
+    "firstSpaceTraveler": {
+     "has": false,
+     "detail": null
+    },
+    "operatesSatellites": {
+     "has": true,
+     "detail": "Chasqui I"
+    },
+    "buildsSatellites": {
+     "has": true,
+     "detail": null
+    },
+    "recoverablePayloads": {
+     "has": false,
+     "detail": null
+    }
+   }
+  },
+  {
+   "id": "national-institute-of-aeronautics-and-space",
+   "name": "National Institute of Aeronautics and Space",
+   "country": "Indonesia",
+   "iso2": "ID",
+   "iso3": "IDN",
+   "flag": "🇮🇩",
+   "region": "Asia",
+   "subregion": "South-eastern Asia",
+   "supranational": false,
+   "historical": false,
+   "founded": "1964-11-27",
+   "foundedYear": 1964,
+   "headquarters": "Jakarta",
+   "coordinates": null,
+   "website": "https://www.lapan.go.id/",
+   "employees": null,
+   "budget": {
+    "usdMillions": 54,
+    "year": 2022
+   },
+   "summary": "The National Institute of Aeronautics and Space (Indonesian: Lembaga Penerbangan dan Antariksa Nasional, LAPAN) was the Indonesian government's space agency. It was established on 27 November 1963, by former Indonesian president Sukarno, after one year's existence of a previous, informal space agency organization…",
+   "thumbnail": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fb/LAPAN_logo_2015.svg/330px-LAPAN_logo_2015.svg.png",
+   "logo": "https://commons.wikimedia.org/wiki/Special:FilePath/LAPAN_logo_2015.svg?width=320",
+   "parent": null,
+   "wikipedia": "https://en.wikipedia.org/wiki/National_Institute_of_Aeronautics_and_Space",
+   "tier": "emerging",
+   "tierLabel": "Emerging agency",
+   "tierRank": 1,
+   "capabilities": {}
+  },
+  {
+   "id": "national-space-activities-commission",
+   "name": "National Space Activities Commission",
+   "acronym": "CONAE",
+   "country": "Argentina",
+   "iso2": "AR",
+   "iso3": "ARG",
+   "flag": "🇦🇷",
+   "region": "Americas",
+   "subregion": "Latin America and the Caribbean",
+   "supranational": false,
+   "historical": false,
+   "founded": "1961-01-01",
+   "foundedYear": 1961,
+   "headquarters": "Buenos Aires",
+   "coordinates": null,
+   "website": "https://www.argentina.gob.ar/ciencia/conae",
+   "employees": null,
+   "budget": {
+    "usdMillions": 63,
+    "year": 2022
+   },
+   "summary": "The National Space Activities Commission (Spanish: Comisión Nacional de Actividades Espaciales, CONAE) is the civilian agency of the government of Argentina in charge of the national space programme.",
+   "thumbnail": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3c/Logo_principal_CONAE_2023_%28azul%29_02.svg/330px-Logo_principal_CONAE_2023_%28azul%29_02.svg.png",
+   "logo": "https://commons.wikimedia.org/wiki/Special:FilePath/Logo_principal_CONAE_2023_(azul)_02.svg?width=320",
+   "parent": "Poder Ejecutivo Nacional",
+   "wikipedia": "https://en.wikipedia.org/wiki/National_Space_Activities_Commission",
+   "tier": "satellite-operator",
+   "tierLabel": "Satellite operator",
+   "tierRank": 2,
+   "capabilities": {
+    "firstSpaceTraveler": {
+     "has": false,
+     "detail": null
+    },
+    "operatesSatellites": {
+     "has": true,
+     "detail": "Nahuel 1A"
+    },
+    "buildsSatellites": {
+     "has": true,
+     "detail": "ARSAT-1"
+    },
+    "recoverablePayloads": {
+     "has": false,
+     "detail": null
+    },
+    "launchSite": {
+     "has": true,
+     "detail": "Punta Indio"
+    },
+    "suborbitalLaunch": {
+     "has": true,
+     "detail": "Orión"
+    },
+    "orbitalLaunch": {
+     "has": false,
+     "detail": null
+    },
+    "cryogenicEngine": {
+     "has": false,
+     "detail": null
+    },
+    "reusableSystems": {
+     "has": false,
+     "detail": null
+    }
+   }
+  },
+  {
+   "id": "national-space-agency-of-singapore",
+   "name": "National Space Agency of Singapore",
+   "acronym": "NSAS",
+   "country": "Singapore",
+   "iso2": "SG",
+   "iso3": "SGP",
+   "flag": "🇸🇬",
+   "region": "Asia",
+   "subregion": "South-eastern Asia",
+   "supranational": false,
+   "historical": false,
+   "founded": "2026-01-01",
+   "foundedYear": 2026,
+   "headquarters": null,
+   "coordinates": null,
+   "website": null,
+   "employees": null,
+   "budget": null,
+   "summary": "The National Space Agency of Singapore (NSAS) is a department of the Ministry of Trade and Industry set up in 2026. It aims to allow Singapore to leverage on the opportunities and potential of the global space economy for national and regional needs, building upon the functions of the former Office of Space Technology…",
+   "thumbnail": null,
+   "logo": null,
+   "parent": null,
+   "wikipedia": "https://en.wikipedia.org/wiki/National_Space_Agency_of_Singapore",
+   "tier": "emerging",
+   "tierLabel": "Emerging agency",
+   "tierRank": 1,
+   "capabilities": {
+    "firstSpaceTraveler": {
+     "has": false,
+     "detail": null
+    },
+    "operatesSatellites": {
+     "has": false,
+     "detail": null
+    },
+    "buildsSatellites": {
+     "has": false,
+     "detail": null
+    },
+    "recoverablePayloads": {
+     "has": false,
+     "detail": null
+    }
+   }
+  },
+  {
+   "id": "kazcosmos",
+   "name": "National Space Agency of the Republic of Kazakhstan",
+   "acronym": "KazCosmos",
+   "country": "Kazakhstan",
+   "iso2": "KZ",
+   "iso3": "KAZ",
+   "flag": "🇰🇿",
+   "region": "Asia",
+   "subregion": "Central Asia",
+   "supranational": false,
+   "historical": false,
+   "founded": "2007-03-27",
+   "foundedYear": 2007,
+   "headquarters": "Astana",
+   "coordinates": null,
+   "website": "https://www.gharysh.kz/",
+   "employees": null,
+   "budget": null,
+   "summary": "The National Space Agency of the Republic of Kazakhstan (Kazakh: Қазақстан Республикасы Ұлттық ғарыш агенттiгi, romanized: Qazaqstan Respublikasy Ūlttyq ğaryş agenttıgı), also known as KazCosmos, or KazKosmos, is Kazakhstan's national space agency, and was officially established on 27 March 2007.",
+   "thumbnail": null,
+   "logo": null,
+   "parent": null,
+   "wikipedia": "https://en.wikipedia.org/wiki/KazCosmos",
+   "tier": "satellite-operator",
+   "tierLabel": "Satellite operator",
+   "tierRank": 2,
+   "capabilities": {
+    "firstSpaceTraveler": {
+     "has": true,
+     "detail": "Toktar Aubakirov"
+    },
+    "operatesSatellites": {
+     "has": true,
+     "detail": "KazSat-1"
+    },
+    "buildsSatellites": {
+     "has": true,
+     "detail": "Al Farabi-1"
+    },
+    "recoverablePayloads": {
+     "has": false,
+     "detail": null
+    }
+   }
+  },
+  {
+   "id": "national-space-research-and-development-agency",
+   "name": "National Space Research and Development Agency",
+   "acronym": "NASRDA",
+   "country": "Nigeria",
+   "iso2": "NG",
+   "iso3": "NGA",
+   "flag": "🇳🇬",
+   "region": "Africa",
+   "subregion": "Sub-Saharan Africa",
+   "supranational": false,
+   "historical": false,
+   "founded": "1998-01-01",
+   "foundedYear": 1998,
+   "headquarters": null,
+   "coordinates": [
+    8.9897,
+    7.3871
+   ],
+   "website": "http://www.nasrda.gov.ng/",
+   "employees": null,
+   "budget": {
+    "usdMillions": 36,
+    "year": 2020
+   },
+   "summary": "The National Space Research and Development Agency (NASRDA) is the national space agency of Nigeria. It is a parastatal under Federal Ministry of Innovation, Science and Technology. The agency is based in the Nigerian capital city of Abuja, in the Lugbe district, and has a ground receiving station, among other sites…",
+   "thumbnail": null,
+   "logo": "https://commons.wikimedia.org/wiki/Special:FilePath/National_Space_Research_and_Development_Agency.jpg?width=320",
+   "parent": "Federal Ministry of Science and Technology",
+   "wikipedia": "https://en.wikipedia.org/wiki/National_Space_Research_and_Development_Agency",
+   "tier": "satellite-operator",
+   "tierLabel": "Satellite operator",
+   "tierRank": 2,
+   "capabilities": {
+    "firstSpaceTraveler": {
+     "has": false,
+     "detail": null
+    },
+    "operatesSatellites": {
+     "has": true,
+     "detail": "Nigeriasat-1"
+    },
+    "buildsSatellites": {
+     "has": true,
+     "detail": "Nigeria EduSat-1"
+    },
+    "recoverablePayloads": {
+     "has": false,
+     "detail": null
+    }
+   }
+  },
+  {
+   "id": "netherlands-institute-for-space-research",
+   "name": "Netherlands Institute for Space Research",
+   "acronym": "SRON",
+   "country": "Netherlands",
+   "iso2": "NL",
+   "iso3": "NLD",
+   "flag": "🇳🇱",
+   "region": "Europe",
+   "subregion": "Western Europe",
+   "supranational": false,
+   "historical": false,
+   "founded": "1983-00-00",
+   "foundedYear": 1983,
+   "headquarters": "Leiden",
+   "coordinates": [
+    53.2403,
+    6.5347
+   ],
+   "website": "https://www.sron.nl/",
+   "employees": 200,
+   "budget": null,
+   "summary": "Space Research Organisation Netherlands (SRON) is the Dutch national institute for space research. It focuses on astrophysics, Earth observation, and exoplanetary research. SRON also develops new detection techniques for X-rays, infrared radiation, and visible light…",
+   "thumbnail": null,
+   "logo": "https://commons.wikimedia.org/wiki/Special:FilePath/SRON_Logo.jpg?width=320",
+   "parent": "Dutch Research Council",
+   "wikipedia": "https://en.wikipedia.org/wiki/Netherlands_Institute_for_Space_Research",
+   "tier": "satellite-operator",
+   "tierLabel": "Satellite operator",
+   "tierRank": 2,
+   "capabilities": {
+    "firstSpaceTraveler": {
+     "has": true,
+     "detail": "Wubbo Ockels"
+    },
+    "operatesSatellites": {
+     "has": true,
+     "detail": "ANS"
+    },
+    "buildsSatellites": {
+     "has": true,
+     "detail": "ANS"
+    },
+    "recoverablePayloads": {
+     "has": false,
+     "detail": null
+    }
+   }
+  },
+  {
+   "id": "netherlands-space-agency",
+   "name": "Netherlands Space Agency",
+   "country": "Netherlands",
+   "iso2": "NL",
+   "iso3": "NLD",
+   "flag": "🇳🇱",
+   "region": "Europe",
+   "subregion": "Western Europe",
+   "supranational": false,
+   "historical": false,
+   "founded": "2009-07-01",
+   "foundedYear": 2009,
+   "headquarters": "The Hague",
+   "coordinates": null,
+   "website": "https://www.nlsa.nl/en/",
+   "employees": null,
+   "budget": {
+    "usdMillions": 150,
+    "year": 2022
+   },
+   "summary": "The Netherlands Space Agency (NLSA), is the government space agency of the Netherlands.",
+   "thumbnail": null,
+   "logo": null,
+   "parent": null,
+   "wikipedia": "https://en.wikipedia.org/wiki/Netherlands_Space_Agency",
+   "tier": "emerging",
+   "tierLabel": "Emerging agency",
+   "tierRank": 1,
+   "capabilities": {}
+  },
+  {
+   "id": "new-mexico-spaceport-authority",
+   "name": "New Mexico Spaceport Authority",
+   "acronym": null,
+   "country": "United States",
+   "iso2": "US",
+   "iso3": "USA",
+   "flag": "🇺🇸",
+   "region": "Americas",
+   "subregion": "Northern America",
+   "supranational": false,
+   "historical": false,
+   "founded": null,
+   "foundedYear": null,
+   "headquarters": null,
+   "coordinates": null,
+   "website": null,
+   "employees": null,
+   "budget": null,
+   "summary": "The New Mexico Spaceport Authority (NMSA) is a non-governmental panel, appointed by the governor of New Mexico, whose members represent the public sector in the development and construction of Spaceport America, the world's first purpose-built commercial spaceport…",
+   "thumbnail": null,
+   "logo": null,
+   "parent": null,
+   "wikipedia": "https://en.wikipedia.org/wiki/New_Mexico_Spaceport_Authority",
+   "tier": "emerging",
+   "tierLabel": "Emerging agency",
+   "tierRank": 1,
+   "capabilities": {
+    "firstSpaceTraveler": {
+     "has": false,
+     "detail": null
+    },
+    "operatesSatellites": {
+     "has": false,
+     "detail": null
+    },
+    "buildsSatellites": {
+     "has": false,
+     "detail": null
+    },
+    "recoverablePayloads": {
+     "has": false,
+     "detail": null
+    }
+   }
+  },
+  {
+   "id": "new-zealand-space-agency",
+   "name": "New Zealand Space Agency",
+   "acronym": "NZSA",
+   "country": "New Zealand",
+   "iso2": "NZ",
+   "iso3": "NZL",
+   "flag": "🇳🇿",
+   "region": "Oceania",
+   "subregion": "Australia and New Zealand",
+   "supranational": false,
+   "historical": false,
+   "founded": "2016-04-01",
+   "foundedYear": 2016,
+   "headquarters": "Defence House",
+   "coordinates": null,
+   "website": "http://www.nzspaceagency.nz",
+   "employees": null,
+   "budget": null,
+   "summary": "The New Zealand Space Agency is an agency within the New Zealand Ministry of Business, Innovation and Employment (MBIE) charged with \"space policy, regulation and business development\" relating to space activities in New Zealand.",
+   "thumbnail": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/18/MBIE_building_on_Stout_Street.jpg/330px-MBIE_building_on_Stout_Street.jpg",
+   "logo": null,
+   "parent": null,
+   "wikipedia": "https://en.wikipedia.org/wiki/New_Zealand_Space_Agency",
+   "tier": "satellite-operator",
+   "tierLabel": "Satellite operator",
+   "tierRank": 2,
+   "capabilities": {
+    "firstSpaceTraveler": {
+     "has": false,
+     "detail": null
+    },
+    "operatesSatellites": {
+     "has": true,
+     "detail": "Humanity Star"
+    },
+    "buildsSatellites": {
+     "has": true,
+     "detail": "Humanity Star"
+    },
+    "recoverablePayloads": {
+     "has": false,
+     "detail": null
+    },
+    "launchSite": {
+     "has": true,
+     "detail": "Mahia"
+    },
+    "suborbitalLaunch": {
+     "has": false,
+     "detail": null
+    },
+    "orbitalLaunch": {
+     "has": false,
+     "detail": null
+    },
+    "cryogenicEngine": {
+     "has": false,
+     "detail": null
+    },
+    "reusableSystems": {
+     "has": false,
+     "detail": null
+    }
+   }
+  },
+  {
+   "id": "norwegian-space-agency",
+   "name": "Norwegian Space Agency",
+   "acronym": "NRS",
+   "country": "Norway",
+   "iso2": "NO",
+   "iso3": "NOR",
+   "flag": "🇳🇴",
+   "region": "Europe",
+   "subregion": "Northern Europe",
+   "supranational": false,
+   "historical": false,
+   "founded": "1987-00-00",
+   "foundedYear": 1987,
+   "headquarters": "Oslo",
+   "coordinates": null,
+   "website": "http://www.romsenter.no/",
+   "employees": 50,
+   "budget": {
+    "usdMillions": 103,
+    "year": 2019
+   },
+   "summary": "The Norwegian Space Agency (NOSA) (formerly the Norwegian Space Centre (NSC); Norwegian: Norsk Romsenter) is a Norwegian government agency that follows Norway's public space activities. NOSA's goal is to ensure that Norway benefits from any space activity in which Norway engages in…",
+   "thumbnail": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e8/Norsk-Romsenter-bygning.jpg/330px-Norsk-Romsenter-bygning.jpg",
+   "logo": "https://commons.wikimedia.org/wiki/Special:FilePath/Direktoratet_for_romvirksomhet_logo.png?width=320",
+   "parent": "Ministry of Trade, Industry and Fisheries",
+   "wikipedia": "https://en.wikipedia.org/wiki/Norwegian_Space_Agency",
+   "tier": "satellite-operator",
+   "tierLabel": "Satellite operator",
+   "tierRank": 2,
+   "capabilities": {
+    "firstSpaceTraveler": {
+     "has": false,
+     "detail": null
+    },
+    "operatesSatellites": {
+     "has": true,
+     "detail": "Thor 2"
+    },
+    "buildsSatellites": {
+     "has": true,
+     "detail": "nCube-2"
+    },
+    "recoverablePayloads": {
+     "has": false,
+     "detail": null
+    }
+   }
+  },
+  {
+   "id": "oklahoma-space-industry-development-authority",
+   "name": "Oklahoma Space Industry Development Authority",
+   "acronym": null,
+   "country": "United States",
+   "iso2": "US",
+   "iso3": "USA",
+   "flag": "🇺🇸",
+   "region": "Americas",
+   "subregion": "Northern America",
+   "supranational": false,
+   "historical": false,
+   "founded": null,
+   "foundedYear": null,
+   "headquarters": null,
+   "coordinates": null,
+   "website": null,
+   "employees": null,
+   "budget": null,
+   "summary": "The Oklahoma Space Industry Development Authority (OSIDA) is a development authority created by the state of Oklahoma to operate a spaceport near Burns Flat, Oklahoma. In July 2025, OSIDA was merged into the Oklahoma Department of Aerospace and Aeronautics (ODAA).",
+   "thumbnail": "https://upload.wikimedia.org/wikipedia/commons/3/33/Csafb-17feb1995.jpg",
+   "logo": null,
+   "parent": null,
+   "wikipedia": "https://en.wikipedia.org/wiki/Oklahoma_Space_Industry_Development_Authority",
+   "tier": "emerging",
+   "tierLabel": "Emerging agency",
+   "tierRank": 1,
+   "capabilities": {
+    "firstSpaceTraveler": {
+     "has": false,
+     "detail": null
+    },
+    "operatesSatellites": {
+     "has": false,
+     "detail": null
+    },
+    "buildsSatellites": {
+     "has": false,
+     "detail": null
+    },
+    "recoverablePayloads": {
+     "has": false,
+     "detail": null
+    }
+   }
+  },
+  {
+   "id": "suparco",
+   "name": "Pakistan Space and Upper Atmosphere Research Commission",
+   "acronym": "SUPARCO",
+   "country": "Pakistan",
+   "iso2": "PK",
+   "iso3": "PAK",
+   "flag": "🇵🇰",
+   "region": "Asia",
+   "subregion": "Southern Asia",
+   "supranational": false,
+   "historical": false,
+   "founded": "1961-09-16",
+   "foundedYear": 1961,
+   "headquarters": "Karachi",
+   "coordinates": null,
+   "website": "https://suparco.gov.pk",
+   "employees": null,
+   "budget": {
+    "usdMillions": 50,
+    "year": 2019
+   },
+   "summary": "The Space & Upper Atmosphere Research Commission, commonly referred to as SUPARCO, is the national space agency of Pakistan. The agency, originally established in 1961 as a committee in Karachi, became an independent commission in 1981…",
+   "thumbnail": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/61/SUPARCO%2C_Karachi._-_panoramio.jpg/330px-SUPARCO%2C_Karachi._-_panoramio.jpg",
+   "logo": "https://commons.wikimedia.org/wiki/Special:FilePath/Nike-cajun.jpg?width=320",
+   "parent": null,
+   "wikipedia": "https://en.wikipedia.org/wiki/SUPARCO",
+   "tier": "deep-space",
+   "tierLabel": "Deep space exploration",
+   "tierRank": 4,
+   "capabilities": {
+    "firstSpaceTraveler": {
+     "has": true,
+     "detail": "Namira Salim"
+    },
+    "operatesSatellites": {
+     "has": true,
+     "detail": "Badr-1"
+    },
+    "buildsSatellites": {
+     "has": true,
+     "detail": "Badr-1"
+    },
+    "recoverablePayloads": {
+     "has": false,
+     "detail": null
+    },
+    "launchSite": {
+     "has": true,
+     "detail": "Sonmiani Flight Test Range"
+    },
+    "suborbitalLaunch": {
+     "has": true,
+     "detail": "Rehbar-I"
+    },
+    "orbitalLaunch": {
+     "has": false,
+     "detail": null
+    },
+    "cryogenicEngine": {
+     "has": false,
+     "detail": null
+    },
+    "reusableSystems": {
+     "has": false,
+     "detail": null
+    },
+    "extraterrestrialOrbiter": {
+     "has": true,
+     "detail": "ICUBE-Q"
+    },
+    "surfaceImpact": {
+     "has": false,
+     "detail": null
+    },
+    "softLanding": {
+     "has": false,
+     "detail": null
+    },
+    "rover": {
+     "has": false,
+     "detail": null
+    },
+    "sampleReturn": {
+     "has": false,
+     "detail": null
+    }
+   }
+  },
+  {
+   "id": "paraguayan-space-agency",
+   "name": "Paraguayan Space Agency",
+   "acronym": "AEP",
+   "country": "Paraguay",
+   "iso2": "PY",
+   "iso3": "PRY",
+   "flag": "🇵🇾",
+   "region": "Americas",
+   "subregion": "Latin America and the Caribbean",
+   "supranational": false,
+   "historical": false,
+   "founded": "2014-03-26",
+   "foundedYear": 2014,
+   "headquarters": null,
+   "coordinates": null,
+   "website": null,
+   "employees": null,
+   "budget": null,
+   "summary": null,
+   "thumbnail": null,
+   "logo": null,
+   "parent": null,
+   "wikipedia": null,
+   "tier": "satellite-operator",
+   "tierLabel": "Satellite operator",
+   "tierRank": 2,
+   "capabilities": {
+    "firstSpaceTraveler": {
+     "has": false,
+     "detail": null
+    },
+    "operatesSatellites": {
+     "has": true,
+     "detail": "GuaraníSat-1"
+    },
+    "buildsSatellites": {
+     "has": true,
+     "detail": "GuaraníSat-1"
+    },
+    "recoverablePayloads": {
+     "has": false,
+     "detail": null
+    }
+   }
+  },
+  {
+   "id": "philippine-space-agency",
+   "name": "Philippine Space Agency",
+   "acronym": "PhilSA",
+   "country": "Philippines",
+   "iso2": "PH",
+   "iso3": "PHL",
+   "flag": "🇵🇭",
+   "region": "Asia",
+   "subregion": "South-eastern Asia",
+   "supranational": false,
+   "historical": false,
+   "founded": "2014-01-01",
+   "foundedYear": 2014,
+   "headquarters": "Quezon City",
+   "coordinates": null,
+   "website": "https://philsa.gov.ph",
+   "employees": null,
+   "budget": {
+    "usdMillions": 38,
+    "year": 2019
+   },
+   "summary": "The Philippine Space Agency (PhilSA) is the national space agency of the Philippines. The unified space agency is defined by the Philippine Space Act (Republic Act No…",
+   "thumbnail": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5f/Philippine_Space_Agency_%28PhilSA%29.svg/330px-Philippine_Space_Agency_%28PhilSA%29.svg.png",
+   "logo": "https://commons.wikimedia.org/wiki/Special:FilePath/Philippine_Space_Agency_(PhilSA).svg?width=320",
+   "parent": null,
+   "wikipedia": "https://en.wikipedia.org/wiki/Philippine_Space_Agency",
+   "tier": "satellite-operator",
+   "tierLabel": "Satellite operator",
+   "tierRank": 2,
+   "capabilities": {
+    "firstSpaceTraveler": {
+     "has": false,
+     "detail": null
+    },
+    "operatesSatellites": {
+     "has": true,
+     "detail": "Agila-1"
+    },
+    "buildsSatellites": {
+     "has": true,
+     "detail": "Diwata-1"
+    },
+    "recoverablePayloads": {
+     "has": false,
+     "detail": null
+    }
+   }
+  },
+  {
+   "id": "polish-space-agency",
+   "name": "Polish Space Agency",
+   "acronym": "POLSA",
+   "country": "Poland",
+   "iso2": "PL",
+   "iso3": "POL",
+   "flag": "🇵🇱",
+   "region": "Europe",
+   "subregion": "Eastern Europe",
+   "supranational": false,
+   "historical": false,
+   "founded": "1976-09-29",
+   "foundedYear": 1976,
+   "headquarters": "Gdańsk",
+   "coordinates": null,
+   "website": "https://polsa.gov.pl/",
+   "employees": null,
+   "budget": {
+    "usdMillions": 243,
+    "year": 2025
+   },
+   "summary": "The Polish Space Agency (POLSA; Polish: Polska Agencja Kosmiczna, PAK) is the space agency of Poland, administered by the Ministry of Economic Development and Technology. It is a member of the European Space Agency. The agency is focused on developing satellite networks and space technologies in Poland…",
+   "thumbnail": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6a/Logo_POLSA.svg/330px-Logo_POLSA.svg.png",
+   "logo": "https://commons.wikimedia.org/wiki/Special:FilePath/Polish_Space_Agency_logo_by_Mieczys%C5%82aw_Wasilewski_(POLSA_logo_since_2016).png?width=320",
+   "parent": null,
+   "wikipedia": "https://en.wikipedia.org/wiki/Polish_Space_Agency",
+   "tier": "satellite-operator",
+   "tierLabel": "Satellite operator",
+   "tierRank": 2,
+   "capabilities": {
+    "firstSpaceTraveler": {
+     "has": true,
+     "detail": "Mirosław Hermaszewski"
+    },
+    "operatesSatellites": {
+     "has": true,
+     "detail": "Lem"
+    },
+    "buildsSatellites": {
+     "has": true,
+     "detail": "Lem"
+    },
+    "recoverablePayloads": {
+     "has": false,
+     "detail": null
+    },
+    "launchSite": {
+     "has": true,
+     "detail": null
+    },
+    "suborbitalLaunch": {
+     "has": true,
+     "detail": null
+    },
+    "orbitalLaunch": {
+     "has": false,
+     "detail": null
+    },
+    "cryogenicEngine": {
+     "has": false,
+     "detail": null
+    },
+    "reusableSystems": {
+     "has": false,
+     "detail": null
+    }
+   }
+  },
+  {
+   "id": "portuguese-space-agency",
+   "name": "Portuguese Space Agency",
+   "acronym": "PTSPACE",
+   "country": "Portugal",
+   "iso2": "PT",
+   "iso3": "PRT",
+   "flag": "🇵🇹",
+   "region": "Europe",
+   "subregion": "Southern Europe",
+   "supranational": false,
+   "historical": false,
+   "founded": "2019-00-00",
+   "foundedYear": 2019,
+   "headquarters": null,
+   "coordinates": [
+    36.9746,
+    -25.1587
+   ],
+   "website": null,
+   "employees": null,
+   "budget": {
+    "usdMillions": 9,
+    "year": 2023
+   },
+   "summary": "The Portuguese Space Agency is the Portuguese space agency created by the Portuguese government in collaboration with the regional government of the Azores in 2019. It is headquartered at Santa Maria Island, in the Azores, Portugal. The agency succeeds the Space Office of the Foundation for Science and Technology.",
+   "thumbnail": null,
+   "logo": null,
+   "parent": null,
+   "wikipedia": "https://en.wikipedia.org/wiki/Portuguese_Space_Agency",
+   "tier": "satellite-operator",
+   "tierLabel": "Satellite operator",
+   "tierRank": 2,
+   "capabilities": {
+    "firstSpaceTraveler": {
+     "has": false,
+     "detail": null
+    },
+    "operatesSatellites": {
+     "has": true,
+     "detail": "PoSAT-1"
+    },
+    "buildsSatellites": {
+     "has": true,
+     "detail": "PoSAT-1"
+    },
+    "recoverablePayloads": {
+     "has": false,
+     "detail": null
+    }
+   }
+  },
+  {
+   "id": "romanian-space-agency",
+   "name": "Romanian Space Agency",
+   "acronym": "ASR",
+   "country": "Romania",
+   "iso2": "RO",
+   "iso3": "ROU",
+   "flag": "🇷🇴",
+   "region": "Europe",
+   "subregion": "Eastern Europe",
+   "supranational": false,
+   "historical": false,
+   "founded": "1991-00-00",
+   "foundedYear": 1991,
+   "headquarters": "Bucharest",
+   "coordinates": null,
+   "website": "http://www.rosa.ro/index.php/ro/",
+   "employees": null,
+   "budget": null,
+   "summary": "The Romanian Space Agency (ROSA; Romanian: Agenția Spațială Română) is a public institution that coordinates Romania's national space technology. ROSA, established in 1991, is subordinate to the Romanian Ministry of Education…",
+   "thumbnail": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/97/ROSA_-_Romanian_Space_Agency_logo.png/330px-ROSA_-_Romanian_Space_Agency_logo.png",
+   "logo": "https://commons.wikimedia.org/wiki/Special:FilePath/ROSA_-_Romanian_Space_Agency_logo.png?width=320",
+   "parent": null,
+   "wikipedia": "https://en.wikipedia.org/wiki/Romanian_Space_Agency",
+   "tier": "satellite-operator",
+   "tierLabel": "Satellite operator",
+   "tierRank": 2,
+   "capabilities": {
+    "firstSpaceTraveler": {
+     "has": true,
+     "detail": "Dumitru Prunariu"
+    },
+    "operatesSatellites": {
+     "has": true,
+     "detail": "Goliat"
+    },
+    "buildsSatellites": {
+     "has": true,
+     "detail": "Goliat"
+    },
+    "recoverablePayloads": {
+     "has": false,
+     "detail": null
+    }
+   }
+  },
+  {
+   "id": "roscosmos",
+   "name": "Roscosmos State Corporation for Space Activities",
+   "acronym": "Roscosmos",
+   "country": "Russia",
+   "iso2": "RU",
+   "iso3": "RUS",
+   "flag": "🇷🇺",
+   "region": "Europe",
+   "subregion": "Eastern Europe",
+   "supranational": false,
+   "historical": false,
+   "founded": "1992-02-25",
+   "foundedYear": 1992,
+   "headquarters": "Moscow",
+   "coordinates": null,
+   "website": "https://www.roscosmos.ru/",
+   "employees": 175000,
+   "budget": {
+    "usdMillions": 1950,
+    "year": 2025
+   },
+   "summary": "The State Corporation for Space Activities \"Roscosmos\", commonly known simply as Roscosmos (Роскосмос), is a state corporation of the Russian Federation responsible for space flights, cosmonautics programs, and aerospace research…",
+   "thumbnail": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6e/Roscosmos_logo_en.svg/330px-Roscosmos_logo_en.svg.png",
+   "logo": "https://commons.wikimedia.org/wiki/Special:FilePath/2022-roscosmos-logo-main-eng-1.png?width=320",
+   "parent": null,
+   "wikipedia": "https://en.wikipedia.org/wiki/Roscosmos",
+   "tier": "human-spaceflight",
+   "tierLabel": "Human spaceflight",
+   "tierRank": 5,
+   "capabilities": {
+    "firstSpaceTraveler": {
+     "has": true,
+     "detail": "Aleksandr Volkov"
+    },
+    "operatesSatellites": {
+     "has": true,
+     "detail": "Kosmos 2175"
+    },
+    "buildsSatellites": {
+     "has": true,
+     "detail": "Kosmos 2175"
+    },
+    "recoverablePayloads": {
+     "has": true,
+     "detail": "Soyuz TM-14"
+    },
+    "launchSite": {
+     "has": true,
+     "detail": "Plesetsk"
+    },
+    "suborbitalLaunch": {
+     "has": true,
+     "detail": null
+    },
+    "orbitalLaunch": {
+     "has": true,
+     "detail": "Soyuz-U"
+    },
+    "cryogenicEngine": {
+     "has": true,
+     "detail": null
+    },
+    "reusableSystems": {
+     "has": true,
+     "detail": "Soyuz-7 2028"
+    },
+    "flyby": {
+     "has": false,
+     "detail": null
+    },
+    "extraterrestrialOrbiter": {
+     "has": true,
+     "detail": "ExoMars Trace Gas Orbiter"
+    },
+    "surfaceImpact": {
+     "has": true,
+     "detail": "Luna 25"
+    },
+    "softLanding": {
+     "has": false,
+     "detail": null
+    },
+    "rover": {
+     "has": false,
+     "detail": null
+    },
+    "sampleReturn": {
+     "has": false,
+     "detail": null
+    },
+    "crewedLaunch": {
+     "has": true,
+     "detail": "Soyuz TM-14"
+    },
+    "eva": {
+     "has": true,
+     "detail": "Mir, Aleksandr Volkov and Sergei Krikalev"
+    },
+    "rendezvousDocking": {
+     "has": true,
+     "detail": "Soyuz TM-14 to Mir"
+    },
+    "spaceStation": {
+     "has": true,
+     "detail": "Mir"
+    },
+    "circumlunarFlight": {
+     "has": false,
+     "detail": null
+    },
+    "moonLanding": {
+     "has": false,
+     "detail": null
+    }
+   }
+  },
+  {
+   "id": "royal-belgian-institute-for-space-aeronomy",
+   "name": "Royal Belgian Institute for Space Aeronomy",
+   "acronym": "BIRA",
+   "country": "Belgium",
+   "iso2": "BE",
+   "iso3": "BEL",
+   "flag": "🇧🇪",
+   "region": "Europe",
+   "subregion": "Western Europe",
+   "supranational": false,
+   "historical": false,
+   "founded": "1964-11-25",
+   "foundedYear": 1964,
+   "headquarters": "Uccle",
+   "coordinates": [
+    50.7968,
+    4.357
+   ],
+   "website": "https://www.aeronomie.be/",
+   "employees": null,
+   "budget": null,
+   "summary": "The Royal Belgian Institute for Space Aeronomy (BIRA-IASB) (Dutch: Koninklijk Belgisch Instituut voor Ruimte-Aeronomie - BIRA, French: Institut royal d'aéronomie spatiale de Belgique - IASB) is a Belgian federal scientific research institute…",
+   "thumbnail": null,
+   "logo": null,
+   "parent": null,
+   "wikipedia": "https://en.wikipedia.org/wiki/Royal_Belgian_Institute_for_Space_Aeronomy",
+   "tier": "satellite-operator",
+   "tierLabel": "Satellite operator",
+   "tierRank": 2,
+   "capabilities": {
+    "firstSpaceTraveler": {
+     "has": true,
+     "detail": "Dirk Frimout"
+    },
+    "operatesSatellites": {
+     "has": false,
+     "detail": null
+    },
+    "buildsSatellites": {
+     "has": true,
+     "detail": "PROBA-1"
+    },
+    "recoverablePayloads": {
+     "has": false,
+     "detail": null
+    }
+   }
+  },
+  {
+   "id": "rwanda-space-agency",
+   "name": "Rwanda Space Agency",
+   "acronym": "RSA",
+   "country": "Rwanda",
+   "iso2": "RW",
+   "iso3": "RWA",
+   "flag": "🇷🇼",
+   "region": "Africa",
+   "subregion": "Sub-Saharan Africa",
+   "supranational": false,
+   "historical": false,
+   "founded": "2021-01-01",
+   "foundedYear": 2021,
+   "headquarters": null,
+   "coordinates": null,
+   "website": null,
+   "employees": null,
+   "budget": null,
+   "summary": "The Rwanda Space Agency (RSA) is Rwanda's agency for aerospace research and economic development. Its responsibilities include advising the government of Rwanda on space policies, to implement those policies, to promote Rwanda's aerospace industry, and to conduct aerospace research. It was established in 2021.",
+   "thumbnail": null,
+   "logo": null,
+   "parent": null,
+   "wikipedia": "https://en.wikipedia.org/wiki/Rwanda_Space_Agency",
+   "tier": "satellite-operator",
+   "tierLabel": "Satellite operator",
+   "tierRank": 2,
+   "capabilities": {
+    "firstSpaceTraveler": {
+     "has": false,
+     "detail": null
+    },
+    "operatesSatellites": {
+     "has": true,
+     "detail": "RWASAT-1"
+    },
+    "buildsSatellites": {
+     "has": true,
+     "detail": "RWASAT-1"
+    },
+    "recoverablePayloads": {
+     "has": false,
+     "detail": null
+    }
+   }
+  },
+  {
+   "id": "saudi-space-agency",
+   "name": "Saudi Space Agency",
+   "acronym": "SSA",
+   "country": "Saudi Arabia",
+   "iso2": "SA",
+   "iso3": "SAU",
+   "flag": "🇸🇦",
+   "region": "Asia",
+   "subregion": "Western Asia",
+   "supranational": false,
+   "historical": false,
+   "founded": "1977-00-00",
+   "foundedYear": 1977,
+   "headquarters": "Riyadh",
+   "coordinates": null,
+   "website": "https://ssc.gov.sa/",
+   "employees": null,
+   "budget": null,
+   "summary": "The Saudi Space Agency (Arabic: وكالة الفضاء السعودية) is the national space agency of Saudi Arabia. It is an independent agency of the Government of Saudi Arabia responsible for the country's civil space activities…",
+   "thumbnail": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Saudi_Space_Agency_Logo.svg/330px-Saudi_Space_Agency_Logo.svg.png",
+   "logo": "https://commons.wikimedia.org/wiki/Special:FilePath/Saudi_Space_Agency_Logo.svg?width=320",
+   "parent": null,
+   "wikipedia": "https://en.wikipedia.org/wiki/Saudi_Space_Agency",
+   "tier": "satellite-operator",
+   "tierLabel": "Satellite operator",
+   "tierRank": 2,
+   "capabilities": {
+    "firstSpaceTraveler": {
+     "has": true,
+     "detail": "Sultan Bin Salman"
+    },
+    "operatesSatellites": {
+     "has": true,
+     "detail": "Arabsat-1A"
+    },
+    "buildsSatellites": {
+     "has": true,
+     "detail": "SaudiSat-4"
+    },
+    "recoverablePayloads": {
+     "has": false,
+     "detail": null
+    }
+   }
+  },
+  {
+   "id": "south-african-national-space-agency",
+   "name": "South African National Space Agency",
+   "acronym": "SANSA",
+   "country": "South Africa",
+   "iso2": "ZA",
+   "iso3": "ZAF",
+   "flag": "🇿🇦",
+   "region": "Africa",
+   "subregion": "Sub-Saharan Africa",
+   "supranational": false,
+   "historical": false,
+   "founded": "2010-12-09",
+   "foundedYear": 2010,
+   "headquarters": "Pretoria",
+   "coordinates": null,
+   "website": "http://www.sansa.org.za/",
+   "employees": null,
+   "budget": {
+    "usdMillions": 15,
+    "year": 2020
+   },
+   "summary": "The South African National Space Agency (SANSA) is South Africa's government agency responsible for the promotion and development of aeronautics and aerospace space research…",
+   "thumbnail": null,
+   "logo": null,
+   "parent": null,
+   "wikipedia": "https://en.wikipedia.org/wiki/South_African_National_Space_Agency",
+   "tier": "satellite-operator",
+   "tierLabel": "Satellite operator",
+   "tierRank": 2,
+   "capabilities": {
+    "firstSpaceTraveler": {
+     "has": true,
+     "detail": "Mark Shuttleworth"
+    },
+    "operatesSatellites": {
+     "has": true,
+     "detail": "SUNSAT"
+    },
+    "buildsSatellites": {
+     "has": true,
+     "detail": "SUNSAT"
+    },
+    "recoverablePayloads": {
+     "has": false,
+     "detail": null
+    }
+   }
+  },
+  {
+   "id": "soviet-space-program",
+   "name": "Soviet space program",
+   "acronym": "СССР",
+   "country": "Soviet Union",
+   "iso2": "SU",
+   "iso3": "SUN",
+   "flag": "🚩",
+   "region": "Europe",
+   "subregion": "Historical",
+   "supranational": false,
+   "historical": true,
+   "founded": "1955-01-01",
+   "foundedYear": 1955,
+   "headquarters": null,
+   "coordinates": null,
+   "website": null,
+   "employees": null,
+   "budget": null,
+   "summary": "The Soviet space program (Russian: Космическая программа СССР, romanized: Kosmicheskaya programma SSSR) was the state space program of the Soviet Union, active from 1951 until the dissolution of the Soviet Union in 1991…",
+   "thumbnail": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/22/Sputnik-516.jpg/330px-Sputnik-516.jpg",
+   "logo": "https://commons.wikimedia.org/wiki/Special:FilePath/Sputnik_asm.jpg?width=320",
+   "parent": null,
+   "wikipedia": "https://en.wikipedia.org/wiki/Soviet_space_program",
+   "tier": "human-spaceflight",
+   "tierLabel": "Human spaceflight",
+   "tierRank": 5,
+   "capabilities": {
+    "firstSpaceTraveler": {
+     "has": true,
+     "detail": "Yuri Gagarin"
+    },
+    "operatesSatellites": {
+     "has": true,
+     "detail": "Sputnik 1"
+    },
+    "buildsSatellites": {
+     "has": true,
+     "detail": "Sputnik 1"
+    },
+    "recoverablePayloads": {
+     "has": true,
+     "detail": "Korabl-Sputnik 2"
+    },
+    "launchSite": {
+     "has": true,
+     "detail": "Baikonur"
+    },
+    "suborbitalLaunch": {
+     "has": true,
+     "detail": "GIRD-09"
+    },
+    "orbitalLaunch": {
+     "has": true,
+     "detail": "R-7 Sputnik"
+    },
+    "cryogenicEngine": {
+     "has": true,
+     "detail": "KVD-1"
+    },
+    "reusableSystems": {
+     "has": true,
+     "detail": "Buran"
+    },
+    "flyby": {
+     "has": true,
+     "detail": "Luna 1"
+    },
+    "extraterrestrialOrbiter": {
+     "has": true,
+     "detail": "Luna 10"
+    },
+    "surfaceImpact": {
+     "has": true,
+     "detail": "Luna 2"
+    },
+    "softLanding": {
+     "has": true,
+     "detail": "Luna 9"
+    },
+    "rover": {
+     "has": true,
+     "detail": "Lunokhod 1"
+    },
+    "sampleReturn": {
+     "has": true,
+     "detail": "Luna 16"
+    },
+    "crewedLaunch": {
+     "has": true,
+     "detail": "Vostok 1"
+    },
+    "eva": {
+     "has": true,
+     "detail": "Voskhod 2, · Alexei Leonov"
+    },
+    "rendezvousDocking": {
+     "has": true,
+     "detail": "Soyuz 4 to · Soyuz 5"
+    },
+    "spaceStation": {
+     "has": true,
+     "detail": "Salyut 1"
+    },
+    "circumlunarFlight": {
+     "has": false,
+     "detail": null
+    },
+    "moonLanding": {
+     "has": false,
+     "detail": null
+    }
+   }
+  },
+  {
+   "id": "azercosmos",
+   "name": "Space Agency of the Republic of Azerbaijan",
+   "acronym": "Azercosmos",
+   "country": "Azerbaijan",
+   "iso2": "AZ",
+   "iso3": "AZE",
+   "flag": "🇦🇿",
+   "region": "Asia",
+   "subregion": "Western Asia",
+   "supranational": false,
+   "historical": false,
+   "founded": "2010-01-01",
+   "foundedYear": 2010,
+   "headquarters": "Baku",
+   "coordinates": null,
+   "website": "https://azercosmos.az",
+   "employees": 200,
+   "budget": null,
+   "summary": "Space Agency of the Republic of Azerbaijan (Azercosmos) (Azerbaijani: Azərbaycan Respublikasının Kosmik Agentliyi - Azərkosmos) is a public legal entity under Azerbaijan Transport and Communication Holding (AZCON Holding) and successor of Azercosmos Open Joint Stock Company, the first satellite operator in the Caucasus…",
+   "thumbnail": null,
+   "logo": "https://commons.wikimedia.org/wiki/Special:FilePath/Azercosmos_logo_2021.png?width=320",
+   "parent": null,
+   "wikipedia": "https://en.wikipedia.org/wiki/Azercosmos",
+   "tier": "satellite-operator",
+   "tierLabel": "Satellite operator",
+   "tierRank": 2,
+   "capabilities": {
+    "firstSpaceTraveler": {
+     "has": true,
+     "detail": "Tuva Cihangir Atasever"
+    },
+    "operatesSatellites": {
+     "has": true,
+     "detail": "Azerspace-1"
+    },
+    "buildsSatellites": {
+     "has": true,
+     "detail": "Azersky-2"
+    },
+    "recoverablePayloads": {
+     "has": false,
+     "detail": null
+    }
+   }
+  },
+  {
+   "id": "space-florida",
+   "name": "Space Florida",
+   "acronym": "(FSA)",
+   "country": "United States",
+   "iso2": "US",
+   "iso3": "USA",
+   "flag": "🇺🇸",
+   "region": "Americas",
+   "subregion": "Northern America",
+   "supranational": false,
+   "historical": false,
+   "founded": "2006-09-01",
+   "foundedYear": 2006,
+   "headquarters": "Exploration Park",
+   "coordinates": [
+    28.515,
+    -80.6696
+   ],
+   "website": "http://www.spaceflorida.gov/",
+   "employees": null,
+   "budget": null,
+   "summary": "Space Florida is the aerospace finance, development, and spaceport authority for the State of Florida. Founded in 2006, with the vision for Florida to be the global and interplanetary hub for sustainable aerospace commerce…",
+   "thumbnail": null,
+   "logo": "https://commons.wikimedia.org/wiki/Special:FilePath/Space_Florida_(South_Campus_Office)_001.jpg?width=320",
+   "parent": null,
+   "wikipedia": "https://en.wikipedia.org/wiki/Space_Florida",
+   "tier": "satellite-operator",
+   "tierLabel": "Satellite operator",
+   "tierRank": 2,
+   "capabilities": {
+    "firstSpaceTraveler": {
+     "has": false,
+     "detail": null
+    },
+    "operatesSatellites": {
+     "has": true,
+     "detail": null
+    },
+    "buildsSatellites": {
+     "has": false,
+     "detail": null
+    },
+    "recoverablePayloads": {
+     "has": false,
+     "detail": null
+    }
+   }
+  },
+  {
+   "id": "space-research-and-technology-institute",
+   "name": "Space Research and Technology Institute",
+   "acronym": "SRI-BAS",
+   "country": "Bulgaria",
+   "iso2": "BG",
+   "iso3": "BGR",
+   "flag": "🇧🇬",
+   "region": "Europe",
+   "subregion": "Eastern Europe",
+   "supranational": false,
+   "historical": false,
+   "founded": "1987-01-01",
+   "foundedYear": 1987,
+   "headquarters": "Sofia",
+   "coordinates": null,
+   "website": "http://www.space.bas.bg",
+   "employees": null,
+   "budget": null,
+   "summary": "The Space Research and Technology Institute (Bulgarian: Институт за космически изследвания и технологии, romanized: Institut za kosmicheski izsledvaniya i tekhnologii) of the Bulgarian Academy of Sciences is a primary research body in the field of space science in Bulgaria…",
+   "thumbnail": null,
+   "logo": null,
+   "parent": "Bulgarian Academy of Sciences",
+   "wikipedia": "https://en.wikipedia.org/wiki/Space_Research_and_Technology_Institute",
+   "tier": "satellite-operator",
+   "tierLabel": "Satellite operator",
+   "tierRank": 2,
+   "capabilities": {
+    "firstSpaceTraveler": {
+     "has": true,
+     "detail": "Georgi Ivanov"
+    },
+    "operatesSatellites": {
+     "has": true,
+     "detail": "Bulgaria 1300"
+    },
+    "buildsSatellites": {
+     "has": true,
+     "detail": "Bulgaria 1300"
+    },
+    "recoverablePayloads": {
+     "has": false,
+     "detail": null
+    }
+   }
+  },
+  {
+   "id": "state-space-agency-of-ukraine",
+   "name": "State Space Agency of Ukraine",
+   "acronym": "SSAU",
+   "country": "Ukraine",
+   "iso2": "UA",
+   "iso3": "UKR",
+   "flag": "🇺🇦",
+   "region": "Europe",
+   "subregion": "Eastern Europe",
+   "supranational": false,
+   "historical": false,
+   "founded": "1992-03-02",
+   "foundedYear": 1992,
+   "headquarters": "Kyiv",
+   "coordinates": null,
+   "website": "https://www.nkau.gov.ua/ua/",
+   "employees": null,
+   "budget": {
+    "usdMillions": 107,
+    "year": 2022
+   },
+   "summary": "The State Space Agency of Ukraine (SSAU; Ukrainian: Державне космічне агентство України (ДКАУ), romanized: Derzhavne kosmichne ahentstvo Ukrainy) is the Ukrainian government agency responsible for space policy and programs…",
+   "thumbnail": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b3/NSAU_Logo1.svg/330px-NSAU_Logo1.svg.png",
+   "logo": "https://commons.wikimedia.org/wiki/Special:FilePath/NSAU_Logo1.svg?width=320",
+   "parent": null,
+   "wikipedia": "https://en.wikipedia.org/wiki/State_Space_Agency_of_Ukraine",
+   "tier": "orbital-launch",
+   "tierLabel": "Orbital launch",
+   "tierRank": 3,
+   "capabilities": {
+    "firstSpaceTraveler": {
+     "has": true,
+     "detail": "Leonid Kadenyuk"
+    },
+    "operatesSatellites": {
+     "has": true,
+     "detail": null
+    },
+    "buildsSatellites": {
+     "has": true,
+     "detail": "Sich-1"
+    },
+    "recoverablePayloads": {
+     "has": false,
+     "detail": null
+    },
+    "launchSite": {
+     "has": false,
+     "detail": null
+    },
+    "suborbitalLaunch": {
+     "has": true,
+     "detail": null
+    },
+    "orbitalLaunch": {
+     "has": true,
+     "detail": "Dnepr"
+    },
+    "cryogenicEngine": {
+     "has": false,
+     "detail": null
+    },
+    "reusableSystems": {
+     "has": false,
+     "detail": null
+    }
+   }
+  },
+  {
+   "id": "swedish-national-space-agency",
+   "name": "Swedish National Space Agency",
+   "acronym": "SNSA",
+   "country": "Sweden",
+   "iso2": "SE",
+   "iso3": "SWE",
+   "flag": "🇸🇪",
+   "region": "Europe",
+   "subregion": "Northern Europe",
+   "supranational": false,
+   "historical": false,
+   "founded": "1972-00-00",
+   "foundedYear": 1972,
+   "headquarters": "Solna Municipality",
+   "coordinates": null,
+   "website": "http://www.rymdstyrelsen.se",
+   "employees": null,
+   "budget": {
+    "usdMillions": 120,
+    "year": 2022
+   },
+   "summary": "The Swedish National Space Agency (SNSA, Swedish: Rymdstyrelsen) is a government agency in Sweden operating under the Swedish Ministry of Education and Science…",
+   "thumbnail": null,
+   "logo": "https://commons.wikimedia.org/wiki/Special:FilePath/Rymdstyrelsens_logotyp.svg?width=320",
+   "parent": "Ministry of Education and Research",
+   "wikipedia": "https://en.wikipedia.org/wiki/Swedish_National_Space_Agency",
+   "tier": "satellite-operator",
+   "tierLabel": "Satellite operator",
+   "tierRank": 2,
+   "capabilities": {
+    "firstSpaceTraveler": {
+     "has": true,
+     "detail": "Christer Fuglesang"
+    },
+    "operatesSatellites": {
+     "has": true,
+     "detail": "Viking"
+    },
+    "buildsSatellites": {
+     "has": true,
+     "detail": null
+    },
+    "recoverablePayloads": {
+     "has": false,
+     "detail": null
+    },
+    "launchSite": {
+     "has": true,
+     "detail": "Esrange"
+    },
+    "suborbitalLaunch": {
+     "has": true,
+     "detail": "Maser"
+    },
+    "orbitalLaunch": {
+     "has": false,
+     "detail": null
+    },
+    "cryogenicEngine": {
+     "has": false,
+     "detail": null
+    },
+    "reusableSystems": {
+     "has": false,
+     "detail": null
+    }
+   }
+  },
+  {
+   "id": "swiss-space-office",
+   "name": "Swiss Space Office",
+   "acronym": "SSO",
+   "country": "Switzerland",
+   "iso2": "CH",
+   "iso3": "CHE",
+   "flag": "🇨🇭",
+   "region": "Europe",
+   "subregion": "Western Europe",
+   "supranational": false,
+   "historical": false,
+   "founded": "1998-00-00",
+   "foundedYear": 1998,
+   "headquarters": "Bern",
+   "coordinates": null,
+   "website": null,
+   "employees": null,
+   "budget": {
+    "usdMillions": 177,
+    "year": 2019
+   },
+   "summary": "The Swiss Space Office (SSO)[1] is the federal government's competence centre for national and international space matters. In its role it cooperates closely with other federal offices and is responsible for the preparation and implementation of the policy and strategic orientations of the space domain in Switzerland…",
+   "thumbnail": "https://upload.wikimedia.org/wikipedia/commons/9/9a/Swiss_Space_Office_Logo.png",
+   "logo": "https://commons.wikimedia.org/wiki/Special:FilePath/Swiss_Space_Office_Logo.png?width=320",
+   "parent": null,
+   "wikipedia": "https://en.wikipedia.org/wiki/Swiss_Space_Office",
+   "tier": "satellite-operator",
+   "tierLabel": "Satellite operator",
+   "tierRank": 2,
+   "capabilities": {
+    "firstSpaceTraveler": {
+     "has": false,
+     "detail": null
+    },
+    "operatesSatellites": {
+     "has": true,
+     "detail": "SwissCube-1"
+    },
+    "buildsSatellites": {
+     "has": true,
+     "detail": "SwissCube-1"
+    },
+    "recoverablePayloads": {
+     "has": false,
+     "detail": null
+    }
+   }
+  },
+  {
+   "id": "syrian-space-agency",
+   "name": "Syrian Space Agency",
+   "acronym": "SSA",
+   "country": "Syria",
+   "iso2": "SY",
+   "iso3": "SYR",
+   "flag": "🇸🇾",
+   "region": "Asia",
+   "subregion": "Western Asia",
+   "supranational": false,
+   "historical": false,
+   "founded": "2014-03-18",
+   "foundedYear": 2014,
+   "headquarters": "Damascus",
+   "coordinates": null,
+   "website": "http://https://www.facebook.com/syriaspace",
+   "employees": null,
+   "budget": null,
+   "summary": "The Syrian Space Agency (Arabic: وكالة الفضاء والطيران السورية, romanized: Wakālat al-Faḍāʼ wa-al-Ṭayarān al-Sūrīyah) is a government run organization overseen by the Syrian Minister of Communications and Technology, Iyad Mohammad al-Khatib, and dedicated to space exploration.",
+   "thumbnail": null,
+   "logo": null,
+   "parent": null,
+   "wikipedia": "https://en.wikipedia.org/wiki/Syrian_Space_Agency",
+   "tier": "emerging",
+   "tierLabel": "Emerging agency",
+   "tierRank": 1,
+   "capabilities": {
+    "firstSpaceTraveler": {
+     "has": true,
+     "detail": "Muhammed Faris"
+    },
+    "operatesSatellites": {
+     "has": false,
+     "detail": null
+    },
+    "buildsSatellites": {
+     "has": false,
+     "detail": null
+    },
+    "recoverablePayloads": {
+     "has": false,
+     "detail": null
+    }
+   }
+  },
+  {
+   "id": "taiwan-space-agency",
+   "name": "Taiwan Space Agency",
+   "acronym": "TASA",
+   "country": "Taiwan",
+   "iso2": "TW",
+   "iso3": "TWN",
+   "flag": "🇹🇼",
+   "region": "Asia",
+   "subregion": "Eastern Asia",
+   "supranational": false,
+   "historical": false,
+   "founded": "1991-10-03",
+   "foundedYear": 1991,
+   "headquarters": "Hsinchu City",
+   "coordinates": [
+    24.7847,
+    121.002
+   ],
+   "website": "https://www.tasa.org.tw",
+   "employees": null,
+   "budget": null,
+   "summary": "Taiwan Space Agency (abbreviated TASA), formerly the National Space Organization (NSPO) from 1991 to 2023, is the national civilian space agency of Taiwan, under the auspices of the National Science and Technology Council. TASA is involved in the development of space technologies and related research.",
+   "thumbnail": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5d/Taiwan_Space_Agency_office_2024-11-06.jpg/330px-Taiwan_Space_Agency_office_2024-11-06.jpg",
+   "logo": null,
+   "parent": null,
+   "wikipedia": "https://en.wikipedia.org/wiki/Taiwan_Space_Agency",
+   "tier": "satellite-operator",
+   "tierLabel": "Satellite operator",
+   "tierRank": 2,
+   "capabilities": {
+    "firstSpaceTraveler": {
+     "has": false,
+     "detail": null
+    },
+    "operatesSatellites": {
+     "has": true,
+     "detail": "ST-1"
+    },
+    "buildsSatellites": {
+     "has": true,
+     "detail": "Formosat-1"
+    },
+    "recoverablePayloads": {
+     "has": false,
+     "detail": null
+    }
+   }
+  },
+  {
+   "id": "uzbekcosmos",
+   "name": "The Space Research and Technology Agency under the Ministry of",
+   "acronym": "Uzbekspace agency",
+   "country": "Uzbekistan",
+   "iso2": "UZ",
+   "iso3": "UZB",
+   "flag": "🇺🇿",
+   "region": "Asia",
+   "subregion": "Central Asia",
+   "supranational": false,
+   "historical": false,
+   "founded": "2019-01-01",
+   "foundedYear": 2019,
+   "headquarters": null,
+   "coordinates": null,
+   "website": null,
+   "employees": null,
+   "budget": null,
+   "summary": "The Space Research and Technology Agency under the Ministry of Digital Technologies of the Republic of Uzbekistan (Uzbek: O'zbekiston Respublikasi Raqamli texnologiyalar vazirligi huzuridagi Kosmik tadqiqotlar va texnologiyalar agentligi) also known as Uzbekspace Agency (Uzbek: \"O'zbekkosmos\" agentligi) is the official…",
+   "thumbnail": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/db/Uzbekcosmos.png/330px-Uzbekcosmos.png",
+   "logo": null,
+   "parent": null,
+   "wikipedia": "https://en.wikipedia.org/wiki/Uzbekcosmos",
+   "tier": "emerging",
+   "tierLabel": "Emerging agency",
+   "tierRank": 1,
+   "capabilities": {
+    "firstSpaceTraveler": {
+     "has": false,
+     "detail": null
+    },
+    "operatesSatellites": {
+     "has": false,
+     "detail": null
+    },
+    "buildsSatellites": {
+     "has": false,
+     "detail": null
+    },
+    "recoverablePayloads": {
+     "has": false,
+     "detail": null
+    }
+   }
+  },
+  {
+   "id": "turkish-space-agency",
+   "name": "Turkish Space Agency",
+   "acronym": "TUA",
+   "country": "Türkiye",
+   "iso2": "TR",
+   "iso3": "TUR",
+   "flag": "🇹🇷",
+   "region": "Asia",
+   "subregion": "Western Asia",
+   "supranational": false,
+   "historical": false,
+   "founded": "1985-01-01",
+   "foundedYear": 1985,
+   "headquarters": "Ankara",
+   "coordinates": null,
+   "website": "http://tua.gov.tr/",
+   "employees": null,
+   "budget": {
+    "usdMillions": 207.3,
+    "year": 2026
+   },
+   "summary": "The Turkish Space Agency (Turkish: Türkiye Uzay Ajansı, TUA) is a government agency for national aerospace research as a part of the space program of Turkey. It was formally established by a presidential decree on 13 December 2018…",
+   "thumbnail": null,
+   "logo": "https://commons.wikimedia.org/wiki/Special:FilePath/Logo_of_Turkish_Space_Agency_(English).svg?width=320",
+   "parent": "Ministry of Science, Industry and Technology",
+   "wikipedia": "https://en.wikipedia.org/wiki/Turkish_Space_Agency",
+   "tier": "satellite-operator",
+   "tierLabel": "Satellite operator",
+   "tierRank": 2,
+   "capabilities": {
+    "firstSpaceTraveler": {
+     "has": true,
+     "detail": "Alper Gezeravcı"
+    },
+    "operatesSatellites": {
+     "has": true,
+     "detail": "Türksat 1A"
+    },
+    "buildsSatellites": {
+     "has": true,
+     "detail": "Göktürk-2"
+    },
+    "recoverablePayloads": {
+     "has": false,
+     "detail": null
+    }
+   }
+  },
+  {
+   "id": "turkmenistan-national-space-agency",
+   "name": "Turkmenistan National Space Agency",
+   "acronym": "TNSA",
+   "country": "Turkmenistan",
+   "iso2": "TM",
+   "iso3": "TKM",
+   "flag": "🇹🇲",
+   "region": "Asia",
+   "subregion": "Central Asia",
+   "supranational": false,
+   "historical": false,
+   "founded": "2011-00-00",
+   "foundedYear": 2011,
+   "headquarters": "Ashgabat",
+   "coordinates": null,
+   "website": "https://turkmencosmos.gov.tm/",
+   "employees": null,
+   "budget": null,
+   "summary": "Turkmenistan National Space Agency (Turkmen: «Türkmenaragatnaşyk» agentliginiň Kosmos müdirligi) is a governmental body that coordinates all Turkmenistan space research programs with scientific and commercial goals. It was established in 2011. In 2019, transferred to the jurisdiction of the Turkmenaragatnashyk Agency.",
+   "thumbnail": null,
+   "logo": null,
+   "parent": null,
+   "wikipedia": "https://en.wikipedia.org/wiki/Turkmenistan_National_Space_Agency",
+   "tier": "satellite-operator",
+   "tierLabel": "Satellite operator",
+   "tierRank": 2,
+   "capabilities": {
+    "firstSpaceTraveler": {
+     "has": true,
+     "detail": "Oleg Kononenko"
+    },
+    "operatesSatellites": {
+     "has": true,
+     "detail": "TürkmenÄlem52E / MonacoSAT"
+    },
+    "buildsSatellites": {
+     "has": false,
+     "detail": null
+    },
+    "recoverablePayloads": {
+     "has": false,
+     "detail": null
+    }
+   }
+  },
+  {
+   "id": "uk-space-agency",
+   "name": "UK Space Agency",
+   "acronym": "UKSA",
+   "country": "United Kingdom",
+   "iso2": "GB",
+   "iso3": "GBR",
+   "flag": "🇬🇧",
+   "region": "Europe",
+   "subregion": "Northern Europe",
+   "supranational": false,
+   "historical": false,
+   "founded": "2010-04-01",
+   "foundedYear": 2010,
+   "headquarters": "Polaris House",
+   "coordinates": null,
+   "website": "https://gov.uk/uksa",
+   "employees": null,
+   "budget": {
+    "usdMillions": 604,
+    "year": 2021
+   },
+   "summary": "The UK Space Agency (UKSA) is a unit within the Department for Business, Innovation, Science and Trade (DSIT), responsible for the United Kingdom's civil space programme…",
+   "thumbnail": null,
+   "logo": "https://commons.wikimedia.org/wiki/Special:FilePath/UK_Space_Agency_text-only_logo.png?width=320",
+   "parent": null,
+   "wikipedia": "https://en.wikipedia.org/wiki/UK_Space_Agency",
+   "tier": "orbital-launch",
+   "tierLabel": "Orbital launch",
+   "tierRank": 3,
+   "capabilities": {
+    "firstSpaceTraveler": {
+     "has": true,
+     "detail": "Helen Sharman"
+    },
+    "operatesSatellites": {
+     "has": true,
+     "detail": "Ariel 1"
+    },
+    "buildsSatellites": {
+     "has": true,
+     "detail": "Prospero"
+    },
+    "recoverablePayloads": {
+     "has": false,
+     "detail": null
+    },
+    "launchSite": {
+     "has": true,
+     "detail": null
+    },
+    "suborbitalLaunch": {
+     "has": true,
+     "detail": null
+    },
+    "orbitalLaunch": {
+     "has": true,
+     "detail": null
+    },
+    "cryogenicEngine": {
+     "has": false,
+     "detail": null
+    },
+    "reusableSystems": {
+     "has": false,
+     "detail": null
+    }
+   }
+  },
+  {
+   "id": "united-arab-emirates-space-agency",
+   "name": "United Arab Emirates Space Agency",
+   "acronym": "UAESA",
+   "country": "United Arab Emirates",
+   "iso2": "AE",
+   "iso3": "ARE",
+   "flag": "🇦🇪",
+   "region": "Asia",
+   "subregion": "Western Asia",
+   "supranational": false,
+   "historical": false,
+   "founded": "2014-00-00",
+   "foundedYear": 2014,
+   "headquarters": "Abu Dhabi",
+   "coordinates": null,
+   "website": "http://www.space.gov.ae/",
+   "employees": null,
+   "budget": null,
+   "summary": "The United Arab Emirates Space Agency (UAESA) (Arabic: وكالة الإمارات للفضاء translit: wikālat al-Imārāt l-lifaḍā') is the space agency of the United Arab Emirates government responsible for the development of the country's space industry…",
+   "thumbnail": null,
+   "logo": "https://commons.wikimedia.org/wiki/Special:FilePath/United_Arab_Emirates_Space_Agency_Logo.svg?width=320",
+   "parent": null,
+   "wikipedia": "https://en.wikipedia.org/wiki/United_Arab_Emirates_Space_Agency",
+   "tier": "deep-space",
+   "tierLabel": "Deep space exploration",
+   "tierRank": 4,
+   "capabilities": {
+    "firstSpaceTraveler": {
+     "has": true,
+     "detail": "Hazza Al Mansouri"
+    },
+    "operatesSatellites": {
+     "has": true,
+     "detail": "Thuraya 2"
+    },
+    "buildsSatellites": {
+     "has": true,
+     "detail": "KhalifaSat"
+    },
+    "recoverablePayloads": {
+     "has": false,
+     "detail": null
+    },
+    "extraterrestrialOrbiter": {
+     "has": true,
+     "detail": "Emirates Mars Mission"
+    },
+    "surfaceImpact": {
+     "has": false,
+     "detail": null
+    },
+    "softLanding": {
+     "has": false,
+     "detail": null
+    },
+    "rover": {
+     "has": false,
+     "detail": null
+    },
+    "sampleReturn": {
+     "has": false,
+     "detail": null
+    }
+   }
+  },
+  {
+   "id": "united-nations-committee-on-the-peaceful-uses-of-outer-space",
+   "name": "United Nations Committee on the Peaceful Uses of Outer Space",
+   "acronym": "UNCOPUOS",
+   "country": "United Nations",
+   "iso2": "UN",
+   "iso3": "UNO",
+   "flag": "🇺🇳",
+   "region": "International",
+   "subregion": "Supranational",
+   "supranational": true,
+   "historical": false,
+   "founded": "1959-12-12",
+   "foundedYear": 1959,
+   "headquarters": "Vienna",
+   "coordinates": null,
+   "website": "https://www.unoosa.org/oosa/en/ourwork/copuos/index.html",
+   "employees": null,
+   "budget": null,
+   "summary": "The United Nations Committee on the Peaceful Uses of Outer Space (COPUOS) is a United Nations committee whose main task is to review and foster international cooperation in the peaceful uses of outer space, as well as to consider legal issues arising from the exploration of outer space…",
+   "thumbnail": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/52/Emblem_of_the_United_Nations.svg/330px-Emblem_of_the_United_Nations.svg.png",
+   "logo": null,
+   "parent": "United Nations Office for Outer Space Affairs",
+   "wikipedia": "https://en.wikipedia.org/wiki/United_Nations_Committee_on_the_Peaceful_Uses_of_Outer_Space",
+   "tier": "emerging",
+   "tierLabel": "Emerging agency",
+   "tierRank": 1,
+   "capabilities": {
+    "firstSpaceTraveler": {
+     "has": false,
+     "detail": null
+    },
+    "operatesSatellites": {
+     "has": false,
+     "detail": null
+    },
+    "buildsSatellites": {
+     "has": false,
+     "detail": null
+    },
+    "recoverablePayloads": {
+     "has": false,
+     "detail": null
+    }
+   }
+  },
+  {
+   "id": "united-nations-office-for-outer-space-affairs",
+   "name": "United Nations Office for Outer Space Affairs",
+   "acronym": "UNOOSA",
+   "country": "United Nations",
+   "iso2": "UN",
+   "iso3": "UNO",
+   "flag": "🇺🇳",
+   "region": "International",
+   "subregion": "Supranational",
+   "supranational": true,
+   "historical": false,
+   "founded": "1958-12-13",
+   "foundedYear": 1958,
+   "headquarters": "Vienna",
+   "coordinates": null,
+   "website": "https://www.unoosa.org/",
+   "employees": null,
+   "budget": null,
+   "summary": "The United Nations Office for Outer Space Affairs (UNOOSA) is an office of the U.N. Secretariat that promotes and facilitates peaceful international cooperation in outer space…",
+   "thumbnail": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f2/Austria_august2010_0073.jpg/330px-Austria_august2010_0073.jpg",
+   "logo": "https://commons.wikimedia.org/wiki/Special:FilePath/United_Nations_Office_for_Outer_Space_Affairs_Logo.svg?width=320",
+   "parent": null,
+   "wikipedia": "https://en.wikipedia.org/wiki/United_Nations_Office_for_Outer_Space_Affairs",
+   "tier": "emerging",
+   "tierLabel": "Emerging agency",
+   "tierRank": 1,
+   "capabilities": {
+    "firstSpaceTraveler": {
+     "has": false,
+     "detail": null
+    },
+    "operatesSatellites": {
+     "has": false,
+     "detail": null
+    },
+    "buildsSatellites": {
+     "has": false,
+     "detail": null
+    },
+    "recoverablePayloads": {
+     "has": false,
+     "detail": null
+    }
+   }
+  },
+  {
+   "id": "vietnam-academy-of-science-and-technology",
+   "name": "Vietnam Academy of Science and Technology",
+   "acronym": "TTVTVN or VNSC",
+   "country": "Vietnam",
+   "iso2": "VN",
+   "iso3": "VNM",
+   "flag": "🇻🇳",
+   "region": "Asia",
+   "subregion": "South-eastern Asia",
+   "supranational": false,
+   "historical": false,
+   "founded": "2006-11-20",
+   "foundedYear": 2006,
+   "headquarters": null,
+   "coordinates": [
+    21.0469,
+    105.8003
+   ],
+   "website": "https://vast.gov.vn",
+   "employees": null,
+   "budget": null,
+   "summary": "The Vietnam Academy of Science and Technology (VAST; Vietnamese: Viện Hàn lâm Khoa học và Công nghệ Việt Nam) is the largest and most prominent research institute in Vietnam. It was founded on 20 May 1975 as the Vietnam Academy of Science, then subsequently assumed its current name in 2008…",
+   "thumbnail": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c6/Nhadieuhanh.jpg/330px-Nhadieuhanh.jpg",
+   "logo": null,
+   "parent": null,
+   "wikipedia": "https://en.wikipedia.org/wiki/Vietnam_Academy_of_Science_and_Technology",
+   "tier": "satellite-operator",
+   "tierLabel": "Satellite operator",
+   "tierRank": 2,
+   "capabilities": {
+    "firstSpaceTraveler": {
+     "has": true,
+     "detail": "Phạm Tuân"
+    },
+    "operatesSatellites": {
+     "has": true,
+     "detail": "Vinasat-1"
+    },
+    "buildsSatellites": {
+     "has": true,
+     "detail": "F-1"
+    },
+    "recoverablePayloads": {
+     "has": false,
+     "detail": null
+    }
+   }
+  },
+  {
+   "id": "virginia-spaceport-authority",
+   "name": "Virginia Spaceport Authority",
+   "acronym": null,
+   "country": "United States",
+   "iso2": "US",
+   "iso3": "USA",
+   "flag": "🇺🇸",
+   "region": "Americas",
+   "subregion": "Northern America",
+   "supranational": false,
+   "historical": false,
+   "founded": "1995-07-01",
+   "foundedYear": 1995,
+   "headquarters": null,
+   "coordinates": null,
+   "website": "https://www.vaspace.org/",
+   "employees": null,
+   "budget": null,
+   "summary": "The Virginia Spaceport Authority, also known as Virginia Space, is a political subdivision of the Commonwealth of Virginia headquartered in Norfolk, Virginia focused on bringing commercial spaceflight to Virginia and providing education in aerospace technologies across the Commonwealth…",
+   "thumbnail": null,
+   "logo": null,
+   "parent": null,
+   "wikipedia": "https://en.wikipedia.org/wiki/Virginia_Spaceport_Authority",
+   "tier": "satellite-operator",
+   "tierLabel": "Satellite operator",
+   "tierRank": 2,
+   "capabilities": {
+    "firstSpaceTraveler": {
+     "has": false,
+     "detail": null
+    },
+    "operatesSatellites": {
+     "has": true,
+     "detail": null
+    },
+    "buildsSatellites": {
+     "has": false,
+     "detail": null
+    },
+    "recoverablePayloads": {
+     "has": false,
+     "detail": null
+    }
+   }
+  }
+ ]
+}
