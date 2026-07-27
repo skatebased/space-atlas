@@ -189,13 +189,31 @@ export function templateDate(text) {
 
 /**
  * Splits a `{| ... |}` wikitable into rows of raw cell strings.
- * Header rows (`!`) and the caption are skipped.
+ *
+ * `rowspan` cells are carried down into the rows they cover and `colspan`
+ * cells are repeated, so every returned row has the same column meaning.
+ * That matters on pages that list one product per row under a single
+ * `rowspan`-ed company cell.
  */
 export function parseTable(tableText) {
+  return parseTableFull(tableText).rows;
+}
+
+/** Column headings of a wikitable, as plain text. */
+export function tableHeaders(tableText) {
+  return parseTableFull(tableText).headers;
+}
+
+/** Shared implementation behind `parseTable` and `tableHeaders`. */
+export function parseTableFull(tableText) {
   const body = tableText
     .replace(/^\{\|[^\n]*\n/, '')
     .replace(/\n\|\}\s*$/, '');
+
   const rows = [];
+  const headers = [];
+  /** Cells still spanning down from an earlier row. */
+  let carried = [];
 
   for (const chunk of body.split(/\n\|-[^\n]*/)) {
     const cells = [];
@@ -209,22 +227,93 @@ export function parseTable(tableText) {
 
       if (!continuing) {
         if (/^[!|]\+/.test(line)) continue; // caption
-        if (/^!/.test(line)) continue; // header
+        if (/^!/.test(line)) {
+          // Headers may be `! a !! b` on one line, or one per line.
+          for (const piece of line.slice(1).split('!!')) {
+            const text = plainText(stripCellAttributes(piece));
+            if (text) headers.push(text);
+          }
+          continue;
+        }
         if (/^\|/.test(line)) {
           // One line may hold several cells separated by `||`.
           for (const piece of splitTopLevelCells(line.slice(1))) {
-            cells.push(stripCellAttributes(piece));
+            cells.push(readCell(piece));
           }
           continue;
         }
       }
       // Continuation of the previous cell (wrapped refs, lists, templates).
-      if (cells.length) cells[cells.length - 1] += `\n${line}`;
+      if (cells.length) cells[cells.length - 1].text += `\n${line}`;
     }
 
-    if (cells.length) rows.push(cells.map((c) => c.trim()));
+    if (!cells.length) continue;
+
+    const { row, nextCarried } = applySpans(cells, carried);
+    carried = nextCarried;
+    rows.push(row);
   }
-  return rows;
+
+  return { headers, rows };
+}
+
+/** Reads one raw cell into `{ text, rowspan, colspan }`. */
+function readCell(piece) {
+  const attributes = piece.match(
+    /^\s*((?:[a-zA-Z-]+\s*=\s*(?:"[^"]*"|'[^']*'|\S+)\s*)+)\|(?!\|)/,
+  );
+  const span = (name) => {
+    const found = attributes?.[1].match(
+      new RegExp(`${name}\\s*=\\s*["']?(\\d+)`, 'i'),
+    );
+    const value = Number(found?.[1]);
+    return Number.isFinite(value) && value > 0 ? value : 1;
+  };
+  return {
+    text: attributes ? piece.slice(attributes[0].length) : piece,
+    rowspan: span('rowspan'),
+    colspan: span('colspan'),
+  };
+}
+
+/**
+ * Lays this row's own cells out around any still-spanning cells from earlier
+ * rows, and returns the spans that remain live for the next row.
+ */
+function applySpans(cells, carried) {
+  const row = [];
+  const nextCarried = [];
+  let index = 0;
+  let column = 0;
+
+  // Bounded so a malformed rowspan cannot spin forever.
+  for (let guard = 0; guard < 512; guard += 1) {
+    const active = carried.find((c) => c.column === column);
+    if (active) {
+      for (let k = 0; k < active.colspan; k += 1) row.push(active.text);
+      if (active.remaining > 1) {
+        nextCarried.push({ ...active, remaining: active.remaining - 1 });
+      }
+      column += active.colspan;
+      continue;
+    }
+
+    if (index >= cells.length) break;
+    const cell = cells[index];
+    index += 1;
+    for (let k = 0; k < cell.colspan; k += 1) row.push(cell.text);
+    if (cell.rowspan > 1) {
+      nextCarried.push({
+        column,
+        text: cell.text,
+        colspan: cell.colspan,
+        remaining: cell.rowspan - 1,
+      });
+    }
+    column += cell.colspan;
+  }
+
+  return { row: row.map((c) => c.trim()), nextCarried };
 }
 
 /** Net change in template / link / ref nesting contributed by one line. */
@@ -273,20 +362,31 @@ function splitTopLevelCells(line) {
 
 /** Drops leading `style="..." |` / `scope="row" |` attributes from a cell. */
 function stripCellAttributes(cell) {
-  const match = cell.match(
-    /^\s*((?:[a-zA-Z-]+\s*=\s*(?:"[^"]*"|'[^']*'|\S+)\s*)+)\|(?!\|)/,
-  );
-  return match ? cell.slice(match[0].length) : cell;
+  return readCell(cell).text;
 }
 
-/** Extracts the wikitables that follow a given `== Section ==` heading. */
+/**
+ * Extracts the wikitables under a given heading, at any heading level.
+ *
+ * The section ends at the next heading of the same or higher level, so asking
+ * for a `=== subsection ===` does not swallow its siblings.
+ */
 export function tablesInSection(wikitext, heading) {
   const escaped = heading.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-  const start = wikitext.search(new RegExp(`^={2,4}\\s*${escaped}\\s*={2,4}`, 'm'));
-  if (start === -1) return [];
+  const match = wikitext.match(
+    new RegExp(`^(={2,6})\\s*${escaped}\\s*\\1\\s*$`, 'm'),
+  );
+  if (!match || match.index === undefined) return [];
 
-  const rest = wikitext.slice(start + 1);
-  const nextHeading = rest.search(/^={2}[^=]/m);
+  const level = match[1].length;
+  // Start after the heading line itself, not one character in.
+  const bodyStart = match.index + match[0].length;
+  const rest = wikitext.slice(bodyStart);
+
+  // End at the next heading that is no deeper than this one.
+  const nextHeading = rest.search(
+    new RegExp(`^={2,${level}}[^=]`, 'm'),
+  );
   const section = nextHeading === -1 ? rest : rest.slice(0, nextHeading);
 
   const tables = [];

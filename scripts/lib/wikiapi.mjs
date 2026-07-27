@@ -139,18 +139,29 @@ function tidyExtract(text) {
   return `${stop > 120 ? cut.slice(0, stop) : cut.trimEnd()}…`;
 }
 
-/** Claim property IDs pulled from each agency's Wikidata item. */
+/** Claim property IDs pulled from each organisation's Wikidata item. */
 const PROPS = {
   inception: 'P571',
   headquarters: 'P159',
   website: 'P856',
   employees: 'P1128',
   country: 'P17',
+  countryOfOrigin: 'P495',
+  location: 'P276',
   logo: 'P154',
   image: 'P18',
   parent: 'P749',
   coordinates: 'P625',
 };
+
+/** Properties whose values are entities needing a second lookup. */
+const ENTITY_PROPS = [
+  PROPS.headquarters,
+  PROPS.country,
+  PROPS.countryOfOrigin,
+  PROPS.location,
+  PROPS.parent,
+];
 
 /** Reads the preferred value out of a Wikidata claim list. */
 function claimValue(claims, prop) {
@@ -190,23 +201,53 @@ export async function fetchEntities(qids) {
   // Collect referenced entities so their labels can be resolved in one go.
   const referenced = new Set();
   for (const claims of raw.values()) {
-    for (const prop of [PROPS.headquarters, PROPS.country, PROPS.parent]) {
+    for (const prop of ENTITY_PROPS) {
       const value = claimValue(claims, prop);
       if (value?.type === 'wikibase-entityid' && value.value?.id) {
         referenced.add(value.value.id);
       }
     }
   }
-  const labels = await fetchLabels([...referenced]);
+
+  // Many company items have no country (P17) but do name a headquarters city.
+  // Fetch the referenced entities' own claims so that city's country can be
+  // used as a fallback, then resolve every label in one final pass.
+  const referencedClaims = await fetchClaims([...referenced]);
+  const secondHop = new Set();
+  for (const claims of referencedClaims.values()) {
+    const value = claimValue(claims, PROPS.country);
+    if (value?.type === 'wikibase-entityid' && value.value?.id) {
+      secondHop.add(value.value.id);
+    }
+  }
+  const labels = await fetchLabels([...referenced, ...secondHop]);
+
+  /** The country an entity-valued property resolves to, one hop out. */
+  const countryOfEntity = (id) => {
+    const value = claimValue(referencedClaims.get(id), PROPS.country);
+    return value?.type === 'wikibase-entityid'
+      ? (labels.get(value.value.id) ?? null)
+      : null;
+  };
 
   const out = new Map();
   for (const [qid, claims] of raw) {
-    const entityLabel = (prop) => {
+    const entityId = (prop) => {
       const value = claimValue(claims, prop);
-      return value?.type === 'wikibase-entityid'
-        ? (labels.get(value.value.id) ?? null)
-        : null;
+      return value?.type === 'wikibase-entityid' ? value.value.id : null;
     };
+    const entityLabel = (prop) => {
+      const id = entityId(prop);
+      return id ? (labels.get(id) ?? null) : null;
+    };
+    /** Country, preferring the explicit claim over the headquarters' country. */
+    const resolveCountry = () =>
+      entityLabel(PROPS.country) ??
+      entityLabel(PROPS.countryOfOrigin) ??
+      (entityId(PROPS.headquarters) &&
+        countryOfEntity(entityId(PROPS.headquarters))) ??
+      (entityId(PROPS.location) && countryOfEntity(entityId(PROPS.location))) ??
+      null;
 
     const inception = claimValue(claims, PROPS.inception);
     const employees = claimValue(claims, PROPS.employees);
@@ -219,7 +260,7 @@ export async function fetchEntities(qids) {
         ? normaliseWikidataTime(inception.value.time)
         : null,
       headquarters: entityLabel(PROPS.headquarters),
-      country: entityLabel(PROPS.country),
+      country: resolveCountry(),
       parent: entityLabel(PROPS.parent),
       website: typeof website?.value === 'string' ? website.value : null,
       employees: Number.isFinite(Number(employees?.value?.amount))
@@ -234,6 +275,26 @@ export async function fetchEntities(qids) {
             ]
           : null,
     });
+  }
+  return out;
+}
+
+/** Fetches raw claims for a set of Q-ids (used for second-hop lookups). */
+async function fetchClaims(qids) {
+  const out = new Map();
+  for (const batch of chunk(qids, 40)) {
+    const params = new URLSearchParams({
+      action: 'wbgetentities',
+      format: 'json',
+      ids: batch.join('|'),
+      props: 'claims',
+      languages: 'en',
+    });
+    const data = await getJson(`${DATA_API}?${params}`);
+    for (const [qid, entity] of Object.entries(data?.entities ?? {})) {
+      if (entity.missing !== undefined) continue;
+      out.set(qid, entity.claims ?? {});
+    }
   }
   return out;
 }

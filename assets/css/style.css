@@ -1,5 +1,5 @@
 /* ==========================================================================
-   Space Agency Atlas
+   Space Atlas
    Two themes share one set of tokens; everything below styles the tokens.
    ========================================================================== */
 
@@ -585,6 +585,34 @@ main {
   font-variant-numeric: tabular-nums;
 }
 
+/* Government vs private marker. */
+.sector-chip {
+  margin-left: auto;
+  padding: 0.1rem 0.45rem;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  color: var(--text-faint);
+  font-size: 0.66rem;
+  font-weight: 550;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  white-space: nowrap;
+}
+
+.sector-chip--private {
+  border-color: color-mix(in srgb, var(--tier-4) 40%, transparent);
+  color: var(--tier-4);
+}
+
+.sector-chip--government {
+  border-color: color-mix(in srgb, var(--tier-2) 45%, transparent);
+  color: var(--tier-2);
+}
+
+.detail__subtitle .sector-chip {
+  margin-left: 0.4rem;
+}
+
 .is-historical {
   color: var(--tier-4);
   font-style: italic;
@@ -781,9 +809,10 @@ main {
 .histogram {
   display: flex;
   align-items: flex-end;
-  gap: 4px;
+  gap: 3px;
   height: 168px;
   padding-top: 0.5rem;
+  overflow-x: auto;
 }
 
 .histogram__col {
@@ -817,8 +846,9 @@ main {
 
 .histogram__label {
   color: var(--text-faint);
-  font-size: 0.68rem;
+  font-size: 0.62rem;
   font-variant-numeric: tabular-nums;
+  white-space: nowrap;
 }
 
 .histogram__count {

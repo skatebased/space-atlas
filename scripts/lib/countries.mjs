@@ -60,11 +60,15 @@ const NAME_ALIASES = {
   'south africa': 'ZAF',
   'united states': 'USA',
   'united states of america': 'USA',
+  "people's republic of china": 'CHN',
+  'republic of china': 'TWN',
+  "democratic people's republic of korea": 'PRK',
+  'islamic republic of iran': 'IRN',
+  'united kingdom of great britain and northern ireland': 'GBR',
   russia: 'RUS',
   'russian federation': 'RUS',
   iran: 'IRN',
   taiwan: 'TWN',
-  'republic of china': 'TWN',
   vietnam: 'VNM',
   laos: 'LAO',
   syria: 'SYR',
@@ -121,6 +125,29 @@ const NAME_ALIASES = {
   'vatican city': 'VAT',
 };
 
+/**
+ * Nationality adjectives, for the last-resort fallback used on company
+ * articles whose Wikidata item carries no location at all. Wikipedia intros
+ * almost always open "X is an American aerospace company…".
+ */
+const DEMONYMS = {
+  american: 'USA', chinese: 'CHN', japanese: 'JPN', indian: 'IND',
+  british: 'GBR', english: 'GBR', scottish: 'GBR', welsh: 'GBR',
+  french: 'FRA', german: 'DEU', italian: 'ITA', spanish: 'ESP',
+  russian: 'RUS', canadian: 'CAN', australian: 'AUS', swiss: 'CHE',
+  dutch: 'NLD', israeli: 'ISR', brazilian: 'BRA', mexican: 'MEX',
+  singaporean: 'SGP', norwegian: 'NOR', swedish: 'SWE', danish: 'DNK',
+  finnish: 'FIN', polish: 'POL', ukrainian: 'UKR', turkish: 'TUR',
+  emirati: 'ARE', argentine: 'ARG', argentinian: 'ARG', belgian: 'BEL',
+  austrian: 'AUT', portuguese: 'PRT', czech: 'CZE', romanian: 'ROU',
+  greek: 'GRC', irish: 'IRL', taiwanese: 'TWN', malaysian: 'MYS',
+  indonesian: 'IDN', thai: 'THA', vietnamese: 'VNM', iranian: 'IRN',
+  saudi: 'SAU', egyptian: 'EGY', nigerian: 'NGA', kenyan: 'KEN',
+  chilean: 'CHL', colombian: 'COL', peruvian: 'PER', luxembourgish: 'LUX',
+  'new zealand': 'NZL', 'south korean': 'KOR', 'north korean': 'PRK',
+  'south african': 'ZAF', 'hong kong': 'HKG',
+};
+
 /** Emoji flag from an ISO alpha-2 code. */
 export function flagEmoji(iso2) {
   if (!iso2 || iso2.length !== 2 || !/^[A-Z]{2}$/.test(iso2)) return '';
@@ -135,16 +162,35 @@ export function createResolver(countries) {
   const byName = new Map(
     countries.map((c) => [normalise(c.name), c]),
   );
+  const byCore = new Map();
+
   // Wikipedia uses short names; index the part before any comma or parenthesis.
   for (const c of countries) {
     const short = normalise(c.name.split(/[,(]/)[0]);
     if (short && !byName.has(short)) byName.set(short, c);
+    const core = coreName(c.name);
+    if (core && !byCore.has(core)) byCore.set(core, c);
   }
 
   function normalise(value) {
     return String(value ?? '')
       .toLowerCase()
       .replace(/\s+/g, ' ')
+      .trim();
+  }
+
+  /**
+   * Strips the constitutional wrapper Wikidata labels carry
+   * ("People's Republic of China" → "china") so they match ISO short names.
+   */
+  function coreName(value) {
+    return normalise(value)
+      .replace(/\s*\(.*\)\s*$/, '')
+      .replace(
+        /^(the\s+)?(people'?s\s+)?(democratic\s+)?(federal\s+|federative\s+)?(socialist\s+|islamic\s+|bolivarian\s+|plurinational\s+|oriental\s+|arab\s+|co-?operative\s+)?(republic|kingdom|state|commonwealth|union|principality|sultanate|emirate|grand duchy|duchy|federation)s?\s+of\s+/,
+        '',
+      )
+      .replace(/^the\s+/, '')
       .trim();
   }
 
@@ -166,8 +212,29 @@ export function createResolver(countries) {
     if (alias && byIso3.has(alias)) return byIso3.get(alias);
 
     if (upper.length === 2 && byIso2.has(upper)) return byIso2.get(upper);
-    return byName.get(normalise(raw)) ?? null;
+    return byName.get(normalise(raw)) ?? byCore.get(coreName(raw)) ?? null;
   }
 
-  return { resolve, byIso3 };
+  /**
+   * Last-resort country guess from an article's opening sentence.
+   * Only the lead clause is considered, and only the "is a/an <Demonym>"
+   * shape, so a passing mention of another country cannot win.
+   */
+  function resolveFromText(text) {
+    if (!text) return null;
+    const lead = String(text).split(/(?<=\.)\s/)[0].toLowerCase();
+    const match = lead.match(
+      /\b(?:is|was)\s+(?:an?\s+)?(?:privately[\s-]held\s+|private\s+|publicly[\s-]traded\s+|former\s+|defunct\s+)*([a-z]+(?:\s[a-z]+)?)/,
+    );
+    if (!match) return null;
+
+    // Try the two-word demonym first ("south korean"), then the single word.
+    const [two] = [match[1], match[1].split(' ')[0]].filter(
+      (candidate) => DEMONYMS[candidate],
+    );
+    const iso3 = two ? DEMONYMS[two] : null;
+    return iso3 ? (byIso3.get(iso3) ?? null) : null;
+  }
+
+  return { resolve, resolveFromText, byIso3 };
 }

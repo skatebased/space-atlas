@@ -3,10 +3,10 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Space Agency Atlas — every national space programme, in one place</title>
+    <title>Space Atlas — every space agency and spaceflight company</title>
     <meta
       name="description"
-      content="An interactive atlas of the world's government space agencies: capabilities, budgets, founding dates and headquarters, scraped from Wikipedia and Wikidata."
+      content="An interactive atlas of the world's government space agencies and private spaceflight companies: capabilities, budgets, founding dates and headquarters, from Wikipedia and Wikidata."
     />
     <meta name="color-scheme" content="dark light" />
     <link rel="stylesheet" href="assets/css/style.css" />
@@ -23,9 +23,9 @@
         <div class="brand">
           <span class="brand__mark" aria-hidden="true">🛰️</span>
           <div>
-            <h1 class="brand__title">Space Agency Atlas</h1>
+            <h1 class="brand__title">Space Atlas</h1>
             <p class="brand__tagline">
-              Every government space organisation on Earth, in one place
+              Every space agency and private spaceflight company, in one place
             </p>
           </div>
         </div>
@@ -61,9 +61,9 @@
               type="search"
               id="search"
               class="search__input"
-              placeholder="Search agencies, countries, acronyms…"
+              placeholder="Search organisations, countries, acronyms…"
               autocomplete="off"
-              aria-label="Search agencies"
+              aria-label="Search organisations"
             />
             <kbd class="search__hint">/</kbd>
           </div>
@@ -77,6 +77,14 @@
         </div>
 
         <div class="controls__row controls__row--filters">
+          <label class="field">
+            <span class="field__label">Sector</span>
+            <select id="filter-sector" class="field__control">
+              <option value="all">Agencies &amp; companies</option>
+              <option value="government">Government agencies</option>
+              <option value="private">Private companies</option>
+            </select>
+          </label>
           <label class="field">
             <span class="field__label">Region</span>
             <select id="filter-region" class="field__control"></select>
@@ -115,15 +123,15 @@
               id="world-map"
               class="map__svg"
               role="img"
-              aria-label="World map of space agencies"
+              aria-label="World map of space organisations"
               preserveAspectRatio="xMidYMid meet"
             ></svg>
             <div class="map__tooltip" id="map-tooltip" role="status" hidden></div>
           </div>
           <ul class="map__legend" id="map-legend" aria-label="Map legend"></ul>
           <p class="map__note">
-            Countries are shaded by their highest demonstrated capability. Grey
-            countries have no government space agency in the dataset.
+            Countries are shaded by the highest capability demonstrated by any of
+            their organisations. Grey countries have none in the dataset.
           </p>
         </div>
       </div>
@@ -137,7 +145,7 @@
           <table class="data-table" id="data-table">
             <thead>
               <tr>
-                <th scope="col">Agency</th>
+                <th scope="col">Organisation</th>
                 <th scope="col">Country</th>
                 <th scope="col">Founded</th>
                 <th scope="col" class="num">Budget</th>
@@ -155,7 +163,7 @@
       </div>
 
       <p class="empty-state" id="empty-state" hidden>
-        No agencies match these filters.
+        No organisations match these filters.
       </p>
     </main>
 
@@ -183,9 +191,16 @@
           href="https://en.wikipedia.org/wiki/List_of_government_space_agencies"
           target="_blank"
           rel="noopener"
-          >Wikipedia</a
+          >Wikipedia's space agency</a
         >
         and
+        <a
+          href="https://en.wikipedia.org/wiki/List_of_private_spaceflight_companies"
+          target="_blank"
+          rel="noopener"
+          >private spaceflight</a
+        >
+        lists, plus
         <a href="https://www.wikidata.org" target="_blank" rel="noopener">Wikidata</a>,
         licensed
         <a

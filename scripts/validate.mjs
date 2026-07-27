@@ -22,14 +22,18 @@ async function readJson(relativePath) {
 }
 
 function checkDataset(dataset, map) {
-  if (!Array.isArray(dataset.agencies)) {
-    return fail('agencies.json: `agencies` is not an array');
+  if (!Array.isArray(dataset.organisations)) {
+    return fail('agencies.json: `organisations` is not an array');
   }
 
-  const { agencies } = dataset;
-  if (agencies.length < 50) {
-    fail(`agencies.json: only ${agencies.length} agencies (expected 50+)`);
+  const agencies = dataset.organisations;
+  if (agencies.length < 150) {
+    fail(`agencies.json: only ${agencies.length} organisations (expected 150+)`);
   }
+  const government = agencies.filter((a) => a.orgType === 'government');
+  const private_ = agencies.filter((a) => a.orgType === 'private');
+  if (government.length < 50) fail(`only ${government.length} agencies (expected 50+)`);
+  if (private_.length < 80) fail(`only ${private_.length} companies (expected 80+)`);
   if (!dataset.generatedAt || Number.isNaN(Date.parse(dataset.generatedAt))) {
     fail('agencies.json: missing or invalid `generatedAt`');
   }
@@ -38,7 +42,7 @@ function checkDataset(dataset, map) {
   for (const agency of agencies) {
     const label = agency.id ?? agency.name ?? '(unnamed)';
 
-    for (const field of ['id', 'name', 'country', 'iso3', 'tier', 'tierLabel']) {
+    for (const field of ['id', 'name', 'country', 'iso3', 'tier', 'tierLabel', 'orgType']) {
       if (!agency[field]) fail(`${label}: missing \`${field}\``);
     }
     if (ids.has(agency.id)) fail(`${label}: duplicate id`);
@@ -65,6 +69,9 @@ function checkDataset(dataset, map) {
     if (agency.website && !/^https?:\/\//.test(agency.website)) {
       fail(`${label}: website is not an absolute URL`);
     }
+    if (!['government', 'private'].includes(agency.orgType)) {
+      fail(`${label}: unexpected orgType "${agency.orgType}"`);
+    }
 
     // Every non-supranational agency should land somewhere on the map.
     if (!agency.supranational && !agency.historical && !map.shapes[agency.iso3]) {
@@ -75,8 +82,14 @@ function checkDataset(dataset, map) {
   // Headline numbers must match the rows they summarise.
   const counts = dataset.counts ?? {};
   const actualCountries = new Set(agencies.map((a) => a.iso3)).size;
-  if (counts.agencies !== agencies.length) {
-    fail(`counts.agencies (${counts.agencies}) ≠ ${agencies.length}`);
+  if (counts.organisations !== agencies.length) {
+    fail(`counts.organisations (${counts.organisations}) ≠ ${agencies.length}`);
+  }
+  if (counts.agencies !== government.length) {
+    fail(`counts.agencies (${counts.agencies}) ≠ ${government.length}`);
+  }
+  if (counts.companies !== private_.length) {
+    fail(`counts.companies (${counts.companies}) ≠ ${private_.length}`);
   }
   if (counts.countries !== actualCountries) {
     fail(`counts.countries (${counts.countries}) ≠ ${actualCountries}`);
@@ -88,10 +101,23 @@ function checkDataset(dataset, map) {
       fail(`expected agency "${acronym}" is missing`);
     }
   }
+  for (const name of ['SpaceX', 'Rocket Lab', 'Blue Origin', 'Arianespace']) {
+    if (!agencies.some((a) => a.name === name && a.orgType === 'private')) {
+      fail(`expected company "${name}" is missing`);
+    }
+  }
+  // SpaceX is the anchor for the private-sector capability mapping.
+  const spacex = agencies.find((a) => a.name === 'SpaceX');
+  if (spacex && !spacex.capabilities.orbitalLaunch?.has) {
+    fail('SpaceX is not marked orbital-launch capable — private parsing broke');
+  }
+  if (spacex && !spacex.capabilities.crewedLaunch?.has) {
+    fail('SpaceX is not marked crewed-launch capable — private parsing broke');
+  }
 
   const coverage = (field) =>
     agencies.filter((a) => a[field]).length / agencies.length;
-  for (const field of ['summary', 'wikipedia', 'founded']) {
+  for (const field of ['summary', 'wikipedia']) {
     if (coverage(field) < 0.7) {
       warn(`only ${(coverage(field) * 100).toFixed(0)}% of agencies have \`${field}\``);
     }
@@ -143,7 +169,7 @@ async function main() {
     process.exit(1);
   }
   console.log(
-    `ok — ${dataset.agencies.length} agencies, ${Object.keys(map.shapes).length} map shapes, ${warnings.length} warning(s)`,
+    `ok — ${dataset.organisations.length} organisations, ${Object.keys(map.shapes).length} map shapes, ${warnings.length} warning(s)`,
   );
 }
 

@@ -28,12 +28,18 @@ import {
 } from './lib/wikitext.mjs';
 import { createResolver, flagEmoji } from './lib/countries.mjs';
 import { fetchWikitext, fetchArticles, fetchEntities } from './lib/wikiapi.mjs';
+import {
+  readPrivateCompanies,
+  SOURCE_PAGE as PRIVATE_PAGE,
+} from './lib/private.mjs';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
 const SOURCE_PAGE = 'List of government space agencies';
-const SOURCE_URL = `https://en.wikipedia.org/wiki/${SOURCE_PAGE.replace(/ /g, '_')}`;
+const wikiUrl = (page) =>
+  `https://en.wikipedia.org/wiki/${page.replace(/ /g, '_')}`;
 /** Refuse to overwrite a good dataset with a suspiciously small one. */
 const MIN_EXPECTED_AGENCIES = 50;
+const MIN_EXPECTED_COMPANIES = 80;
 
 /** Agencies whose country cell has no flag template (multi-nation bodies). */
 const COUNTRY_OVERRIDES = {
@@ -72,25 +78,47 @@ function capability(cell) {
   return { has: checkMark(cell) === true, detail: checkDetail(cell) };
 }
 
-/** Reads the overview table: country, name, acronym, founding, basic capabilities. */
+/**
+ * Reads the overview table.
+ *
+ * The table is not one consistent shape: national agencies are
+ * `country | name | acronym | founded | …`, while the sub-national block
+ * (US state spaceport authorities, Kerala) substitutes a region column for
+ * the acronym, giving `country | region | name | founded | …`. Both end with
+ * the same four capability columns, so those are read from the end and the
+ * agency link is located by scanning the leading columns.
+ */
 function readOverview(tables) {
   const rows = [];
   for (const table of tables) {
     for (const cells of parseTable(table)) {
-      if (cells.length < 5) continue;
-      const link = firstLink(cells[1]);
-      if (!link) continue;
+      if (cells.length < 6) continue;
+
+      // The agency article link sits at column 1 or, for sub-national rows, 2.
+      const nameIndex = [1, 2].find((i) => firstLink(cells[i] ?? ''));
+      if (nameIndex === undefined) continue;
+      const link = firstLink(cells[nameIndex]);
+
+      // Trailing four columns are the capabilities in both layouts.
+      const caps = cells.slice(-4);
+      const middle = cells.slice(nameIndex + 1, cells.length - 4);
+      // Whichever of the remaining columns parses as a date is the founding.
+      const founded = middle.map(templateDate).find(Boolean) ?? null;
+      // An acronym column only exists in the national layout.
+      const acronymCell = middle.find((c) => !templateDate(c));
+
       rows.push({
         title: link.title,
-        name: firstSegment(cells[1]) || null,
-        acronym: firstSegment(cells[2]) || null,
+        name: firstSegment(cells[nameIndex]) || null,
+        acronym: acronymCell ? firstSegment(acronymCell) || null : null,
         countryToken: countryToken(cells[0]),
-        founded: templateDate(cells[3]),
+        subnational: nameIndex === 2,
+        founded,
         capabilities: {
-          firstSpaceTraveler: capability(cells[4] ?? ''),
-          operatesSatellites: capability(cells[5] ?? ''),
-          buildsSatellites: capability(cells[6] ?? ''),
-          recoverablePayloads: capability(cells[7] ?? ''),
+          firstSpaceTraveler: capability(caps[0] ?? ''),
+          operatesSatellites: capability(caps[1] ?? ''),
+          buildsSatellites: capability(caps[2] ?? ''),
+          recoverablePayloads: capability(caps[3] ?? ''),
         },
       });
     }
@@ -152,8 +180,8 @@ const TIERS = [
   { id: 'human-spaceflight', label: 'Human spaceflight', rank: 5 },
   { id: 'deep-space', label: 'Deep space exploration', rank: 4 },
   { id: 'orbital-launch', label: 'Orbital launch', rank: 3 },
-  { id: 'satellite-operator', label: 'Satellite operator', rank: 2 },
-  { id: 'emerging', label: 'Emerging agency', rank: 1 },
+  { id: 'satellite-operator', label: 'Satellite & spacecraft', rank: 2 },
+  { id: 'emerging', label: 'Emerging', rank: 1 },
 ];
 
 function classify(caps) {
@@ -169,7 +197,22 @@ function classify(caps) {
     return TIERS[1];
   }
   if (has('orbitalLaunch')) return TIERS[2];
-  if (has('operatesSatellites') || has('buildsSatellites')) return TIERS[3];
+  if (
+    [
+      'operatesSatellites',
+      'buildsSatellites',
+      'cargoSpacecraft',
+      'crewedSuborbital',
+      'suborbitalLaunch',
+      'propulsion',
+      'spacecraftComponents',
+      'spaceManufacturing',
+      'researchCraft',
+      'spaceliner',
+    ].some(has)
+  ) {
+    return TIERS[3];
+  }
   return TIERS[4];
 }
 
@@ -181,7 +224,7 @@ async function main() {
   const countries = JSON.parse(
     await readFile(join(ROOT, 'data', 'countries.json'), 'utf8'),
   );
-  const { resolve } = createResolver(countries);
+  const { resolve, resolveFromText } = createResolver(countries);
 
   console.log(`fetching ${SOURCE_PAGE}…`);
   const wikitext = await fetchWikitext(SOURCE_PAGE);
@@ -239,10 +282,30 @@ async function main() {
     );
   }
 
-  // Every article title mentioned anywhere on the page.
+  console.log(`fetching ${PRIVATE_PAGE}…`);
+  const privateWikitext = await fetchWikitext(PRIVATE_PAGE);
+  const { records: companies, sectionsSeen } = readPrivateCompanies(privateWikitext);
+  const emptySections = sectionsSeen.filter((s) => s.rows === 0);
+
+  console.log(
+    `  parsed — ${companies.size} companies across ${sectionsSeen.length - emptySections.length}/${sectionsSeen.length} product tables`,
+  );
+  if (emptySections.length) {
+    console.log(`  empty sections: ${emptySections.map((s) => s.heading).join('; ')}`);
+  }
+  if (companies.size < MIN_EXPECTED_COMPANIES) {
+    throw new Error(
+      `private page yielded only ${companies.size} companies — upstream layout likely changed`,
+    );
+  }
+
+  // Every article title mentioned on either page.
   const allTitles = new Set(overview.map((row) => row.title));
   for (const source of [launch, deepSpace, deepSpaceNoLaunch, human, budgets]) {
     for (const title of source.keys()) allTitles.add(title);
+  }
+  for (const company of companies.values()) {
+    if (company.title) allTitles.add(company.title);
   }
 
   console.log(`fetching ${allTitles.size} articles…`);
@@ -273,6 +336,7 @@ async function main() {
     record.acronym = row.acronym;
     record.founded = row.founded;
     record.countryToken ??= row.countryToken;
+    record.subnational = Boolean(row.subnational);
     record.inOverview = true;
     Object.assign(record.capabilities, row.capabilities);
   }
@@ -292,7 +356,10 @@ async function main() {
     record.budget = { usdMillions: budget.usdMillions, year: budget.year };
   }
 
-  const qids = [...records.keys()]
+  const qids = [
+    ...records.keys(),
+    ...[...companies.values()].map((c) => c.title).filter(Boolean),
+  ]
     .map((key) => articles.get(key)?.qid ?? findQid(articles, key))
     .filter(Boolean);
   console.log(`fetching ${qids.length} Wikidata entities…`);
@@ -321,6 +388,7 @@ async function main() {
 
     agencies.push({
       id: slug(record.title),
+      orgType: 'government',
       name: record.name ?? article?.title ?? record.title,
       acronym: record.acronym,
       country: country.name,
@@ -331,6 +399,7 @@ async function main() {
       subregion: country.subregion,
       supranational: Boolean(country.supranational),
       historical: Boolean(record.historical || country.historical),
+      subnational: Boolean(record.subnational),
       founded,
       foundedYear: founded ? Number(founded.slice(0, 4)) : null,
       headquarters: entity?.headquarters ?? null,
@@ -350,19 +419,100 @@ async function main() {
     });
   }
 
+  // Private companies. These tables carry no country column, so the country
+  // comes from the article's Wikidata item; unlinked companies are dropped.
+  const usedIds = new Set(agencies.map((a) => a.id));
+  const companiesOut = [];
+  let unlinked = 0;
+
+  for (const company of companies.values()) {
+    if (!company.title) {
+      unlinked += 1;
+      continue;
+    }
+    const article =
+      articles.get(company.title) ?? findArticle(articles, company.title);
+    const entity = article?.qid ? entities.get(article.qid) : null;
+
+    // Wikidata first; a few company items carry no location at all, so fall
+    // back to the nationality adjective in the article's opening sentence.
+    const country =
+      resolve(entity?.country) ??
+      resolve(entity?.headquarters) ??
+      resolveFromText(article?.extract);
+    if (!country) {
+      unresolved.push(`${company.title} (private, no country)`);
+      continue;
+    }
+
+    const founded = entity?.inception ?? null;
+    const tier = classify(company.capabilities);
+    // Agency and company namespaces are separate upstream but share ids here.
+    let id = slug(company.title);
+    if (usedIds.has(id)) id = `${id}-company`;
+    usedIds.add(id);
+
+    companiesOut.push({
+      id,
+      orgType: 'private',
+      name: article?.title ?? company.name,
+      acronym: null,
+      country: country.name,
+      iso2: country.iso2,
+      iso3: country.iso3,
+      flag: country.emoji ?? flagEmoji(country.iso2),
+      region: country.region,
+      subregion: country.subregion,
+      supranational: Boolean(country.supranational),
+      // MirCorp and similar are tied to a state that no longer exists.
+      historical: Boolean(country.historical),
+      subnational: false,
+      founded,
+      foundedYear: founded ? Number(founded.slice(0, 4)) : null,
+      headquarters: entity?.headquarters ?? null,
+      coordinates: entity?.coordinates ?? null,
+      website: entity?.website ?? null,
+      employees: entity?.employees ?? null,
+      budget: null,
+      summary: article?.extract ?? null,
+      thumbnail: article?.thumbnail ?? null,
+      logo: entity?.logo ?? null,
+      parent: entity?.parent ?? null,
+      wikipedia: article?.url ?? null,
+      tier: tier.id,
+      tierLabel: tier.label,
+      tierRank: tier.rank,
+      capabilities: company.capabilities,
+      products: company.products,
+    });
+  }
+
+  if (unlinked) {
+    console.log(`  ${unlinked} companies skipped (no Wikipedia article)`);
+  }
+  if (companiesOut.length < MIN_EXPECTED_COMPANIES) {
+    throw new Error(
+      `only ${companiesOut.length} companies resolved — refusing to overwrite existing dataset`,
+    );
+  }
+
+  agencies.push(...companiesOut);
   agencies.sort((a, b) => a.name.localeCompare(b.name));
 
   if (agencies.length < MIN_EXPECTED_AGENCIES) {
     throw new Error(
-      `only ${agencies.length} agencies resolved — refusing to overwrite existing dataset`,
+      `only ${agencies.length} organisations resolved — refusing to overwrite existing dataset`,
     );
   }
 
   const dataset = {
     generatedAt: new Date().toISOString(),
-    source: { page: SOURCE_PAGE, url: SOURCE_URL, license: 'CC BY-SA 4.0' },
+    sources: [
+      { page: SOURCE_PAGE, url: wikiUrl(SOURCE_PAGE), license: 'CC BY-SA 4.0' },
+      { page: PRIVATE_PAGE, url: wikiUrl(PRIVATE_PAGE), license: 'CC BY-SA 4.0' },
+    ],
     counts: summarise(agencies),
-    agencies,
+    organisations: agencies,
   };
 
   await writeFile(
@@ -370,26 +520,31 @@ async function main() {
     `${JSON.stringify(dataset, null, 1)}\n`,
   );
 
-  console.log(`agencies.json — ${agencies.length} agencies`);
+  const c = dataset.counts;
   console.log(
-    `  ${dataset.counts.countries} countries · ${dataset.counts.orbitalLaunch} orbital launch · ${dataset.counts.humanSpaceflight} human spaceflight`,
+    `agencies.json — ${c.organisations} organisations (${c.agencies} agencies, ${c.companies} companies)`,
+  );
+  console.log(
+    `  ${c.countries} countries · ${c.orbitalLaunch} orbital launch · ${c.humanSpaceflight} human spaceflight`,
   );
   if (unresolved.length) {
     console.log(`  skipped (no country): ${unresolved.join('; ')}`);
   }
 }
 
-function summarise(agencies) {
+function summarise(list) {
   const has = (a, key) => a.capabilities[key]?.has === true;
   return {
-    agencies: agencies.length,
-    countries: new Set(agencies.map((a) => a.iso3)).size,
-    orbitalLaunch: agencies.filter((a) => has(a, 'orbitalLaunch')).length,
-    humanSpaceflight: agencies.filter((a) => has(a, 'crewedLaunch')).length,
-    deepSpace: agencies.filter((a) => a.tierRank >= 4).length,
-    withBudget: agencies.filter((a) => a.budget).length,
+    organisations: list.length,
+    agencies: list.filter((a) => a.orgType === 'government').length,
+    companies: list.filter((a) => a.orgType === 'private').length,
+    countries: new Set(list.map((a) => a.iso3)).size,
+    orbitalLaunch: list.filter((a) => has(a, 'orbitalLaunch')).length,
+    humanSpaceflight: list.filter((a) => has(a, 'crewedLaunch')).length,
+    deepSpace: list.filter((a) => a.tierRank >= 4).length,
+    withBudget: list.filter((a) => a.budget).length,
     totalBudgetUsdMillions: Math.round(
-      agencies.reduce((sum, a) => sum + (a.budget?.usdMillions ?? 0), 0),
+      list.reduce((sum, a) => sum + (a.budget?.usdMillions ?? 0), 0),
     ),
   };
 }

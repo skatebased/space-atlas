@@ -1,5 +1,5 @@
 /**
- * Space Agency Atlas — front end.
+ * Space Atlas — front end.
  *
  * Loads the generated dataset, then renders four views over the same filtered
  * list (map, cards, table, charts). No dependencies; the map is plain SVG
@@ -30,8 +30,8 @@ const TIER_LABELS = {
   'human-spaceflight': 'Human spaceflight',
   'deep-space': 'Deep space exploration',
   'orbital-launch': 'Orbital launch',
-  'satellite-operator': 'Satellite operator',
-  emerging: 'Emerging agency',
+  'satellite-operator': 'Satellite & spacecraft',
+  emerging: 'Emerging',
 };
 
 /** Capability keys in the order they are shown, with readable labels. */
@@ -57,7 +57,17 @@ const CAPABILITY_LABELS = {
   spaceStation: 'Space station',
   circumlunarFlight: 'Crewed circumlunar flight',
   moonLanding: 'Crewed Moon landing',
+  crewedSuborbital: 'Crewed suborbital flight',
+  cargoSpacecraft: 'Cargo spacecraft',
+  propulsion: 'Rocket engines',
+  spacecraftComponents: 'Spacecraft components',
+  spaceManufacturing: 'In-space manufacturing',
+  spaceMining: 'Space mining',
+  researchCraft: 'Research & demo craft',
+  spaceliner: 'Spaceliner operations',
 };
+
+const SECTOR_LABELS = { government: 'Agency', private: 'Company' };
 
 /* ------------------------------------------------------------------ */
 /* State                                                               */
@@ -65,6 +75,7 @@ const CAPABILITY_LABELS = {
 
 const state = {
   agencies: [],
+  sector: 'all',
   map: null,
   view: 'map',
   query: '',
@@ -126,6 +137,9 @@ function matchesQuery(agency, query) {
     agency.region,
     agency.subregion,
     agency.tierLabel,
+    SECTOR_LABELS[agency.orgType],
+    agency.orgType === 'private' ? 'company private' : 'agency government',
+    ...(agency.products ?? []).map((p) => p.name),
   ]
     .filter(Boolean)
     .join(' ')
@@ -142,6 +156,7 @@ function visibleAgencies() {
   const list = state.agencies.filter(
     (a) =>
       matchesQuery(a, state.query) &&
+      (state.sector === 'all' || a.orgType === state.sector) &&
       (state.region === 'all' || a.region === state.region) &&
       (state.tier === 'all' || a.tier === state.tier) &&
       (state.capability === 'all' || a.capabilities[state.capability]?.has),
@@ -170,12 +185,12 @@ function visibleAgencies() {
 function renderStats(dataset) {
   const c = dataset.counts;
   const stats = [
+    ['Organisations', number.format(c.organisations)],
     ['Agencies', number.format(c.agencies)],
+    ['Companies', number.format(c.companies)],
     ['Countries', number.format(c.countries)],
     ['Orbital launch', number.format(c.orbitalLaunch)],
     ['Human spaceflight', number.format(c.humanSpaceflight)],
-    ['Deep space', number.format(c.deepSpace)],
-    ['Tracked budgets', `$${(c.totalBudgetUsdMillions / 1000).toFixed(1)}B`],
   ];
 
   $('#stat-strip').innerHTML = stats
@@ -335,6 +350,9 @@ function renderCards(list) {
             <div class="card__acronym">${esc(a.acronym ?? a.name)}</div>
             <div class="card__country">${esc(a.country)}</div>
           </div>
+          <span class="sector-chip sector-chip--${esc(a.orgType)}">${esc(
+            SECTOR_LABELS[a.orgType] ?? '',
+          )}</span>
         </div>
         <p class="card__name">${esc(a.name)}</p>
         <span class="tier-badge" style="--tier-color:${tierColor(a.tier)}">
@@ -456,7 +474,10 @@ function renderCharts(list) {
 
     <section class="chart-card">
       <h2 class="chart-card__title">Workforce</h2>
-      <p class="chart-card__sub">Top ${staffed.length} by reported headcount</p>
+      <p class="chart-card__sub">
+        Top ${staffed.length} by reported headcount. Diversified manufacturers
+        (Airbus, Boeing, Toyota) report company-wide totals, not space staff.
+      </p>
       ${
         staffed.length
           ? barRows(staffed, {
@@ -479,7 +500,7 @@ function renderCharts(list) {
             <div class="histogram__col" title="${count} founded in the ${decade}s">
               <span class="histogram__count">${count}</span>
               <span class="histogram__bar" style="height:${(count / peak) * 100}%"></span>
-              <span class="histogram__label">${String(decade).slice(2)}s</span>
+              <span class="histogram__label">${decade}s</span>
             </div>`,
           )
           .join('')}
@@ -541,6 +562,26 @@ function capabilityGroups(agency) {
     .join('');
 }
 
+/** Vehicles and products, for private companies (the agency page has none). */
+function productList(agency) {
+  const products = agency.products ?? [];
+  if (!products.length) return '';
+  return `
+    <h3 class="detail__section-title">Vehicles &amp; products</h3>
+    <ul class="cap-grid">
+      ${products
+        .map(
+          (p) => `
+          <li class="cap ${p.demonstrated ? '' : 'cap--no'}">
+            <span class="cap__mark">${p.demonstrated ? '✓' : '·'}</span>
+            <span>${esc(p.name)}</span>
+            <span class="cap__detail">${esc(p.status ?? p.type ?? '')}</span>
+          </li>`,
+        )
+        .join('')}
+    </ul>`;
+}
+
 function openDetail(id) {
   const agency = state.agencies.find((a) => a.id === id);
   if (!agency) return;
@@ -564,6 +605,9 @@ function openDetail(id) {
         )}</h2>
         <p class="detail__subtitle">
           ${esc(agency.name)} · ${esc(agency.country)}
+          <span class="sector-chip sector-chip--${esc(agency.orgType)}">${esc(
+            SECTOR_LABELS[agency.orgType] ?? '',
+          )}</span>
           ${agency.historical ? '<span class="is-historical">· Defunct</span>' : ''}
         </p>
       </div>
@@ -589,6 +633,7 @@ function openDetail(id) {
     </dl>
 
     ${capabilityGroups(agency)}
+    ${productList(agency)}
 
     <div class="detail__links">
       ${
@@ -641,8 +686,8 @@ function render() {
 
   $('#result-count').textContent =
     list.length === state.agencies.length
-      ? `${list.length} agencies across ${new Set(list.map((a) => a.iso3)).size} countries`
-      : `${list.length} of ${state.agencies.length} agencies`;
+      ? `${list.length} organisations across ${new Set(list.map((a) => a.iso3)).size} countries`
+      : `${list.length} of ${state.agencies.length} organisations`;
 
   const isEmpty = list.length === 0;
   $('#empty-state').hidden = !isEmpty;
@@ -677,6 +722,7 @@ function wireEvents() {
   );
 
   for (const [id, key] of [
+    ['#filter-sector', 'sector'],
     ['#filter-region', 'region'],
     ['#filter-capability', 'capability'],
     ['#filter-tier', 'tier'],
@@ -691,12 +737,14 @@ function wireEvents() {
   $('#reset-filters').addEventListener('click', () => {
     Object.assign(state, {
       query: '',
+      sector: 'all',
       region: 'all',
       capability: 'all',
       tier: 'all',
       sort: 'name',
     });
     $('#search').value = '';
+    $('#filter-sector').value = 'all';
     $('#filter-region').value = 'all';
     $('#filter-capability').value = 'all';
     $('#filter-tier').value = 'all';
@@ -792,7 +840,7 @@ async function init() {
       }),
     ]);
 
-    state.agencies = dataset.agencies;
+    state.agencies = dataset.organisations;
     state.map = map;
 
     renderStats(dataset);
@@ -806,7 +854,7 @@ async function init() {
     $('#footer-meta').textContent = `Dataset generated ${generated.toLocaleDateString(
       'en-US',
       { year: 'numeric', month: 'long', day: 'numeric' },
-    )} · ${dataset.agencies.length} agencies`;
+    )} · ${dataset.organisations.length} organisations`;
 
     // Deep link: #nasa opens that agency.
     const hash = location.hash.slice(1);
