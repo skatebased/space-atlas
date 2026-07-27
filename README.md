@@ -62,8 +62,10 @@ field appearing in the open artifact is a hard build failure, reported as a
 about a share-alike field looks different from a public-domain one at runtime.
 
 **This is not legal advice.** It encodes each source's published terms so the
-constraint is visible in the data rather than living in someone's memory. Two
-things worth knowing before commercialising anything:
+constraint is visible in the data rather than living in someone's memory.
+[`LICENSING.md`](LICENSING.md) is a brief written to be handed to counsel: it
+lists every source's terms, what the code enforces, and the specific questions
+a lawyer needs to answer before anything is sold. Two things worth knowing:
 
 - Wikipedia is CC BY-SA 4.0. You may sell it, but derivatives must carry the
   same licence, so your customers may redistribute it too. Bare facts are not
@@ -119,7 +121,8 @@ rejects generic user agents under its fair-access policy:
 export SEC_USER_AGENT="Your Name you@example.com"
 ```
 
-Without it EDGAR is skipped and the build continues.
+Without it EDGAR is skipped and the build continues. In CI this is read from
+the `SEC_USER_AGENT` repository secret.
 
 The scrape makes ~40 paced API requests across both pages and takes a couple
 of minutes.
@@ -187,7 +190,8 @@ scripts/lib/wikiapi.mjs    MediaWiki + Wikidata clients
 
 ## Licence
 
-Site code: MIT (see `LICENSE`).
+Site code: MIT (see `LICENSE`). Data licensing is covered in detail by
+[`LICENSING.md`](LICENSING.md).
 Organisation data derives from Wikipedia and Wikidata and remains under
 [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/).
 Boundaries are from Natural Earth (public domain).
