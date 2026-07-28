@@ -1,0 +1,473 @@
+/**
+ * The console views: intelligence brief, head-to-head compare, change feed and
+ * API explorer.
+ *
+ * Split out of app.js because these are self-contained renderers — each takes
+ * the filtered list plus the dataset and returns markup. Interaction is wired
+ * by app.js through delegated events.
+ */
+
+import {
+  esc,
+  formatUsd,
+  formatStaff,
+  tierColor,
+  timeAgo,
+  number, label } from './format.js';
+
+/* ------------------------------------------------------------------ */
+/* Intelligence brief                                                  */
+/* ------------------------------------------------------------------ */
+
+function newsPanel(dataset, list) {
+  const ids = new Set(list.map((o) => o.id));
+  // Prefer headlines that mention something in the current filter.
+  const items = (dataset.news ?? [])
+    .map((item) => ({
+      ...item,
+      hits: (item.organisations ?? []).filter((id) => ids.has(id)),
+    }))
+    .sort((a, b) => b.hits.length - a.hits.length || 0)
+    .slice(0, 14);
+
+  if (!items.length) return '';
+
+  const byId = new Map(list.map((o) => [o.id, o]));
+  return `
+    <section class="brief-card brief-card--tall">
+      <h2 class="brief-card__title">Latest intelligence</h2>
+      <ul class="wire">
+        ${items
+          .map(
+            (item) => `
+          <li class="wire__item">
+            <a class="wire__headline" href="${esc(item.link)}" target="_blank" rel="noopener">
+              ${esc(item.title)}
+            </a>
+            <div class="wire__meta">
+              <span class="wire__source">${esc(item.source)}</span>
+              <span>${esc(timeAgo(item.published))}</span>
+              ${item.hits
+                .slice(0, 3)
+                .map(
+                  (id) =>
+                    `<button class="wire__tag" data-id="${esc(id)}">${esc(
+                      byId.get(id) ? label(byId.get(id)) : id,
+                    )}</button>`,
+                )
+                .join('')}
+            </div>
+          </li>`,
+          )
+          .join('')}
+      </ul>
+    </section>`;
+}
+
+function awardsPanel(list) {
+  const awards = list
+    .filter((o) => o.recentAwards?.length)
+    .flatMap((o) => o.recentAwards.map((a) => ({ ...a, org: o })))
+    .sort((a, b) => b.amount - a.amount)
+    .slice(0, 10);
+
+  if (!awards.length) return '';
+  return `
+    <section class="brief-card">
+      <h2 class="brief-card__title">Recent contract actions</h2>
+      <p class="chart-card__sub">
+        US federal awards under space and defence-aerospace procurement codes.
+        Some primes' largest actions are missile rather than space programmes.
+      </p>
+      <ul class="ledger">
+        ${awards
+          .map(
+            (a) => `
+          <li class="ledger__row" data-id="${esc(a.org.id)}">
+            <span class="ledger__amount">${esc(formatUsd(a.amount))}</span>
+            <span class="ledger__body">
+              <strong>${esc(label(a.org))}</strong>
+              ${a.agency ? `<span class="ledger__agency">${esc(a.agency)}</span>` : ''}
+              ${a.description ? `<span class="ledger__desc">${esc(a.description)}</span>` : ''}
+            </span>
+          </li>`,
+          )
+          .join('')}
+      </ul>
+    </section>`;
+}
+
+function filingsPanel(list) {
+  const filings = list
+    .filter((o) => o.recentFilings?.length)
+    .flatMap((o) => o.recentFilings.map((f) => ({ ...f, org: o })))
+    .sort((a, b) => String(b.filed ?? '').localeCompare(String(a.filed ?? '')))
+    .slice(0, 12);
+
+  if (!filings.length) return '';
+  return `
+    <section class="brief-card">
+      <h2 class="brief-card__title">Regulatory filings</h2>
+      <ul class="ledger">
+        ${filings
+          .map(
+            (f) => `
+          <li class="ledger__row" data-id="${esc(f.org.id)}">
+            <span class="ledger__form">${esc(f.form)}</span>
+            <span class="ledger__body">
+              <strong>${esc(label(f.org))}</strong>
+              <span class="ledger__agency">${esc(f.filed ?? '')}</span>
+            </span>
+            ${
+              f.url
+                ? `<a class="ledger__link" href="${esc(f.url)}" target="_blank" rel="noopener">open</a>`
+                : ''
+            }
+          </li>`,
+          )
+          .join('')}
+      </ul>
+    </section>`;
+}
+
+function imageryPanel(list) {
+  const shots = list
+    .filter((o) => o.imagery?.length)
+    .flatMap((o) => o.imagery.slice(0, 2).map((i) => ({ ...i, org: o })))
+    .sort((a, b) => String(b.created ?? '').localeCompare(String(a.created ?? '')))
+    .slice(0, 12);
+
+  if (!shots.length) return '';
+  return `
+    <section class="brief-card brief-card--wide">
+      <h2 class="brief-card__title">Imagery</h2>
+      <div class="shots">
+        ${shots
+          .map(
+            (s) => `
+          <a class="shot" href="${esc(s.url ?? '#')}" target="_blank" rel="noopener"
+             title="${esc(s.title)}">
+            <img src="${esc(s.thumbnail)}" alt="${esc(s.title)}" loading="lazy">
+            <span class="shot__caption">
+              <strong>${esc(label(s.org))}</strong>
+              ${esc(String(s.created ?? '').slice(0, 4))}
+            </span>
+          </a>`,
+          )
+          .join('')}
+      </div>
+    </section>`;
+}
+
+function activityPanel(list) {
+  const flying = list
+    .filter((o) => o.launchRecord)
+    .sort((a, b) => b.launchRecord.totalLaunches - a.launchRecord.totalLaunches)
+    .slice(0, 10);
+  if (!flying.length) return '';
+
+  return `
+    <section class="brief-card">
+      <h2 class="brief-card__title">Flight activity</h2>
+      <ul class="ledger">
+        ${flying
+          .map((o) => {
+            const l = o.launchRecord;
+            return `
+          <li class="ledger__row" data-id="${esc(o.id)}">
+            <span class="ledger__amount">${number.format(l.totalLaunches)}</span>
+            <span class="ledger__body">
+              <strong>${esc(label(o))}</strong>
+              <span class="ledger__agency">${l.successRate}% success · ${l.failed} failed${
+                l.pending ? ` · ${l.pending} upcoming` : ''
+              }</span>
+            </span>
+          </li>`;
+          })
+          .join('')}
+      </ul>
+    </section>`;
+}
+
+export function renderBrief(dataset, list) {
+  const panels = [
+    newsPanel(dataset, list),
+    awardsPanel(list),
+    activityPanel(list),
+    filingsPanel(list),
+    imageryPanel(list),
+  ].filter(Boolean);
+
+  return panels.length
+    ? panels.join('')
+    : '<p class="empty-state">No intelligence for this selection.</p>';
+}
+
+/* ------------------------------------------------------------------ */
+/* Head-to-head compare                                                */
+/* ------------------------------------------------------------------ */
+
+/** Rows shown in the comparison grid, in order. */
+const COMPARE_ROWS = [
+  { label: 'Sector', get: (o) => (o.orgType === 'private' ? 'Company' : 'Agency') },
+  { label: 'Country', get: (o) => `${o.flag} ${o.country}` },
+  { label: 'Founded', get: (o) => o.foundedYear ?? '—' },
+  { label: 'Capability tier', get: (o) => o.tierLabel },
+  { label: 'Headquarters', get: (o) => o.headquarters ?? '—' },
+  { label: 'Staff', get: (o) => formatStaff(o.employees) },
+  { label: 'Budget', get: (o) => (o.budget ? formatUsd(o.budget.usdMillions * 1e6) : '—') },
+  { label: 'Revenue', get: (o) => (o.financials?.revenue ? formatUsd(o.financials.revenue.usd) : '—') },
+  { label: 'Federal contracts', get: (o) => (o.federalContracts ? formatUsd(o.federalContracts.usdTotal) : '—') },
+  { label: 'Launches', get: (o) => (o.launchRecord ? number.format(o.launchRecord.totalLaunches) : '—') },
+  { label: 'Success rate', get: (o) => (o.launchRecord ? `${o.launchRecord.successRate}%` : '—') },
+  { label: 'Spacecraft flown', get: (o) => o.spacecraftCount ?? '—' },
+  { label: 'Recent filings', get: (o) => o.recentFilings?.length ?? 0 },
+  { label: 'In the news', get: (o) => o.news?.length ?? 0 },
+];
+
+export function renderCompare(list, selectedIds) {
+  const selected = selectedIds
+    .map((id) => list.find((o) => o.id === id))
+    .filter(Boolean);
+
+  const picker = `
+    <div class="compare__picker">
+      <label class="field">
+        <span class="field__label">Add organisation</span>
+        <select id="compare-add" class="field__control">
+          <option value="">Select…</option>
+          ${list
+            .slice()
+            .sort((a, b) => (label(a)).localeCompare(b.acronym ?? b.name))
+            .map(
+              (o) =>
+                `<option value="${esc(o.id)}">${esc(label(o))} — ${esc(o.country)}</option>`,
+            )
+            .join('')}
+        </select>
+      </label>
+      ${
+        selected.length
+          ? `<button class="ghost-button" id="compare-clear" type="button">Clear</button>`
+          : ''
+      }
+    </div>`;
+
+  if (!selected.length) {
+    return `${picker}
+      <p class="empty-state">
+        Pick up to four organisations to compare side by side.
+      </p>`;
+  }
+
+  return `${picker}
+    <div class="table-wrap">
+      <table class="data-table compare__table">
+        <thead>
+          <tr>
+            <th scope="col">Metric</th>
+            ${selected
+              .map(
+                (o) => `
+              <th scope="col">
+                <span class="compare__head" style="--tier-color:${tierColor(o.tier)}">
+                  ${o.flag} ${esc(label(o))}
+                  <button class="compare__remove" data-remove="${esc(o.id)}"
+                          aria-label="Remove ${esc(o.name)}">✕</button>
+                </span>
+              </th>`,
+              )
+              .join('')}
+          </tr>
+        </thead>
+        <tbody>
+          ${COMPARE_ROWS.map(
+            (row) => `
+            <tr>
+              <th scope="row" class="compare__label">${esc(row.label)}</th>
+              ${selected
+                .map((o) => `<td>${esc(String(row.get(o) ?? '—'))}</td>`)
+                .join('')}
+            </tr>`,
+          ).join('')}
+        </tbody>
+      </table>
+    </div>`;
+}
+
+/* ------------------------------------------------------------------ */
+/* Change feed                                                         */
+/* ------------------------------------------------------------------ */
+
+export function renderFeed(changelog) {
+  const revisions = changelog?.revisions ?? [];
+  if (!revisions.length) {
+    return `<p class="empty-state">
+      No dataset revisions recorded yet. The feed fills in as the weekly
+      refresh commits changes.
+    </p>`;
+  }
+
+  return revisions
+    .map(
+      (rev) => `
+    <section class="brief-card brief-card--wide">
+      <h2 class="brief-card__title">
+        ${esc(new Date(rev.date).toLocaleDateString('en-US', {
+          year: 'numeric',
+          month: 'long',
+          day: 'numeric',
+        }))}
+        <span class="feed__hash">${esc(rev.hash)}</span>
+      </h2>
+      <p class="chart-card__sub">${esc(rev.subject)} · ${number.format(rev.total)} organisations</p>
+
+      ${
+        rev.changes.length
+          ? `<ul class="ledger">
+              ${rev.changes
+                .slice(0, 12)
+                .map(
+                  (c) => `
+                <li class="ledger__row" data-id="${esc(c.id)}">
+                  <span class="ledger__amount ${c.delta > 0 ? 'is-up' : 'is-down'}">
+                    ${c.delta > 0 ? '+' : ''}${esc(
+                      c.money ? formatUsd(Math.abs(c.delta)) : number.format(c.delta),
+                    )}
+                  </span>
+                  <span class="ledger__body">
+                    <strong>${esc(c.name)}</strong>
+                    <span class="ledger__agency">${esc(c.metric)}: ${esc(
+                      c.money ? formatUsd(c.from) : number.format(c.from),
+                    )} → ${esc(c.money ? formatUsd(c.to) : number.format(c.to))}</span>
+                  </span>
+                </li>`,
+                )
+                .join('')}
+            </ul>`
+          : ''
+      }
+
+      ${
+        rev.added.length
+          ? `<h3 class="detail__section-title">Added — ${rev.added.length}</h3>
+             <p class="feed__names">${rev.added
+               .slice(0, 40)
+               .map((a) => `<button data-id="${esc(a.id)}">${esc(a.name)}</button>`)
+               .join('')}</p>`
+          : ''
+      }
+      ${
+        rev.removed.length
+          ? `<h3 class="detail__section-title">Removed — ${rev.removed.length}</h3>
+             <p class="feed__names">${rev.removed
+               .slice(0, 20)
+               .map((r) => `<span>${esc(r.name)}</span>`)
+               .join('')}</p>`
+          : ''
+      }
+    </section>`,
+    )
+    .join('');
+}
+
+/* ------------------------------------------------------------------ */
+/* API explorer                                                        */
+/* ------------------------------------------------------------------ */
+
+export function renderApi(dataset, sample) {
+  const licenses = Object.entries(dataset.licenses ?? {});
+  const open = licenses.filter(([, m]) => m.redistributable);
+  const restricted = licenses.filter(([, m]) => !m.redistributable);
+
+  const base = `${location.origin}${location.pathname.replace(/\/[^/]*$/, '/')}`;
+
+  return `
+    <section class="brief-card brief-card--wide">
+      <h2 class="brief-card__title">Data access</h2>
+      <p class="chart-card__sub">
+        Static JSON over HTTPS. No key, no rate limit, CORS-open — fetch it
+        directly from a browser or a server.
+      </p>
+
+      <div class="api-endpoints">
+        <div class="api-endpoint">
+          <div class="api-endpoint__head">
+            <code>data/organisations.open.json</code>
+            <span class="sector-chip sector-chip--government">Redistributable</span>
+          </div>
+          <p>
+            ${number.format(dataset.counts?.organisations ?? 0)} organisations, every field
+            drawn from a CC0 or US public-domain source. Commercial use,
+            resale and sublicensing permitted; no attribution required.
+          </p>
+          <a class="ghost-button" href="data/organisations.open.json" target="_blank" rel="noopener">Fetch ↗</a>
+        </div>
+
+        <div class="api-endpoint">
+          <div class="api-endpoint__head">
+            <code>data/organisations.json</code>
+            <span class="sector-chip sector-chip--private">Attribution + share-alike</span>
+          </div>
+          <p>
+            The full record, including Wikipedia prose, capability tables,
+            launch statistics and press. Contains CC BY-SA material — see
+            <a href="LICENSING.md">LICENSING.md</a> before redistributing.
+          </p>
+          <a class="ghost-button" href="data/organisations.json" target="_blank" rel="noopener">Fetch ↗</a>
+        </div>
+
+        <div class="api-endpoint">
+          <div class="api-endpoint__head"><code>data/changelog.json</code></div>
+          <p>What changed between dataset revisions.</p>
+          <a class="ghost-button" href="data/changelog.json" target="_blank" rel="noopener">Fetch ↗</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="brief-card brief-card--wide">
+      <h2 class="brief-card__title">Every field carries its source</h2>
+      <p class="chart-card__sub">
+        Each record has a <code>provenance</code> map of field → source, and
+        each source declares whether it may be redistributed. The open tier is
+        produced by deleting every field that fails that test, and the build
+        rejects itself if one slips through.
+      </p>
+      <pre class="api-sample"><code>${esc(JSON.stringify(sample, null, 2))}</code></pre>
+    </section>
+
+    <section class="brief-card brief-card--wide">
+      <h2 class="brief-card__title">Sources and terms</h2>
+      <div class="table-wrap">
+        <table class="data-table">
+          <thead>
+            <tr><th>Source</th><th>Licence</th><th>Attribution</th><th>In open tier</th></tr>
+          </thead>
+          <tbody>
+            ${[...open, ...restricted]
+              .map(
+                ([key, meta]) => `
+              <tr>
+                <td><strong>${esc(meta.name)}</strong></td>
+                <td>${esc(meta.license)}</td>
+                <td>${meta.attributionRequired ? 'Required' : 'Not required'}</td>
+                <td>${
+                  meta.redistributable
+                    ? '<span class="cap__mark">✓</span> yes'
+                    : '<span class="is-historical">no</span>'
+                }</td>
+              </tr>`,
+              )
+              .join('')}
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="brief-card brief-card--wide">
+      <h2 class="brief-card__title">Try it</h2>
+      <pre class="api-sample"><code>curl -s ${esc(base)}data/organisations.open.json \\
+  | jq '.organisations[] | select(.federalContracts) | {name, usd: .federalContracts.usdTotal}' \\
+  | head -40</code></pre>
+    </section>`;
+}

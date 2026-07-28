@@ -13,8 +13,9 @@
     "build:countries": "node scripts/build-countries.mjs",
     "build:map": "node scripts/build-map.mjs",
     "build:data": "node scripts/build-dataset.mjs",
-    "build:all": "npm run build:countries && npm run build:map && npm run scrape && npm run build:data",
-    "test": "node scripts/validate.mjs"
+    "build:all": "npm run build:countries && npm run build:map && npm run scrape && npm run build:data && npm run build:changelog",
+    "test": "node scripts/validate.mjs",
+    "build:changelog": "node scripts/build-changelog.mjs"
   },
   "license": "MIT"
 }

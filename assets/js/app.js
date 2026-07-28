@@ -6,6 +6,9 @@
  * paths produced by scripts/build-map.mjs.
  */
 
+import { esc, formatUsd, formatStaff, tierColor, timeAgo, number, label } from './format.js';
+import { renderBrief, renderCompare, renderFeed, renderApi } from './views.js';
+
 /* ------------------------------------------------------------------ */
 /* Constants                                                           */
 /* ------------------------------------------------------------------ */
@@ -77,7 +80,10 @@ const state = {
   agencies: [],
   sector: 'all',
   map: null,
-  view: 'map',
+  view: 'brief',
+  dataset: null,
+  changelog: null,
+  compare: [],
   query: '',
   region: 'all',
   capability: 'all',
@@ -93,8 +99,6 @@ const $$ = (selector) => [...document.querySelectorAll(selector)];
 /* Formatting                                                          */
 /* ------------------------------------------------------------------ */
 
-const number = new Intl.NumberFormat('en-US');
-
 /** $25,400M → "$25.4B"; $312M → "$312M". */
 function formatBudget(budget) {
   if (!budget?.usdMillions) return '—';
@@ -104,40 +108,12 @@ function formatBudget(budget) {
   return `$${(m * 1000).toFixed(0)}k`;
 }
 
-/** 3607000000 → "$3.6B". */
-function formatUsd(value) {
-  if (!Number.isFinite(value) || value <= 0) return '—';
-  if (value >= 1e9) return `$${(value / 1e9).toFixed(value >= 1e10 ? 0 : 1)}B`;
-  if (value >= 1e6) return `$${Math.round(value / 1e6)}M`;
-  if (value >= 1e3) return `$${Math.round(value / 1e3)}k`;
-  return `$${Math.round(value)}`;
-}
-
-function formatStaff(count) {
-  if (!count) return '—';
-  if (count >= 10000) return `${(count / 1000).toFixed(0)}k`;
-  return number.format(count);
-}
-
-/** Escapes text for safe interpolation into an HTML template. */
-function esc(value) {
-  return String(value ?? '').replace(
-    /[&<>"']/g,
-    (c) =>
-      ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[c],
-  );
-}
-
-function tierColor(tier) {
-  return TIER_COLORS[tier] ?? 'var(--tier-1)';
-}
-
 /**
  * Companies carry no acronym, so their heading is already the full name.
  * Returns the secondary line only when it would say something new.
  */
 function secondaryName(agency) {
-  const heading = agency.acronym ?? agency.name;
+  const heading = label(agency);
   return heading === agency.name ? null : agency.name;
 }
 
@@ -311,7 +287,7 @@ function updateMap(list) {
       path.setAttribute('role', 'button');
       path.setAttribute(
         'aria-label',
-        `${agency.country} — ${agency.acronym ?? agency.name}`,
+        `${agency.country} — ${label(agency)}`,
       );
       continue;
     }
@@ -350,7 +326,7 @@ function showTooltip(iso3, clientX, clientY) {
     ${agencies
       .map(
         (a) =>
-          `<span>${esc(a.acronym ?? a.name)} · ${esc(a.tierLabel)}${
+          `<span>${esc(label(a))} · ${esc(a.tierLabel)}${
             a.foundedYear ? ` · ${a.foundedYear}` : ''
           }</span>`,
       )
@@ -377,7 +353,7 @@ function renderCards(list) {
         <div class="card__head">
           <span class="card__flag" aria-hidden="true">${a.flag || '🛰️'}</span>
           <div>
-            <div class="card__acronym">${esc(a.acronym ?? a.name)}</div>
+            <div class="card__acronym">${esc(label(a))}</div>
             <div class="card__country">${esc(a.country)}</div>
           </div>
           <span class="sector-chip sector-chip--${esc(a.orgType)}">${esc(
@@ -417,7 +393,7 @@ function renderTable(list) {
       <tr data-id="${esc(a.id)}" tabindex="0">
         <td>
           <div class="cell-agency">
-            <strong>${esc(a.acronym ?? a.name)}</strong>
+            <strong>${esc(label(a))}</strong>
             ${secondaryName(a) ? `<span>${esc(secondaryName(a))}</span>` : ''}
           </div>
         </td>
@@ -662,6 +638,93 @@ function evidenceSections(agency) {
   return blocks.join('');
 }
 
+/** The dossier's open-source-intelligence sections. */
+function dossierSections(agency) {
+  const blocks = [];
+
+  if (agency.news?.length) {
+    blocks.push(`
+      <h3 class="detail__section-title">In the news</h3>
+      <ul class="wire wire--compact">
+        ${agency.news
+          .slice(0, 6)
+          .map(
+            (n) => `
+          <li class="wire__item">
+            <a class="wire__headline" href="${esc(n.link)}" target="_blank" rel="noopener">${esc(n.title)}</a>
+            <div class="wire__meta">
+              <span class="wire__source">${esc(n.source)}</span>
+              <span>${esc(timeAgo(n.published))}</span>
+            </div>
+          </li>`,
+          )
+          .join('')}
+      </ul>`);
+  }
+
+  if (agency.recentAwards?.length) {
+    blocks.push(`
+      <h3 class="detail__section-title">Recent contract actions</h3>
+      <ul class="ledger">
+        ${agency.recentAwards
+          .map(
+            (a) => `
+          <li class="ledger__row">
+            <span class="ledger__amount">${esc(formatUsd(a.amount))}</span>
+            <span class="ledger__body">
+              ${a.agency ? `<strong>${esc(a.agency)}</strong>` : ''}
+              ${a.description ? `<span class="ledger__desc">${esc(a.description)}</span>` : ''}
+            </span>
+          </li>`,
+          )
+          .join('')}
+      </ul>`);
+  }
+
+  if (agency.recentFilings?.length) {
+    blocks.push(`
+      <h3 class="detail__section-title">SEC filings</h3>
+      <ul class="ledger">
+        ${agency.recentFilings
+          .map(
+            (f) => `
+          <li class="ledger__row">
+            <span class="ledger__form">${esc(f.form)}</span>
+            <span class="ledger__body">
+              <span class="ledger__agency">${esc(f.filed ?? '')}${
+                f.description ? ` · ${esc(f.description)}` : ''
+              }</span>
+            </span>
+            ${
+              f.url
+                ? `<a class="ledger__link" href="${esc(f.url)}" target="_blank" rel="noopener">open</a>`
+                : ''
+            }
+          </li>`,
+          )
+          .join('')}
+      </ul>`);
+  }
+
+  if (agency.imagery?.length) {
+    blocks.push(`
+      <h3 class="detail__section-title">Imagery</h3>
+      <div class="shots shots--compact">
+        ${agency.imagery
+          .slice(0, 6)
+          .map(
+            (i) => `
+          <a class="shot" href="${esc(i.url ?? '#')}" target="_blank" rel="noopener" title="${esc(i.title)}">
+            <img src="${esc(i.thumbnail)}" alt="${esc(i.title)}" loading="lazy">
+          </a>`,
+          )
+          .join('')}
+      </div>`);
+  }
+
+  return blocks.join('');
+}
+
 /** Vehicles and products, for private companies (the agency page has none). */
 function productList(agency) {
   const products = agency.products ?? [];
@@ -702,7 +765,7 @@ function openDetail(id) {
       <span class="detail__flag" aria-hidden="true">${agency.flag || '🛰️'}</span>
       <div>
         <h2 class="detail__title" id="detail-title">${esc(
-          agency.acronym ?? agency.name,
+          label(agency),
         )}</h2>
         <p class="detail__subtitle">
           ${secondaryName(agency) ? `${esc(secondaryName(agency))} · ` : ''}${esc(agency.country)}
@@ -734,6 +797,7 @@ function openDetail(id) {
     </dl>
 
     ${evidenceSections(agency)}
+    ${dossierSections(agency)}
     ${capabilityGroups(agency)}
     ${productList(agency)}
 
@@ -791,7 +855,9 @@ function render() {
       ? `${list.length} organisations across ${new Set(list.map((a) => a.iso3)).size} countries`
       : `${list.length} of ${state.agencies.length} organisations`;
 
-  const isEmpty = list.length === 0;
+  // The API and feed views do not depend on the filtered list.
+  const listDriven = !['api', 'feed'].includes(state.view);
+  const isEmpty = list.length === 0 && listDriven;
   $('#empty-state').hidden = !isEmpty;
   $(`#panel-${state.view}`).hidden = isEmpty && state.view !== 'map';
 
@@ -799,6 +865,44 @@ function render() {
   else if (state.view === 'grid') renderCards(list);
   else if (state.view === 'table') renderTable(list);
   else if (state.view === 'charts') renderCharts(list);
+  else if (state.view === 'brief') $('#brief').innerHTML = renderBrief(state.dataset, list);
+  else if (state.view === 'compare') $('#compare').innerHTML = renderCompare(list, state.compare);
+  else if (state.view === 'feed') $('#feed').innerHTML = renderFeed(state.changelog);
+  else if (state.view === 'api') {
+    $('#api-docs').innerHTML = renderApi(state.dataset, sampleRecord());
+  }
+}
+
+/** A small, real record for the API documentation. */
+function sampleRecord() {
+  const org =
+    state.agencies.find((o) => o.name === 'Rocket Lab') ??
+    state.agencies.find((o) => o.federalContracts) ??
+    state.agencies[0];
+  if (!org) return {};
+  const keep = [
+    'id', 'name', 'country', 'iso3', 'orgType', 'foundedYear',
+    'website', 'tier', 'spacecraftCount', 'federalContracts', 'provenance',
+  ];
+  return Object.fromEntries(
+    keep.filter((k) => org[k] !== undefined).map((k) => [k, org[k]]),
+  );
+}
+
+/** Scrolling headline strip under the masthead. */
+function renderTicker(dataset) {
+  const items = (dataset.news ?? []).slice(0, 30);
+  if (!items.length) return;
+  const markup = items
+    .map(
+      (item) =>
+        `<a class="ticker__item" href="${esc(item.link)}" target="_blank" rel="noopener">
+           <span class="ticker__src">${esc(item.source)}</span>${esc(item.title)}
+         </a>`,
+    )
+    .join('');
+  // Duplicated so the marquee can loop without a visible seam.
+  $('#ticker').innerHTML = markup + markup;
 }
 
 /* ------------------------------------------------------------------ */
@@ -883,6 +987,7 @@ function wireEvents() {
 
   // Cards, table rows and chart bars all open the detail drawer.
   document.addEventListener('click', (event) => {
+    if (event.target.closest('[data-remove], #compare-clear')) return;
     const target = event.target.closest('[data-id]');
     if (target && !event.target.closest('a')) openDetail(target.dataset.id);
   });
@@ -890,6 +995,28 @@ function wireEvents() {
     if (event.key !== 'Enter') return;
     const row = event.target.closest('tr[data-id]');
     if (row) openDetail(row.dataset.id);
+  });
+
+  // Compare view: add, remove and clear the selection.
+  document.addEventListener('change', (event) => {
+    if (event.target.id !== 'compare-add') return;
+    const id = event.target.value;
+    if (id && !state.compare.includes(id) && state.compare.length < 4) {
+      state.compare.push(id);
+    }
+    render();
+  });
+  document.addEventListener('click', (event) => {
+    const remove = event.target.closest('[data-remove]');
+    if (remove) {
+      state.compare = state.compare.filter((id) => id !== remove.dataset.remove);
+      render();
+      return;
+    }
+    if (event.target.id === 'compare-clear') {
+      state.compare = [];
+      render();
+    }
   });
 
   $('#detail-close').addEventListener('click', closeDetail);
@@ -931,26 +1058,33 @@ async function init() {
   applyTheme(stored ?? (prefersLight ? 'light' : 'dark'));
 
   try {
-    const [dataset, map] = await Promise.all([
+    const [dataset, map, changelog] = await Promise.all([
       fetch('data/organisations.json').then((r) => {
-        if (!r.ok) throw new Error(`agencies.json — HTTP ${r.status}`);
+        if (!r.ok) throw new Error(`organisations.json — HTTP ${r.status}`);
         return r.json();
       }),
       fetch('data/world-map.json').then((r) => {
         if (!r.ok) throw new Error(`world-map.json — HTTP ${r.status}`);
         return r.json();
       }),
+      // The feed is a nicety; a missing changelog must not block the console.
+      fetch('data/changelog.json')
+        .then((r) => (r.ok ? r.json() : null))
+        .catch(() => null),
     ]);
 
     state.agencies = dataset.organisations;
+    state.dataset = dataset;
+    state.changelog = changelog;
     state.map = map;
 
     renderStats(dataset);
     populateFilters();
     renderLegend();
     buildMap();
+    renderTicker(dataset);
     wireEvents();
-    setView('map');
+    setView('brief');
 
     const generated = new Date(dataset.generatedAt);
     $('#footer-meta').textContent = `Dataset generated ${generated.toLocaleDateString(

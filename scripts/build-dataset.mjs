@@ -28,6 +28,9 @@ import { fetchWikidataOrgs } from './lib/wikidata-orgs.mjs';
 import { fetchSpaceContractors, matchContractors } from './lib/usaspending.mjs';
 import { fetchEdgarFinancials } from './lib/edgar.mjs';
 import { fetchLaunchAgencies, matchLaunchStats } from './lib/launchlibrary.mjs';
+import { fetchNews } from './lib/news.mjs';
+import { fetchRecentFilings, fetchRecentAwards } from './lib/filings.mjs';
+import { fetchImagery } from './lib/imagery.mjs';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
 const MIN_EXPECTED = 400;
@@ -287,6 +290,42 @@ async function main() {
     }
   }
 
+  /* ---- Intelligence layer: paper trail, imagery, press ---- */
+  log('fetching recent contract actions…');
+  const awards = await fetchRecentAwards(organisations, { log });
+
+  log('fetching recent SEC filings…');
+  const filings = await fetchRecentFilings(organisations, { log });
+
+  log('fetching NASA imagery…');
+  const imagery = await fetchImagery(organisations, { log });
+
+  log('fetching space news…');
+  const { items: newsItems, byOrg: newsByOrg } = await fetchNews(organisations, { log });
+
+  for (const org of organisations) {
+    const orgAwards = awards.get(org.id);
+    if (orgAwards?.length) {
+      org.recentAwards = orgAwards;
+      org.provenance.recentAwards = 'usaspending';
+    }
+    const orgFilings = filings.get(org.id);
+    if (orgFilings?.length) {
+      org.recentFilings = orgFilings;
+      org.provenance.recentFilings = 'sec';
+    }
+    const orgImages = imagery.get(org.id);
+    if (orgImages?.length) {
+      org.imagery = orgImages;
+      org.provenance.imagery = 'nasaimages';
+    }
+    const orgNews = newsByOrg.get(org.id);
+    if (orgNews?.length) {
+      org.news = orgNews;
+      org.provenance.news = 'news';
+    }
+  }
+
   organisations.sort((a, b) => a.name.localeCompare(b.name));
 
   /* ---- Emit both artifacts ---- */
@@ -302,6 +341,7 @@ async function main() {
       "record's `provenance` map.",
     licenses: licenseManifest(),
     counts,
+    news: newsItems,
     organisations,
   };
 
@@ -339,6 +379,9 @@ async function main() {
     `  contracts ${counts.withContracts} · financials ${counts.withFinancials} · launch records ${counts.withLaunchRecord}`,
   );
   log(
+    `  news ${counts.withNews} · filings ${counts.withFilings} · imagery ${counts.withImagery} · recent awards ${counts.withRecentAwards} · ${newsItems.length} headlines`,
+  );
+  log(
     `organisations.open.json — ${openCounts.organisations} orgs, redistributable fields only`,
   );
 }
@@ -356,6 +399,10 @@ function summarise(list) {
     withContracts: list.filter((a) => a.federalContracts).length,
     withFinancials: list.filter((a) => a.financials).length,
     withLaunchRecord: list.filter((a) => a.launchRecord).length,
+    withNews: list.filter((a) => a.news?.length).length,
+    withFilings: list.filter((a) => a.recentFilings?.length).length,
+    withImagery: list.filter((a) => a.imagery?.length).length,
+    withRecentAwards: list.filter((a) => a.recentAwards?.length).length,
     federalContractUsd: Math.round(
       list.reduce((sum, a) => sum + (a.federalContracts?.usdTotal ?? 0), 0),
     ),

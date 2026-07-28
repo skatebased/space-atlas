@@ -1,0 +1,564 @@
+{
+ "generatedAt": "2026-07-28T07:57:48.233Z",
+ "revisions": [
+  {
+   "hash": "29fc6e3",
+   "date": "2026-07-27T22:41:19Z",
+   "subject": "data: refresh dataset (824 organisations)",
+   "total": 824,
+   "added": [
+    {
+     "id": "aeroastro",
+     "name": "AeroAstro",
+     "country": "United States"
+    },
+    {
+     "id": "agency-for-defense-development",
+     "name": "Agency for Defense Development",
+     "country": "South Korea"
+    },
+    {
+     "id": "alcatel-alenia-space",
+     "name": "Alcatel Alenia Space",
+     "country": "France"
+    },
+    {
+     "id": "alenia-aeronautica",
+     "name": "Alenia Aeronautica",
+     "country": "Italy"
+    },
+    {
+     "id": "alliant-techsystems",
+     "name": "Alliant Techsystems",
+     "country": "United States"
+    },
+    {
+     "id": "ames-research-center",
+     "name": "Ames Research Center",
+     "country": "United States"
+    },
+    {
+     "id": "bristol-aerospace",
+     "name": "Bristol Aerospace",
+     "country": "Canada"
+    },
+    {
+     "id": "bundeswehr",
+     "name": "Bundeswehr",
+     "country": "Germany"
+    },
+    {
+     "id": "center-of-applied-space-technology-and-microgravity",
+     "name": "Center of Applied Space Technology and Microgravity",
+     "country": "Germany"
+    },
+    {
+     "id": "chiba-institute-of-technology",
+     "name": "Chiba Institute of Technology",
+     "country": "Japan"
+    },
+    {
+     "id": "chilean-air-force",
+     "name": "Chilean Air Force",
+     "country": "Chile"
+    },
+    {
+     "id": "china-academy-of-space-technology",
+     "name": "China Academy of Space Technology",
+     "country": "China"
+    },
+    {
+     "id": "deutsche-bundespost",
+     "name": "Deutsche Bundespost",
+     "country": "Germany"
+    },
+    {
+     "id": "direction-generale-de-l-armement",
+     "name": "Direction générale de l'Armement",
+     "country": "France"
+    },
+    {
+     "id": "dmc-international-imaging",
+     "name": "DMC International Imaging",
+     "country": "United Kingdom"
+    },
+    {
+     "id": "embratel",
+     "name": "Embratel",
+     "country": "Brazil"
+    },
+    {
+     "id": "france-telecom",
+     "name": "France Télécom",
+     "country": "France"
+    },
+    {
+     "id": "japan-civil-aviation-bureau",
+     "name": "Japan Civil Aviation Bureau",
+     "country": "Japan"
+    },
+    {
+     "id": "kt-corporation",
+     "name": "KT Corporation",
+     "country": "South Korea"
+    },
+    {
+     "id": "l3-technologies",
+     "name": "L3 Technologies",
+     "country": "United States"
+    },
+    {
+     "id": "laben",
+     "name": "LABEN",
+     "country": "Italy"
+    },
+    {
+     "id": "langley-research-center",
+     "name": "Langley Research Center",
+     "country": "United States"
+    },
+    {
+     "id": "lawrence-livermore-national-laboratory",
+     "name": "Lawrence Livermore National Laboratory",
+     "country": "United States"
+    },
+    {
+     "id": "leonardo-drs",
+     "name": "Leonardo DRS",
+     "country": "United States"
+    },
+    {
+     "id": "martin-baker",
+     "name": "Martin-Baker",
+     "country": "United Kingdom"
+    },
+    {
+     "id": "microsat-systems-canada-inc",
+     "name": "Microsat Systems Canada Inc.",
+     "country": "Canada"
+    },
+    {
+     "id": "missile-defense-agency",
+     "name": "Missile Defense Agency",
+     "country": "United States"
+    },
+    {
+     "id": "mitsubishi-electric",
+     "name": "Mitsubishi Electric",
+     "country": "Japan"
+    },
+    {
+     "id": "national-academy-of-sciences-of-belarus",
+     "name": "National Academy of Sciences of Belarus",
+     "country": "Belarus"
+    },
+    {
+     "id": "national-authority-for-remote-sensing-and-space-sciences",
+     "name": "National Authority for Remote Sensing and Space Sciences",
+     "country": "Egypt"
+    },
+    {
+     "id": "national-space-development-agency",
+     "name": "National Space Development Agency",
+     "country": "Japan"
+    },
+    {
+     "id": "nec-space-technologies",
+     "name": "NEC Space Technologies",
+     "country": "Japan"
+    },
+    {
+     "id": "northrop-grumman-aeronautics-systems",
+     "name": "Northrop Grumman Aeronautics Systems",
+     "country": "United States"
+    },
+    {
+     "id": "northrop-grumman-space-systems",
+     "name": "Northrop Grumman Space Systems",
+     "country": "United States"
+    },
+    {
+     "id": "officine-galileo",
+     "name": "Officine Galileo",
+     "country": "Italy"
+    },
+    {
+     "id": "optus",
+     "name": "Optus",
+     "country": "Australia"
+    },
+    {
+     "id": "pt-pasifik-satelit-nusantara",
+     "name": "PT Pasifik Satelit Nusantara",
+     "country": "Indonesia"
+    },
+    {
+     "id": "raytheon",
+     "name": "Raytheon",
+     "country": "United States"
+    },
+    {
+     "id": "satmex",
+     "name": "SATMEX",
+     "country": "Mexico"
+    },
+    {
+     "id": "sergio-arboleda-university",
+     "name": "Sergio Arboleda University",
+     "country": "Colombia"
+    },
+    {
+     "id": "ses-sirius",
+     "name": "SES Sirius",
+     "country": "Sweden"
+    },
+    {
+     "id": "sirius-xm",
+     "name": "Sirius XM",
+     "country": "United States"
+    },
+    {
+     "id": "sky-perfect-jsat-holdings",
+     "name": "SKY Perfect JSAT Holdings",
+     "country": "Japan"
+    },
+    {
+     "id": "space-and-upper-atmosphere-research-commission",
+     "name": "Space and Upper Atmosphere Research Commission",
+     "country": "Pakistan"
+    },
+    {
+     "id": "space-science-and-engineering-center",
+     "name": "Space Science and Engineering Center",
+     "country": "United States"
+    },
+    {
+     "id": "space-systems-command",
+     "name": "Space Systems Command",
+     "country": "United States"
+    },
+    {
+     "id": "stanford-university",
+     "name": "Stanford University",
+     "country": "United States"
+    },
+    {
+     "id": "swedish-space-corporation",
+     "name": "Swedish Space Corporation",
+     "country": "Sweden"
+    },
+    {
+     "id": "teledyne-technologies",
+     "name": "Teledyne Technologies",
+     "country": "United States"
+    },
+    {
+     "id": "thales-alenia-space",
+     "name": "Thales Alenia Space",
+     "country": "France"
+    },
+    {
+     "id": "thiokol",
+     "name": "Thiokol",
+     "country": "United States"
+    },
+    {
+     "id": "university-of-birmingham",
+     "name": "University of Birmingham",
+     "country": "United Kingdom"
+    },
+    {
+     "id": "university-of-louisiana-at-lafayette",
+     "name": "University of Louisiana at Lafayette",
+     "country": "United States"
+    },
+    {
+     "id": "university-of-maryland",
+     "name": "University of Maryland",
+     "country": "United States"
+    },
+    {
+     "id": "university-of-texas-at-austin",
+     "name": "University of Texas at Austin",
+     "country": "United States"
+    },
+    {
+     "id": "university-of-toronto-institute-for-aerospace-studies",
+     "name": "University of Toronto Institute for Aerospace Studies",
+     "country": "Canada"
+    },
+    {
+     "id": "utah-state-university",
+     "name": "Utah State University",
+     "country": "United States"
+    },
+    {
+     "id": "vantor",
+     "name": "Vantor",
+     "country": "United States"
+    },
+    {
+     "id": "weber-state-university",
+     "name": "Weber State University",
+     "country": "United States"
+    },
+    {
+     "id": "xi-an-satellite-control-center",
+     "name": "Xi'an Satellite Control Center",
+     "country": "China"
+    }
+   ],
+   "removed": [
+    {
+     "id": "aalto-university",
+     "name": "Aalto University"
+    },
+    {
+     "id": "agencia-bolivariana-para-actividades-espaciales",
+     "name": "Agencia Bolivariana para Actividades Espaciales"
+    },
+    {
+     "id": "airbus-defence-and-space-netherlands",
+     "name": "Airbus Defence and Space Netherlands"
+    },
+    {
+     "id": "amsat",
+     "name": "AMSAT"
+    },
+    {
+     "id": "arizona-state-university",
+     "name": "Arizona State University"
+    },
+    {
+     "id": "auburn-university",
+     "name": "Auburn University"
+    },
+    {
+     "id": "avio",
+     "name": "Avio"
+    },
+    {
+     "id": "broadcasting-satellite-system-corporation",
+     "name": "Broadcasting Satellite System Corporation"
+    },
+    {
+     "id": "bulgaria-sat",
+     "name": "Bulgaria Sat"
+    },
+    {
+     "id": "capella-space",
+     "name": "Capella Space"
+    },
+    {
+     "id": "carl-zeiss-ag",
+     "name": "Carl Zeiss AG"
+    },
+    {
+     "id": "china-centre-for-resources-satellite-data-and-application",
+     "name": "China Centre for Resources Satellite Data and Application"
+    },
+    {
+     "id": "chinese-academy-of-sciences",
+     "name": "Chinese Academy of Sciences"
+    },
+    {
+     "id": "computer-resources-international",
+     "name": "Computer Resources International"
+    },
+    {
+     "id": "endurosat",
+     "name": "EnduroSat"
+    },
+    {
+     "id": "eotvos-lorand-university",
+     "name": "Eötvös Loránd University"
+    },
+    {
+     "id": "fukuoka-institute-of-technology",
+     "name": "Fukuoka Institute of Technology"
+    },
+    {
+     "id": "gauss-srl",
+     "name": "GAUSS Srl"
+    },
+    {
+     "id": "globalstar",
+     "name": "Globalstar"
+    },
+    {
+     "id": "hellas-sat",
+     "name": "Hellas Sat"
+    },
+    {
+     "id": "hrl-laboratories",
+     "name": "HRL Laboratories"
+    },
+    {
+     "id": "indian-institute-of-technology-kanpur",
+     "name": "Indian Institute of Technology Kanpur"
+    },
+    {
+     "id": "indian-national-satellite-system",
+     "name": "Indian National Satellite System"
+    },
+    {
+     "id": "inmarsat",
+     "name": "Inmarsat"
+    },
+    {
+     "id": "iridium-communications",
+     "name": "Iridium Communications"
+    },
+    {
+     "id": "isr-systems",
+     "name": "ISR Systems"
+    },
+    {
+     "id": "istituto-nazionale-di-fisica-nucleare",
+     "name": "Istituto Nazionale di Fisica Nucleare"
+    },
+    {
+     "id": "knds-ammo-italy",
+     "name": "KNDS Ammo Italy"
+    },
+    {
+     "id": "kochi-national-college-of-technology",
+     "name": "Kochi National College of Technology"
+    },
+    {
+     "id": "kongsberg-nanoavionics",
+     "name": "Kongsberg NanoAvionics"
+    },
+    {
+     "id": "konkoly-observatory",
+     "name": "Konkoly Observatory"
+    },
+    {
+     "id": "kt-sat",
+     "name": "KT Sat"
+    },
+    {
+     "id": "kyushu-institute-of-technology",
+     "name": "Kyushu Institute of Technology"
+    },
+    {
+     "id": "l3harris-technologies",
+     "name": "L3Harris Technologies"
+    },
+    {
+     "id": "malin-space-science-systems",
+     "name": "Malin Space Science Systems"
+    },
+    {
+     "id": "masaryk-university",
+     "name": "Masaryk University"
+    },
+    {
+     "id": "materion",
+     "name": "Materion"
+    },
+    {
+     "id": "maxar-technologies",
+     "name": "Maxar Technologies"
+    },
+    {
+     "id": "media-lario",
+     "name": "Media Lario"
+    },
+    {
+     "id": "noaa-office-of-satellite-and-product-operations",
+     "name": "NOAA Office of Satellite and Product Operations"
+    },
+    {
+     "id": "ohb-se",
+     "name": "OHB SE"
+    },
+    {
+     "id": "open-cosmos",
+     "name": "Open Cosmos"
+    },
+    {
+     "id": "polish-academy-of-sciences",
+     "name": "Polish Academy of Sciences"
+    },
+    {
+     "id": "russian-aerospace-defence-forces",
+     "name": "Russian Aerospace Defence Forces"
+    },
+    {
+     "id": "russian-satellite-communications-company",
+     "name": "Russian Satellite Communications Company"
+    },
+    {
+     "id": "satellite-business-systems",
+     "name": "Satellite Business Systems"
+    },
+    {
+     "id": "satellogic",
+     "name": "Satellogic"
+    },
+    {
+     "id": "shizuoka-university",
+     "name": "Shizuoka University"
+    },
+    {
+     "id": "sky-perfect-jsat-corporation",
+     "name": "SKY Perfect JSAT Corporation"
+    },
+    {
+     "id": "space-devices",
+     "name": "Space Devices"
+    },
+    {
+     "id": "sri-international",
+     "name": "SRI International"
+    },
+    {
+     "id": "srm-institute-of-science-and-technology",
+     "name": "SRM Institute of Science and Technology"
+    },
+    {
+     "id": "star-one",
+     "name": "Star One"
+    },
+    {
+     "id": "state-planning-organization",
+     "name": "State Planning Organization"
+    },
+    {
+     "id": "technical-university-of-kosice",
+     "name": "Technical University of Košice"
+    },
+    {
+     "id": "technische-universitat-berlin",
+     "name": "Technische Universität Berlin"
+    },
+    {
+     "id": "toray-advanced-composites",
+     "name": "Toray Advanced Composites"
+    },
+    {
+     "id": "tu-dresden",
+     "name": "TU Dresden"
+    },
+    {
+     "id": "umbra",
+     "name": "Umbra"
+    },
+    {
+     "id": "university-of-bologna",
+     "name": "University of Bologna"
+    },
+    {
+     "id": "university-of-michigan",
+     "name": "University of Michigan"
+    },
+    {
+     "id": "vietnam-posts-and-telecommunications-group",
+     "name": "Vietnam Posts and Telecommunications Group"
+    }
+   ],
+   "changes": []
+  }
+ ]
+}

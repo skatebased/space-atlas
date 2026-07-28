@@ -66,6 +66,16 @@ function checkRecords(list, { label, map, requireProvenance = true }) {
         fail(`${label}/${name}: launch record does not add up`);
       }
     }
+    for (const item of org.news ?? []) {
+      if (!item.link || !/^https?:\/\//.test(item.link)) {
+        fail(`${label}/${name}: news item without a valid link`);
+      }
+    }
+    for (const shot of org.imagery ?? []) {
+      if (!shot.thumbnail || !/^https?:\/\//.test(shot.thumbnail)) {
+        fail(`${label}/${name}: imagery without a valid thumbnail`);
+      }
+    }
 
     if (requireProvenance) {
       if (!org.provenance || typeof org.provenance !== 'object') {
@@ -130,6 +140,11 @@ function checkFull(dataset, map) {
   if (!counts.withContracts) warn('no organisation carries federal contract data');
   if (!counts.withFinancials) warn('no organisation carries SEC financials');
   if (!counts.withLaunchRecord) warn('no organisation carries a launch record');
+  if (!counts.withNews) warn('no organisation is tagged to a headline');
+  if (!counts.withImagery) warn('no organisation carries imagery');
+  if (!Array.isArray(dataset.news) || !dataset.news.length) {
+    warn('dataset carries no headlines — news feeds may be failing');
+  }
 }
 
 /**
@@ -159,8 +174,8 @@ function checkOpen(dataset) {
         );
       }
     }
-    // Prose is the copyrightable part of Wikipedia; it must never appear here.
-    for (const field of ['summary', 'thumbnail', 'wikipedia']) {
+    // Prose and third-party editorial content must never appear here.
+    for (const field of ['summary', 'thumbnail', 'wikipedia', 'news', 'launchRecord']) {
       if (org[field] !== undefined) {
         fail(`LICENCE LEAK — open/${org.id}: \`${field}\` must not be present`);
       }
@@ -171,6 +186,12 @@ function checkOpen(dataset) {
     if (!meta.redistributable) {
       fail(`open manifest advertises a non-redistributable source: ${meta.name}`);
     }
+  }
+
+  // The aggregated headline list is publisher copyright and belongs only in
+  // the full tier.
+  if (dataset.news !== undefined) {
+    fail('LICENCE LEAK — open tier carries the `news` array');
   }
 }
 

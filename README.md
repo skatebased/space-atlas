@@ -11,11 +11,18 @@ Static site, no framework, no build step. Deploys straight to GitHub Pages.
 
 ## Features
 
+- **Brief** — the console: live headline wire, recent federal contract actions
+  with descriptions, flight activity, SEC filings and imagery, all filtered
+  together
 - **Map** — world choropleth shaded by each country's highest demonstrated
-  capability, with hover detail and click-through
-- **Cards / Table** — the same data as a browsable grid or a dense sortable table
-- **Compare** — budget and workforce rankings, founding activity by decade, and
+  capability. Useful as an overview, weak as analysis: 253 of 822
+  organisations are American, so one shape holds a third of the data
+- **Cards / Table** — browsable grid or dense sortable table
+- **Charts** — budget and workforce rankings, founding activity by decade, and
   how widely each capability is held
+- **Compare** — up to four organisations side by side across 14 metrics
+- **Feed** — what changed between dataset revisions, generated from git history
+- **API** — schema, licence tiers, provenance model and fetchable endpoints
 - **Search & filter** — by sector (agency / company), name, country, acronym,
   region, capability or tier
 - **Detail view** — full capability breakdown per organisation, including the
@@ -37,7 +44,9 @@ Nothing is hand-maintained. Every field records which source it came from.
 | [Natural Earth](https://www.naturalearthdata.com/) | country boundaries | Public domain | ✅ |
 | ISO 3166-1 | country codes and regions | Facts | ✅ |
 | Wikipedia [agencies](https://en.wikipedia.org/wiki/List_of_government_space_agencies) / [companies](https://en.wikipedia.org/wiki/List_of_private_spaceflight_companies) | demonstrated capabilities, budgets, prose, vehicle lists | CC BY-SA 4.0 | ❌ share-alike |
+| [NASA Image and Video Library](https://images.nasa.gov) | imagery per organisation | US public domain | ✅ |
 | [Launch Library 2](https://thespacedevs.com/llapi) | launch and landing record | CC BY 4.0 | ❌ attribution, 15 req/hour |
+| Space news RSS (NASA, ESA, SpaceNews, Payload, NASASpaceflight, Spaceflight Now, European Spaceflight, Ars Technica, Phys.org) | headlines tagged to organisations | Publisher copyright | ❌ |
 
 A GitHub Action re-runs the build every Monday and commits the result only if
 something changed.
@@ -112,6 +121,7 @@ That runs three steps, which can also be run individually:
 | `npm run build:map` | `data/world-map.json` | Robinson-projected SVG paths per country. Rarely changes. |
 | `npm run scrape` | `data/agencies.json` | Wikipedia capabilities layer. |
 | `npm run build:data` | `data/organisations*.json` | Merges every source. This is the weekly one. |
+| `npm run build:changelog` | `data/changelog.json` | Diffs dataset revisions from git history. |
 | `npm test` | — | Validates schema, provenance and licence tiers. |
 
 `npm run build:data` needs one environment variable for the SEC source, which

@@ -52,6 +52,17 @@ export const SOURCES = {
     redistributable: true,
     note: 'Explicit public domain release.',
   },
+  nasaimages: {
+    name: 'NASA Image and Video Library',
+    url: 'https://images.nasa.gov',
+    license: 'US-PD',
+    licenseUrl: 'https://www.nasa.gov/nasa-brand-center/images-and-media/',
+    attributionRequired: false,
+    redistributable: true,
+    note:
+      'NASA media is generally public domain. A few items are credited to ' +
+      'third parties, so the record keeps the NASA detail-page link.',
+  },
   iso: {
     name: 'ISO 3166-1 country codes',
     url: 'https://www.iso.org/iso-3166-country-codes.html',
@@ -74,6 +85,17 @@ export const SOURCES = {
       'Share-alike: derivative works must carry the same licence, so downstream ' +
       'users may redistribute freely. Prose (article extracts) is the ' +
       'copyrightable part; bare facts are not protected in the US.',
+  },
+  news: {
+    name: 'Space news RSS feeds',
+    url: '',
+    license: 'Publisher copyright',
+    attributionRequired: true,
+    redistributable: false,
+    note:
+      'Headlines, links and short excerpts from third-party publishers, ' +
+      'aggregated under normal linking practice. The underlying articles ' +
+      'remain their publishers\' copyright and are never reproduced in full.',
   },
   launchlibrary: {
     name: 'Launch Library 2 (The Space Devs)',

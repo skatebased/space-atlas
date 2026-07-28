@@ -1303,3 +1303,431 @@ main {
     scroll-behavior: auto;
   }
 }
+
+/* =====================================================================
+   Console — ticker, intelligence brief, compare, feed, API explorer
+   Density is the point here: this is a reading surface, not a landing
+   page, so panels are tight, rules are hairlines and type steps down.
+   ===================================================================== */
+
+/* --- Headline ticker ------------------------------------------------ */
+
+.ticker {
+  display: flex;
+  align-items: stretch;
+  border-bottom: 1px solid var(--border);
+  background: var(--bg-sunken);
+  overflow: hidden;
+}
+
+.ticker__label {
+  flex: none;
+  display: flex;
+  align-items: center;
+  padding: 0 0.8rem;
+  background: var(--nasa-red);
+  color: #fff;
+  font-size: var(--label-size);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: var(--label-tracking);
+}
+
+.ticker__viewport {
+  flex: 1;
+  overflow: hidden;
+  position: relative;
+}
+
+.ticker__track {
+  display: inline-flex;
+  align-items: center;
+  gap: 2.5rem;
+  padding: 0.5rem 0;
+  white-space: nowrap;
+  animation: ticker-scroll 220s linear infinite;
+}
+
+.ticker:hover .ticker__track {
+  animation-play-state: paused;
+}
+
+@keyframes ticker-scroll {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+.ticker__item {
+  color: var(--text-muted);
+  font-size: 0.78rem;
+  text-decoration: none;
+}
+
+.ticker__item:hover {
+  color: var(--text);
+}
+
+.ticker__src {
+  margin-right: 0.5rem;
+  color: var(--nasa-red);
+  font-family: var(--font-mono);
+  font-size: 0.66rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+/* --- Brief grid ----------------------------------------------------- */
+
+.brief,
+.feed,
+.api-docs {
+  display: grid;
+  gap: 1px;
+  grid-template-columns: repeat(auto-fit, minmax(330px, 1fr));
+  background: var(--border);
+  border: 1px solid var(--border);
+}
+
+.brief-card {
+  padding: 1rem 1.15rem 1.2rem;
+  background: var(--surface);
+}
+
+.brief-card--wide { grid-column: 1 / -1; }
+.brief-card--tall { grid-row: span 2; }
+
+.brief-card__title {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.5rem;
+  margin-bottom: 0.75rem;
+  padding-bottom: 0.45rem;
+  border-bottom: 1px solid var(--border-strong);
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--text);
+}
+
+/* --- Wire (news) ---------------------------------------------------- */
+
+.wire {
+  display: grid;
+  gap: 0.7rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.wire__item {
+  padding-bottom: 0.7rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.wire__item:last-child { border-bottom: 0; padding-bottom: 0; }
+
+.wire__headline {
+  display: block;
+  color: var(--text);
+  font-size: 0.87rem;
+  line-height: 1.35;
+  text-decoration: none;
+}
+
+.wire__headline:hover { color: var(--accent); }
+
+.wire__meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 0.3rem;
+  color: var(--text-faint);
+  font-family: var(--font-mono);
+  font-size: 0.67rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.wire__source { color: var(--nasa-red); }
+
+.wire__tag {
+  padding: 0.05rem 0.35rem;
+  border: 1px solid var(--border-strong);
+  background: transparent;
+  color: var(--text-muted);
+  font: inherit;
+  cursor: pointer;
+}
+
+.wire__tag:hover { color: var(--text); border-color: var(--accent); }
+
+.wire--compact .wire__headline { font-size: 0.8rem; }
+
+/* --- Ledger (awards, filings, activity, changes) -------------------- */
+
+.ledger {
+  display: grid;
+  gap: 0;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.ledger__row {
+  display: flex;
+  align-items: baseline;
+  gap: 0.7rem;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid var(--border);
+  cursor: pointer;
+}
+
+.ledger__row:last-child { border-bottom: 0; }
+.ledger__row:hover { background: var(--surface-hover); }
+
+.ledger__amount {
+  flex: none;
+  min-width: 4.5rem;
+  color: var(--tier-3);
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  font-variant-numeric: tabular-nums;
+  text-align: right;
+}
+
+.ledger__amount.is-up { color: var(--tier-3); }
+.ledger__amount.is-down { color: var(--accent); }
+
+.ledger__form {
+  flex: none;
+  min-width: 4.5rem;
+  padding: 0.05rem 0.35rem;
+  border: 1px solid var(--border-strong);
+  color: var(--nasa-red);
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  text-align: center;
+}
+
+.ledger__body {
+  flex: 1;
+  min-width: 0;
+  display: grid;
+  gap: 0.1rem;
+  font-size: 0.82rem;
+}
+
+.ledger__agency,
+.ledger__desc {
+  color: var(--text-faint);
+  font-size: 0.72rem;
+  line-height: 1.35;
+}
+
+.ledger__desc {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.ledger__link {
+  flex: none;
+  color: var(--accent);
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  text-transform: uppercase;
+}
+
+/* --- Imagery -------------------------------------------------------- */
+
+.shots {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 1px;
+  background: var(--border);
+}
+
+.shots--compact {
+  grid-template-columns: repeat(auto-fill, minmax(96px, 1fr));
+}
+
+.shot {
+  position: relative;
+  display: block;
+  aspect-ratio: 4 / 3;
+  background: var(--bg-sunken);
+  overflow: hidden;
+}
+
+.shot img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: saturate(0.85);
+  transition: transform 0.25s var(--ease), filter 0.25s var(--ease);
+}
+
+.shot:hover img { transform: scale(1.05); filter: saturate(1.1); }
+
+.shot__caption {
+  position: absolute;
+  inset: auto 0 0 0;
+  display: flex;
+  justify-content: space-between;
+  gap: 0.4rem;
+  padding: 0.3rem 0.45rem;
+  background: linear-gradient(transparent, rgb(2 4 10 / 0.9));
+  color: #fff;
+  font-family: var(--font-mono);
+  font-size: 0.63rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+/* --- Compare -------------------------------------------------------- */
+
+.compare__picker {
+  display: flex;
+  align-items: flex-end;
+  gap: 0.6rem;
+  margin-bottom: 1rem;
+}
+
+.compare__table th[scope="col"] { text-align: left; }
+
+.compare__head {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding-left: 0.5rem;
+  border-left: 3px solid var(--tier-color);
+  font-size: 0.78rem;
+  text-transform: none;
+  letter-spacing: 0;
+  color: var(--text);
+}
+
+.compare__remove {
+  border: 0;
+  background: transparent;
+  color: var(--text-faint);
+  cursor: pointer;
+  font-size: 0.7rem;
+}
+
+.compare__remove:hover { color: var(--nasa-red); }
+
+.compare__label {
+  color: var(--text-faint);
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.09em;
+  white-space: nowrap;
+}
+
+.compare__table td { font-family: var(--font-mono); font-size: 0.82rem; }
+
+/* --- Feed ----------------------------------------------------------- */
+
+.feed__hash {
+  color: var(--text-faint);
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+.feed__names {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.3rem;
+  margin: 0;
+}
+
+.feed__names button,
+.feed__names span {
+  padding: 0.1rem 0.4rem;
+  border: 1px solid var(--border);
+  background: transparent;
+  color: var(--text-muted);
+  font-size: 0.72rem;
+  cursor: pointer;
+}
+
+.feed__names button:hover { border-color: var(--accent); color: var(--text); }
+.feed__names span { cursor: default; opacity: 0.6; }
+
+/* --- API explorer --------------------------------------------------- */
+
+.api-endpoints {
+  display: grid;
+  gap: 1px;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  background: var(--border);
+  border: 1px solid var(--border);
+}
+
+.api-endpoint {
+  display: grid;
+  align-content: start;
+  gap: 0.55rem;
+  padding: 0.9rem 1rem;
+  background: var(--bg-elevated);
+}
+
+.api-endpoint__head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.api-endpoint code {
+  color: var(--tier-3);
+  font-family: var(--font-mono);
+  font-size: 0.76rem;
+  word-break: break-all;
+}
+
+.api-endpoint p {
+  margin: 0;
+  color: var(--text-muted);
+  font-size: 0.78rem;
+  line-height: 1.5;
+}
+
+.api-endpoint .ghost-button { justify-self: start; }
+
+.api-endpoint .sector-chip { margin-left: 0; }
+
+.api-sample {
+  margin: 0;
+  padding: 0.85rem 1rem;
+  border: 1px solid var(--border);
+  background: var(--bg-sunken);
+  color: var(--text-muted);
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  line-height: 1.5;
+  overflow-x: auto;
+}
+
+.api-sample code { color: inherit; }
+
+@media (max-width: 640px) {
+  .brief,
+  .feed,
+  .api-docs,
+  .api-endpoints {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .brief-card--tall { grid-row: auto; }
+  .ticker { display: none; }
+}

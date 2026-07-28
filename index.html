@@ -50,6 +50,11 @@
       </div>
 
       <dl class="stat-strip" id="stat-strip" aria-label="Dataset summary"></dl>
+
+      <div class="ticker" aria-label="Latest space headlines">
+        <span class="ticker__label">Wire</span>
+        <div class="ticker__viewport"><div class="ticker__track" id="ticker"></div></div>
+      </div>
     </header>
 
     <main id="main">
@@ -69,10 +74,14 @@
           </div>
 
           <div class="view-switch" role="tablist" aria-label="View">
+            <button role="tab" class="view-switch__btn" data-view="brief">Brief</button>
             <button role="tab" class="view-switch__btn" data-view="map">Map</button>
             <button role="tab" class="view-switch__btn" data-view="grid">Cards</button>
             <button role="tab" class="view-switch__btn" data-view="table">Table</button>
-            <button role="tab" class="view-switch__btn" data-view="charts">Compare</button>
+            <button role="tab" class="view-switch__btn" data-view="charts">Charts</button>
+            <button role="tab" class="view-switch__btn" data-view="compare">Compare</button>
+            <button role="tab" class="view-switch__btn" data-view="feed">Feed</button>
+            <button role="tab" class="view-switch__btn" data-view="api">API</button>
           </div>
         </div>
 
@@ -119,7 +128,11 @@
         <p class="result-count" id="result-count" role="status" aria-live="polite"></p>
       </section>
 
-      <div class="panel" id="panel-map" data-panel="map">
+      <div class="panel" id="panel-brief" data-panel="brief">
+        <div class="brief" id="brief"></div>
+      </div>
+
+      <div class="panel" id="panel-map" data-panel="map" hidden>
         <div class="map">
           <div class="map__frame">
             <svg
@@ -163,6 +176,18 @@
 
       <div class="panel" id="panel-charts" data-panel="charts" hidden>
         <div class="charts" id="charts"></div>
+      </div>
+
+      <div class="panel" id="panel-compare" data-panel="compare" hidden>
+        <div class="compare" id="compare"></div>
+      </div>
+
+      <div class="panel" id="panel-feed" data-panel="feed" hidden>
+        <div class="feed" id="feed"></div>
+      </div>
+
+      <div class="panel" id="panel-api" data-panel="api" hidden>
+        <div class="api-docs" id="api-docs"></div>
       </div>
 
       <p class="empty-state" id="empty-state" hidden>

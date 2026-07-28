@@ -20,6 +20,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          # The change feed diffs consecutive dataset revisions, so it needs
+          # history rather than a shallow clone.
+          fetch-depth: 0
 
       - uses: actions/setup-node@v4
         with:
@@ -33,6 +37,9 @@ jobs:
           # SEC rejects generic user agents; without this EDGAR is skipped.
           SEC_USER_AGENT: ${{ secrets.SEC_USER_AGENT }}
         run: node scripts/build-dataset.mjs
+
+      - name: Build change feed
+        run: node scripts/build-changelog.mjs
 
       - name: Validate output
         run: node scripts/validate.mjs
