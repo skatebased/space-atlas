@@ -471,3 +471,286 @@ export function renderApi(dataset, sample) {
   | head -40</code></pre>
     </section>`;
 }
+
+/* ------------------------------------------------------------------ */
+/* Country profile                                                     */
+/* ------------------------------------------------------------------ */
+
+/** Capabilities worth calling out at national level, most significant first. */
+const NATIONAL_MILESTONES = [
+  ['crewedLaunch', 'Crewed launch'],
+  ['orbitalLaunch', 'Orbital launch'],
+  ['softLanding', 'Soft landing'],
+  ['rover', 'Rover'],
+  ['sampleReturn', 'Sample return'],
+  ['spaceStation', 'Space station'],
+  ['reusableSystems', 'Reusable systems'],
+  ['launchSite', 'Launch site'],
+  ['buildsSatellites', 'Builds satellites'],
+];
+
+/** Aggregates a country's organisations into one national picture. */
+export function summariseCountry(orgs) {
+  const sum = (fn) => orgs.reduce((total, o) => total + (fn(o) ?? 0), 0);
+
+  const launches = orgs.filter((o) => o.launchRecord);
+  const successful = sum((o) => o.launchRecord?.successful);
+  const failed = sum((o) => o.launchRecord?.failed);
+
+  const milestones = NATIONAL_MILESTONES.map(([key, name]) => {
+    const holders = orgs.filter((o) => o.capabilities?.[key]?.has);
+    if (!holders.length) return null;
+    // Rank by demonstrated activity rather than array order. Picking the first
+    // match credited Boeing with US crewed launch and Astra with orbital
+    // launch, because they sort earlier than NASA — true that they hold the
+    // capability, wrong as a national headline.
+    const ranked = holders.slice().sort(
+      (a, b) =>
+        (b.launchRecord?.totalLaunches ?? 0) - (a.launchRecord?.totalLaunches ?? 0) ||
+        (b.spacecraftCount ?? 0) - (a.spacecraftCount ?? 0) ||
+        b.tierRank - a.tierRank,
+    );
+    return {
+      label: name,
+      by: ranked[0].name,
+      detail: ranked[0].capabilities[key]?.detail,
+      count: holders.length,
+    };
+  }).filter(Boolean);
+
+  const years = orgs.map((o) => o.foundedYear).filter(Boolean);
+
+  return {
+    total: orgs.length,
+    agencies: orgs.filter((o) => o.orgType === 'government').length,
+    companies: orgs.filter((o) => o.orgType === 'private').length,
+    contracts: sum((o) => o.federalContracts?.usdTotal),
+    withContracts: orgs.filter((o) => o.federalContracts).length,
+    revenue: sum((o) => o.financials?.revenue?.usd),
+    staff: sum((o) => o.employees),
+    spacecraft: sum((o) => o.spacecraftCount),
+    launchTotal: successful + failed,
+    successRate: successful + failed ? Math.round((successful / (successful + failed)) * 1000) / 10 : null,
+    launchOrgs: launches.length,
+    milestones,
+    firstFounded: years.length ? Math.min(...years) : null,
+    topTier: orgs.reduce((best, o) => (o.tierRank > (best?.tierRank ?? 0) ? o : best), null),
+  };
+}
+
+export function renderCountry(iso3, allOrgs, dataset) {
+  const orgs = allOrgs.filter((o) => o.iso3 === iso3);
+  if (!orgs.length) {
+    return `<p class="empty-state">No organisations recorded for this country.</p>`;
+  }
+
+  const s = summariseCountry(orgs);
+  const [first] = orgs;
+
+  // Rank by evidence held, so the significant players surface first.
+  const ranked = orgs.slice().sort(
+    (a, b) =>
+      (b.federalContracts?.usdTotal ?? 0) - (a.federalContracts?.usdTotal ?? 0) ||
+      (b.launchRecord?.totalLaunches ?? 0) - (a.launchRecord?.totalLaunches ?? 0) ||
+      (b.spacecraftCount ?? 0) - (a.spacecraftCount ?? 0) ||
+      b.tierRank - a.tierRank,
+  );
+
+  const ids = new Set(orgs.map((o) => o.id));
+  const news = (dataset.news ?? [])
+    .filter((n) => (n.organisations ?? []).some((id) => ids.has(id)))
+    .slice(0, 8);
+
+  const stat = (label, value) => `
+    <div class="stat">
+      <dt class="stat__label">${esc(label)}</dt>
+      <dd class="stat__value" style="margin:0">${esc(value)}</dd>
+    </div>`;
+
+  return `
+    <section class="brief-card brief-card--wide country__head">
+      <div class="country__title">
+        <span class="country__flag">${first.flag}</span>
+        <div>
+          <h2 class="detail__title">${esc(first.country)}</h2>
+          <p class="detail__subtitle">
+            ${number.format(s.total)} organisations · ${s.agencies} ${
+              s.agencies === 1 ? 'agency' : 'agencies'
+            } · ${s.companies} ${s.companies === 1 ? 'company' : 'companies'}
+            ${s.firstFounded ? ` · oldest founded ${s.firstFounded}` : ''}
+          </p>
+        </div>
+      </div>
+      <dl class="stat-strip country__stats">
+        ${stat('Organisations', number.format(s.total))}
+        ${stat('Spacecraft flown', number.format(s.spacecraft))}
+        ${stat('Launches', s.launchTotal ? number.format(s.launchTotal) : '—')}
+        ${stat('Success rate', s.successRate != null ? `${s.successRate}%` : '—')}
+        ${stat('Federal contracts', formatUsd(s.contracts))}
+        ${stat('Reported staff', formatStaff(s.staff))}
+      </dl>
+      <p class="chart-card__sub">
+        Staff and contract totals are whole-organisation figures. Diversified
+        primes report company-wide headcount, and the procurement codes cover
+        defence aerospace as well as space.
+      </p>
+    </section>
+
+    ${
+      s.milestones.length
+        ? `<section class="brief-card brief-card--wide">
+             <h2 class="brief-card__title">National milestones</h2>
+             <p class="chart-card__sub">
+               Capabilities demonstrated by at least one organisation based here.
+               The named organisation is the most active holder, not necessarily
+               the first to achieve it.
+             </p>
+             <ul class="cap-grid">
+               ${s.milestones
+                 .map(
+                   (m) => `
+                 <li class="cap">
+                   <span class="cap__mark">✓</span>
+                   <span>${esc(m.label)}</span>
+                   <span class="cap__detail">${esc(
+                     [
+                       m.by,
+                       m.detail,
+                       m.count > 1 ? `+${m.count - 1} more` : null,
+                     ]
+                       .filter(Boolean)
+                       .join(' · '),
+                   )}</span>
+                 </li>`,
+                 )
+                 .join('')}
+             </ul>
+           </section>`
+        : ''
+    }
+
+    <section class="brief-card brief-card--wide">
+      <h2 class="brief-card__title">Organisations — ${number.format(orgs.length)}</h2>
+      <div class="table-wrap">
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th scope="col">Organisation</th>
+              <th scope="col">Sector</th>
+              <th scope="col">Founded</th>
+              <th scope="col" class="num">Craft</th>
+              <th scope="col" class="num">Launches</th>
+              <th scope="col" class="num">Fed. contracts</th>
+              <th scope="col">Capability</th>
+            </tr>
+          </thead>
+          <tbody>
+            ${ranked
+              .map(
+                (o) => `
+              <tr data-id="${esc(o.id)}" tabindex="0">
+                <td>
+                  <div class="cell-agency">
+                    <strong>${esc(label(o))}</strong>
+                    ${label(o) !== o.name ? `<span>${esc(o.name)}</span>` : ''}
+                  </div>
+                </td>
+                <td>${o.orgType === 'private' ? 'Company' : 'Agency'}</td>
+                <td>${o.foundedYear ?? '—'}</td>
+                <td class="num">${o.spacecraftCount ?? '—'}</td>
+                <td class="num">${
+                  o.launchRecord ? number.format(o.launchRecord.totalLaunches) : '—'
+                }</td>
+                <td class="num">${
+                  o.federalContracts ? formatUsd(o.federalContracts.usdTotal) : '—'
+                }</td>
+                <td>
+                  <span class="tier-badge" style="--tier-color:${tierColor(o.tier)}">
+                    ${esc(o.tierLabel)}
+                  </span>
+                </td>
+              </tr>`,
+              )
+              .join('')}
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    ${
+      news.length
+        ? `<section class="brief-card brief-card--wide">
+             <h2 class="brief-card__title">In the news</h2>
+             <ul class="wire">
+               ${news
+                 .map(
+                   (n) => `
+                 <li class="wire__item">
+                   <a class="wire__headline" href="${esc(n.link)}" target="_blank" rel="noopener">${esc(n.title)}</a>
+                   <div class="wire__meta">
+                     <span class="wire__source">${esc(n.source)}</span>
+                     <span>${esc(timeAgo(n.published))}</span>
+                   </div>
+                 </li>`,
+                 )
+                 .join('')}
+             </ul>
+           </section>`
+        : ''
+    }`;
+}
+
+/** Ranked index of every country, used when no country is selected. */
+export function renderCountryIndex(list) {
+  const byCountry = new Map();
+  for (const org of list) {
+    if (!byCountry.has(org.iso3)) byCountry.set(org.iso3, []);
+    byCountry.get(org.iso3).push(org);
+  }
+
+  const rows = [...byCountry.entries()]
+    .map(([iso3, orgs]) => ({ iso3, orgs, s: summariseCountry(orgs) }))
+    .sort(
+      (a, b) =>
+        b.s.contracts - a.s.contracts ||
+        b.s.launchTotal - a.s.launchTotal ||
+        b.s.total - a.s.total,
+    );
+
+  return `
+    <section class="brief-card brief-card--wide">
+      <h2 class="brief-card__title">Countries — ${rows.length}</h2>
+      <p class="chart-card__sub">
+        Select a country for its full roll-up, or click any country on the map.
+      </p>
+      <div class="table-wrap">
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th scope="col">Country</th>
+              <th scope="col" class="num">Orgs</th>
+              <th scope="col" class="num">Agencies</th>
+              <th scope="col" class="num">Craft flown</th>
+              <th scope="col" class="num">Launches</th>
+              <th scope="col" class="num">Fed. contracts</th>
+            </tr>
+          </thead>
+          <tbody>
+            ${rows
+              .map(
+                ({ iso3, orgs, s }) => `
+              <tr data-country="${esc(iso3)}" tabindex="0">
+                <td><strong>${orgs[0].flag} ${esc(orgs[0].country)}</strong></td>
+                <td class="num">${number.format(s.total)}</td>
+                <td class="num">${s.agencies || '—'}</td>
+                <td class="num">${s.spacecraft ? number.format(s.spacecraft) : '—'}</td>
+                <td class="num">${s.launchTotal ? number.format(s.launchTotal) : '—'}</td>
+                <td class="num">${s.contracts ? formatUsd(s.contracts) : '—'}</td>
+              </tr>`,
+              )
+              .join('')}
+          </tbody>
+        </table>
+      </div>
+    </section>`;
+}

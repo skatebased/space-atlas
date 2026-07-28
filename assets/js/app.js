@@ -7,7 +7,14 @@
  */
 
 import { esc, formatUsd, formatStaff, tierColor, timeAgo, number, label } from './format.js';
-import { renderBrief, renderCompare, renderFeed, renderApi } from './views.js';
+import {
+  renderBrief,
+  renderCompare,
+  renderFeed,
+  renderApi,
+  renderCountry,
+  renderCountryIndex,
+} from './views.js';
 
 /* ------------------------------------------------------------------ */
 /* Constants                                                           */
@@ -84,6 +91,7 @@ const state = {
   dataset: null,
   changelog: null,
   compare: [],
+  country: null,
   query: '',
   region: 'all',
   capability: 'all',
@@ -768,7 +776,9 @@ function openDetail(id) {
           label(agency),
         )}</h2>
         <p class="detail__subtitle">
-          ${secondaryName(agency) ? `${esc(secondaryName(agency))} · ` : ''}${esc(agency.country)}
+          ${secondaryName(agency) ? `${esc(secondaryName(agency))} · ` : ''}<button
+            class="detail__country" data-country="${esc(agency.iso3)}"
+          >${esc(agency.country)}</button>
           <span class="sector-chip sector-chip--${esc(agency.orgType)}">${esc(
             SECTOR_LABELS[agency.orgType] ?? '',
           )}</span>
@@ -836,6 +846,9 @@ function closeDetail() {
 /* ------------------------------------------------------------------ */
 
 function setView(view) {
+  // Switching away from a country profile drops the selection, so returning
+  // to the tab shows the index rather than a stale country.
+  if (state.view === 'country' && view !== 'country') state.country = null;
   state.view = view;
   for (const panel of $$('[data-panel]')) {
     panel.hidden = panel.dataset.panel !== view;
@@ -856,7 +869,7 @@ function render() {
       : `${list.length} of ${state.agencies.length} organisations`;
 
   // The API and feed views do not depend on the filtered list.
-  const listDriven = !['api', 'feed'].includes(state.view);
+  const listDriven = !['api', 'feed', 'country'].includes(state.view);
   const isEmpty = list.length === 0 && listDriven;
   $('#empty-state').hidden = !isEmpty;
   $(`#panel-${state.view}`).hidden = isEmpty && state.view !== 'map';
@@ -868,9 +881,24 @@ function render() {
   else if (state.view === 'brief') $('#brief').innerHTML = renderBrief(state.dataset, list);
   else if (state.view === 'compare') $('#compare').innerHTML = renderCompare(list, state.compare);
   else if (state.view === 'feed') $('#feed').innerHTML = renderFeed(state.changelog);
+  else if (state.view === 'country') {
+    // With no country chosen, the panel is an index of all of them.
+    $('#country').innerHTML = state.country
+      ? renderCountry(state.country, state.agencies, state.dataset)
+      : renderCountryIndex(list);
+  }
   else if (state.view === 'api') {
     $('#api-docs').innerHTML = renderApi(state.dataset, sampleRecord());
   }
+}
+
+/** Opens a country's national roll-up and deep-links it. */
+function openCountry(iso3) {
+  if (!iso3) return;
+  state.country = iso3;
+  setView('country');
+  history.replaceState(null, '', `#country/${iso3}`);
+  window.scrollTo({ top: 0, behavior: 'auto' });
 }
 
 /** A small, real record for the API documentation. */
@@ -973,20 +1001,25 @@ function wireEvents() {
   svg.addEventListener('click', (event) => {
     const path = event.target.closest('.map__country--active');
     if (!path) return;
-    const [agency] = agenciesForIso3(path.dataset.iso3);
-    if (agency) openDetail(agency.id);
+    // A country can hold hundreds of organisations — 253 for the US — so the
+    // map opens the national roll-up, not an arbitrary single record.
+    openCountry(path.dataset.iso3);
   });
   svg.addEventListener('keydown', (event) => {
     if (event.key !== 'Enter' && event.key !== ' ') return;
     const path = event.target.closest('.map__country--active');
     if (!path) return;
     event.preventDefault();
-    const [agency] = agenciesForIso3(path.dataset.iso3);
-    if (agency) openDetail(agency.id);
+    openCountry(path.dataset.iso3);
   });
 
   // Cards, table rows and chart bars all open the detail drawer.
   document.addEventListener('click', (event) => {
+    const countryRow = event.target.closest('[data-country]');
+    if (countryRow) {
+      openCountry(countryRow.dataset.country);
+      return;
+    }
     if (event.target.closest('[data-remove], #compare-clear')) return;
     const target = event.target.closest('[data-id]');
     if (target && !event.target.closest('a')) openDetail(target.dataset.id);
@@ -1092,9 +1125,10 @@ async function init() {
       { year: 'numeric', month: 'long', day: 'numeric' },
     )} · ${dataset.organisations.length} organisations`;
 
-    // Deep link: #nasa opens that agency.
-    const hash = location.hash.slice(1);
-    if (hash) openDetail(hash);
+    // Deep links: #country/USA opens a national roll-up, #nasa an organisation.
+    const hash = decodeURIComponent(location.hash.slice(1));
+    if (hash.startsWith('country/')) openCountry(hash.slice('country/'.length));
+    else if (hash) openDetail(hash);
   } catch (error) {
     $('#main').insertAdjacentHTML(
       'afterbegin',

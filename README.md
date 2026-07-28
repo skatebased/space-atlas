@@ -15,8 +15,11 @@ Static site, no framework, no build step. Deploys straight to GitHub Pages.
   with descriptions, flight activity, SEC filings and imagery, all filtered
   together
 - **Map** — world choropleth shaded by each country's highest demonstrated
-  capability. Useful as an overview, weak as analysis: 253 of 822
-  organisations are American, so one shape holds a third of the data
+  capability. Clicking a country opens its national roll-up rather than one
+  organisation, because a single shape can hold hundreds
+- **Countries** — national profiles: every organisation based there, aggregate
+  contracts, launches and success rate, national milestones and press. This is
+  what the map cannot show — 255 of 822 organisations are American
 - **Cards / Table** — browsable grid or dense sortable table
 - **Charts** — budget and workforce rankings, founding activity by decade, and
   how widely each capability is held

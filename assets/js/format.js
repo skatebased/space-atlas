@@ -24,7 +24,8 @@ export function formatUsd(value) {
 
 export function formatStaff(count) {
   if (!count) return '—';
-  if (count >= 10000) return `${(count / 1000).toFixed(0)}k`;
+  if (count >= 1e6) return `${(count / 1e6).toFixed(1)}M`;
+  if (count >= 10000) return `${Math.round(count / 1000)}k`;
   return number.format(count);
 }
 
