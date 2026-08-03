@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-07-27T22:39:59.699Z",
+ "generatedAt": "2026-08-03T07:51:34.399Z",
  "sources": [
   {
    "page": "List of government space agencies",
@@ -1996,10 +1996,10 @@
    "orgType": "government",
    "name": "Bolivarian Agency for Space Activities",
    "acronym": "ABAE",
-   "country": "Venezuela",
-   "iso2": "VE",
-   "iso3": "VEN",
-   "flag": "🇻🇪",
+   "country": "Bolivia",
+   "iso2": "BO",
+   "iso3": "BOL",
+   "flag": "🇧🇴",
    "region": "Americas",
    "subregion": "Latin America and the Caribbean",
    "supranational": false,
@@ -7674,7 +7674,7 @@
    "subnational": false,
    "founded": "1998-01-01",
    "foundedYear": 1998,
-   "headquarters": null,
+   "headquarters": "Abuja",
    "coordinates": [
     8.9897,
     7.3871
@@ -11395,7 +11395,7 @@
    "website": "https://www.stratolaunch.com/",
    "employees": 21,
    "budget": null,
-   "summary": "Stratolaunch LLC is a private American aerospace company providing high-speed flight test services. It was founded in 2011 to develop a new air-launched space transportation system, with its corporate headquarters in Seattle…",
+   "summary": "Stratolaunch LLC is a private American aerospace company providing high-speed flight test services. It was founded in 2011 to develop a new air-launched space transportation system. Ots corporate headquarters are in Seattle…",
    "thumbnail": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/52/Giant_planes_comparison.svg/330px-Giant_planes_comparison.svg.png",
    "logo": "https://commons.wikimedia.org/wiki/Special:FilePath/Stratolaunch_wordmark.svg?width=320",
    "parent": "Vulcan Inc.",
@@ -12672,7 +12672,7 @@
    "website": "https://vast.gov.vn",
    "employees": null,
    "budget": null,
-   "summary": "The Vietnam Academy of Science and Technology (VAST; Vietnamese: Viện Hàn lâm Khoa học và Công nghệ Việt Nam) is the largest and most prominent research institute in Vietnam. It was founded on 20 May 1975 as the Vietnam Academy of Science, then subsequently assumed its current name in 2008…",
+   "summary": "The Vietnam Academy of Science and Technology (VAST; Vietnamese: Viện Hàn lâm Khoa học và Công nghệ Việt Nam) is the largest and most prominent research institute in Vietnam. It was founded on 20 May 1975 as the Vietnam Academy of Science, and subsequently assumed its current name in 2008…",
    "thumbnail": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c6/Nhadieuhanh.jpg/330px-Nhadieuhanh.jpg",
    "logo": null,
    "parent": null,
