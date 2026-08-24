@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-08-17T05:01:41.181Z",
+ "generatedAt": "2026-08-24T05:05:22.116Z",
  "sources": [
   {
    "page": "List of government space agencies",
@@ -3189,58 +3189,6 @@
    }
   },
   {
-   "id": "voyager-technologies",
-   "orgType": "private",
-   "name": "Dylan Taylor (executive)",
-   "acronym": null,
-   "country": "United States",
-   "iso2": "US",
-   "iso3": "USA",
-   "flag": "🇺🇸",
-   "region": "Americas",
-   "subregion": "Northern America",
-   "supranational": false,
-   "historical": false,
-   "subnational": false,
-   "founded": null,
-   "foundedYear": null,
-   "headquarters": null,
-   "coordinates": null,
-   "website": null,
-   "employees": null,
-   "budget": null,
-   "summary": "Dylan Taylor (born October 23, 1970) is an American executive, commercial astronaut, and super angel investor in the NewSpace industry. He is the chairman and CEO of Voyager Technologies Inc (formerly Voyager Space Holdings) and former global president of Colliers International.",
-   "thumbnail": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/85/Dylan_Taylor.jpg/330px-Dylan_Taylor.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
-   "logo": "https://commons.wikimedia.org/wiki/Special:FilePath/Dylan_Taylor.jpg?width=320",
-   "parent": null,
-   "wikipedia": "https://en.wikipedia.org/wiki/Dylan_Taylor_(executive)",
-   "tier": "human-spaceflight",
-   "tierLabel": "Human spaceflight",
-   "tierRank": 5,
-   "capabilities": {
-    "spaceStation": {
-     "has": true,
-     "detail": "Bishop Airlock"
-    }
-   },
-   "products": [
-    {
-     "name": "Bishop Airlock",
-     "kind": "station",
-     "type": "ISS-attached and free-flyer commercial hardware",
-     "status": "Operational",
-     "demonstrated": true
-    },
-    {
-     "name": "Starlab",
-     "kind": "station",
-     "type": "Rigid module (single-launch)",
-     "status": "Development",
-     "demonstrated": false
-    }
-   ]
-  },
-  {
    "id": "dynetics",
    "orgType": "private",
    "name": "Dynetics",
@@ -5270,7 +5218,7 @@
    "supranational": false,
    "historical": false,
    "subnational": false,
-   "founded": "2021-01-01",
+   "founded": "2021-01-22",
    "foundedYear": 2021,
    "headquarters": "Los Angeles",
    "coordinates": null,
@@ -8734,7 +8682,7 @@
    "supranational": false,
    "historical": false,
    "subnational": false,
-   "founded": "2019-01-01",
+   "founded": "2019-10-31",
    "foundedYear": 2019,
    "headquarters": "Tucson",
    "coordinates": null,
@@ -11115,7 +11063,7 @@
    "supranational": false,
    "historical": false,
    "subnational": false,
-   "founded": "2014-01-01",
+   "founded": "2014-10-28",
    "foundedYear": 2014,
    "headquarters": "Long Beach",
    "coordinates": null,
@@ -11213,7 +11161,7 @@
    "employees": null,
    "budget": null,
    "summary": "SSC Space (previously known as Swedish Space Corporation, SSC), registered as SSC Space AB, is a Swedish space services company…",
-   "thumbnail": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b7/Swedish_Space_Corporation_Logo.svg/330px-Swedish_Space_Corporation_Logo.svg.png?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+   "thumbnail": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/85/TEXUS_50_launched_with_a_VSB-30_rocket.jpg/330px-TEXUS_50_launched_with_a_VSB-30_rocket.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
    "logo": "https://commons.wikimedia.org/wiki/Special:FilePath/Swedish_Space_Corporation_Logo.svg?width=320",
    "parent": "Government Offices of Sweden",
    "wikipedia": "https://en.wikipedia.org/wiki/SSC_Space",
@@ -11328,8 +11276,8 @@
    "supranational": false,
    "historical": false,
    "subnational": false,
-   "founded": null,
-   "foundedYear": null,
+   "founded": "2019-09-23",
+   "foundedYear": 2019,
    "headquarters": "Kent",
    "coordinates": null,
    "website": "https://www.stokespace.com/",
@@ -11395,7 +11343,7 @@
    "website": "https://www.stratolaunch.com/",
    "employees": 21,
    "budget": null,
-   "summary": "Stratolaunch LLC is a private American aerospace company providing high-speed flight test services. It was founded in 2011 to develop a new air-launched space transportation system. Ots corporate headquarters are in Seattle…",
+   "summary": "Stratolaunch LLC is a private American aerospace company providing high-speed flight test services. It was founded in 2011 to develop a new air-launched space transportation system. Its corporate headquarters are in Seattle…",
    "thumbnail": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/52/Giant_planes_comparison.svg/330px-Giant_planes_comparison.svg.png?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
    "logo": "https://commons.wikimedia.org/wiki/Special:FilePath/Stratolaunch_wordmark.svg?width=320",
    "parent": "Vulcan Inc.",
@@ -12821,7 +12769,7 @@
    "website": "https://www.vaspace.org/",
    "employees": null,
    "budget": null,
-   "summary": "The Virginia Spaceport Authority, also known as Virginia Space, is a political subdivision of the Commonwealth of Virginia headquartered in Norfolk, Virginia focused on bringing commercial spaceflight to Virginia and providing education in aerospace technologies across the Commonwealth…",
+   "summary": "The Virginia Spaceport Authority, also known as Virginia Space, is a political subdivision of the Commonwealth of Virginia headquartered in Norfolk, Virginia, focused on bringing commercial spaceflight to Virginia and providing education in aerospace technologies across the Commonwealth…",
    "thumbnail": null,
    "logo": null,
    "parent": null,
@@ -12847,6 +12795,58 @@
      "detail": null
     }
    }
+  },
+  {
+   "id": "voyager-technologies",
+   "orgType": "private",
+   "name": "Voyager Technologies",
+   "acronym": null,
+   "country": "United States",
+   "iso2": "US",
+   "iso3": "USA",
+   "flag": "🇺🇸",
+   "region": "Americas",
+   "subregion": "Northern America",
+   "supranational": false,
+   "historical": false,
+   "subnational": false,
+   "founded": "2025-01-01",
+   "foundedYear": 2025,
+   "headquarters": "Denver",
+   "coordinates": null,
+   "website": "https://voyagertechnologies.com/",
+   "employees": null,
+   "budget": null,
+   "summary": "Voyager Technologies (formerly Voyager Space Holdings) is a publicly traded American aerospace company headquartered in Denver, Colorado…",
+   "thumbnail": null,
+   "logo": "https://commons.wikimedia.org/wiki/Special:FilePath/Voyager_Technologies_logo.svg?width=320",
+   "parent": null,
+   "wikipedia": "https://en.wikipedia.org/wiki/Voyager_Technologies",
+   "tier": "human-spaceflight",
+   "tierLabel": "Human spaceflight",
+   "tierRank": 5,
+   "capabilities": {
+    "spaceStation": {
+     "has": true,
+     "detail": "Bishop Airlock"
+    }
+   },
+   "products": [
+    {
+     "name": "Bishop Airlock",
+     "kind": "station",
+     "type": "ISS-attached and free-flyer commercial hardware",
+     "status": "Operational",
+     "demonstrated": true
+    },
+    {
+     "name": "Starlab",
+     "kind": "station",
+     "type": "Rigid module (single-launch)",
+     "status": "Development",
+     "demonstrated": false
+    }
+   ]
   },
   {
    "id": "world-view-enterprises",
