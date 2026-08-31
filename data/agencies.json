@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-08-24T05:05:22.116Z",
+ "generatedAt": "2026-08-31T10:56:07.603Z",
  "sources": [
   {
    "page": "List of government space agencies",
@@ -4013,7 +4013,7 @@
     50.8525,
     7.1225
    ],
-   "website": "https://www.dlr.de/EN/Home/home_node.html",
+   "website": "https://www.dlr.de/de",
    "employees": 8000,
    "budget": {
     "usdMillions": 1424,
@@ -5263,8 +5263,8 @@
    "supranational": false,
    "historical": false,
    "subnational": false,
-   "founded": "2004-01-01",
-   "foundedYear": 2004,
+   "founded": "1996-01-01",
+   "foundedYear": 1996,
    "headquarters": "Tehran",
    "coordinates": null,
    "website": "http://www.isa.ir",
@@ -5867,7 +5867,7 @@
     "usdMillions": 726,
     "year": 2025
    },
-   "summary": "The Korea AeroSpace Administration (KASA; Korean: 우주항공청) is a Korean government-funded space and aeronautics agency. Established under the Ministry of Science and ICT, KASA oversees the Korea Aerospace Research Institute and Korea Astronomy and Space Science Institute…",
+   "summary": "The Korea AeroSpace Administration (KASA; Korean: 우주항공청) is a Korean government-funded space and Aeronautics agency. Established under the Ministry of Science and ICT, KASA oversees the Korea Aerospace Research Institute and Korea Astronomy and Space Science Institute…",
    "thumbnail": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b5/Korea_AeroSpace_Admin_logo.svg/330px-Korea_AeroSpace_Admin_logo.svg.png?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
    "logo": "https://commons.wikimedia.org/wiki/Special:FilePath/Korea_AeroSpace_Admin_logo.svg?width=320",
    "parent": "Ministry of Science and ICT",
@@ -9298,7 +9298,7 @@
    "subnational": false,
    "founded": "2020-06-01",
    "foundedYear": 2020,
-   "headquarters": "Jacksonville",
+   "headquarters": null,
    "coordinates": null,
    "website": "https://rdw.com/",
    "employees": null,
