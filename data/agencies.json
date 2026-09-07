@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-08-31T10:56:07.603Z",
+ "generatedAt": "2026-09-07T09:25:58.848Z",
  "sources": [
   {
    "page": "List of government space agencies",
@@ -17,7 +17,7 @@
   "agencies": 89,
   "companies": 137,
   "countries": 78,
-  "orbitalLaunch": 33,
+  "orbitalLaunch": 32,
   "humanSpaceflight": 6,
   "deepSpace": 22,
   "withBudget": 35,
@@ -2113,9 +2113,9 @@
    "logo": "https://commons.wikimedia.org/wiki/Special:FilePath/AEB-Brazil.svg?width=320",
    "parent": "Ministry of Science, Technology and Innovation",
    "wikipedia": "https://en.wikipedia.org/wiki/Brazilian_Space_Agency",
-   "tier": "orbital-launch",
-   "tierLabel": "Orbital launch",
-   "tierRank": 3,
+   "tier": "satellite-operator",
+   "tierLabel": "Satellite & spacecraft",
+   "tierRank": 2,
    "capabilities": {
     "firstSpaceTraveler": {
      "has": true,
@@ -2142,8 +2142,8 @@
      "detail": "VSB-30"
     },
     "orbitalLaunch": {
-     "has": true,
-     "detail": "VLS-1"
+     "has": false,
+     "detail": null
     },
     "cryogenicEngine": {
      "has": true,
@@ -2652,7 +2652,7 @@
      "detail": "YF-73"
     },
     "reusableSystems": {
-     "has": true,
+     "has": false,
      "detail": null
     },
     "flyby": {
@@ -4701,8 +4701,8 @@
      "detail": "CE-20) (CE-7.5"
     },
     "reusableSystems": {
-     "has": true,
-     "detail": "NGLV"
+     "has": false,
+     "detail": null
     },
     "flyby": {
      "has": true,
@@ -5315,8 +5315,8 @@
      "detail": "Bahman engine"
     },
     "reusableSystems": {
-     "has": true,
-     "detail": "Reusable OLV project"
+     "has": false,
+     "detail": null
     }
    }
   },
@@ -5341,7 +5341,7 @@
    "website": "https://isaraerospace.com/",
    "employees": 400,
    "budget": null,
-   "summary": "Isar Aerospace is a German aerospace company based in Ottobrunn near Munich. The company was founded in 2018. The company is named after a river that flows through Munich. The company is developing Spectrum, a two-stage, liquid-fueled rocket designed to launch 1,000 kilograms to low Earth orbit…",
+   "summary": "Isar Aerospace is a German aerospace company based in Ottobrunn near Munich. It was founded in 2018, named after the river that flows through Munich. The company developed Spectrum, a two-stage, liquid-fueled rocket designed to launch up to 1,000 kilograms to low Earth orbit…",
    "thumbnail": null,
    "logo": "https://commons.wikimedia.org/wiki/Special:FilePath/Isar_Aerospace_logo.svg?width=320",
    "parent": null,
@@ -6338,7 +6338,7 @@
    "employees": 64,
    "budget": null,
    "summary": "Long Wall (formerly ABL Space Systems) is an American aerospace company, based in Long Beach, California (originally from El Segundo, California), that manufactures deployable launch vehicles and infrastructure for missile defense, formerly for sending commercial small satellites into orbit…",
-   "thumbnail": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/62/Long_Wall_company_logo.webp/330px-Long_Wall_company_logo.webp.png?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+   "thumbnail": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/62/Long_Wall_company_logo.webp/330px-Long_Wall_company_logo.webp?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
    "logo": null,
    "parent": null,
    "wikipedia": "https://en.wikipedia.org/wiki/Long_Wall_(aerospace_company)",
@@ -6474,17 +6474,17 @@
    "supranational": false,
    "historical": false,
    "subnational": false,
-   "founded": null,
-   "foundedYear": null,
-   "headquarters": null,
+   "founded": "2004-11-01",
+   "foundedYear": 2004,
+   "headquarters": "Betzdorf",
    "coordinates": null,
-   "website": null,
+   "website": "https://luxspace.lu/",
    "employees": null,
    "budget": null,
    "summary": "LuxSpace is a European space systems contractor based in Betzdorf in Luxembourg. It was founded in November 2004 as a daughter company of OHB AG, and began operations in January 2005.",
    "thumbnail": null,
    "logo": null,
-   "parent": null,
+   "parent": "OHB SE",
    "wikipedia": "https://en.wikipedia.org/wiki/Luxspace",
    "tier": "deep-space",
    "tierLabel": "Deep space exploration",
@@ -7839,8 +7839,8 @@
      "detail": null
     },
     "launchSite": {
-     "has": true,
-     "detail": "Mahia"
+     "has": false,
+     "detail": null
     },
     "suborbitalLaunch": {
      "has": false,
@@ -9722,8 +9722,8 @@
      "detail": null
     },
     "reusableSystems": {
-     "has": true,
-     "detail": "Soyuz-7 2028"
+     "has": false,
+     "detail": null
     },
     "flyby": {
      "has": false,
@@ -10393,8 +10393,8 @@
      "detail": "KVD-1"
     },
     "reusableSystems": {
-     "has": true,
-     "detail": "Buran"
+     "has": false,
+     "detail": null
     },
     "flyby": {
      "has": true,
@@ -10925,7 +10925,7 @@
    "employees": 22000,
    "budget": null,
    "summary": "Space Exploration Technologies Corp., doing business as SpaceX, is an American aerospace manufacturer and provider of space transportation, telecommunications, and artificial intelligence services, headquartered at the Starbase development site in Starbase, Texas…",
-   "thumbnail": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f3/USA_-_Texas_-_Boca_Chica_-_Starbase_%2851285307187%29.jpg/330px-USA_-_Texas_-_Boca_Chica_-_Starbase_%2851285307187%29.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+   "thumbnail": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3e/Starship_-_Flight_13_%28Sunset%29.jpg/330px-Starship_-_Flight_13_%28Sunset%29.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
    "logo": "https://commons.wikimedia.org/wiki/Special:FilePath/SpaceX_logo_black.svg?width=320",
    "parent": null,
    "wikipedia": "https://en.wikipedia.org/wiki/SpaceX",
